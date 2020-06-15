@@ -29,7 +29,8 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<Firestore>(() => firebaseInjectableModule.firestore);
-  g.registerFactory<ProductFormBloc>(() => ProductFormBloc());
+  g.registerFactory<ProductFormBloc>(
+      () => ProductFormBloc(g<INoteRepository>()));
   g.registerFactory<NoteActorBloc>(() => NoteActorBloc(g<INoteRepository>()));
   g.registerFactory<NoteFormBloc>(() => NoteFormBloc(g<INoteRepository>()));
   g.registerFactory<NoteWatcherBloc>(

@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/notes/note_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/i_note_repository.dart';
+import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/notes/note_watcher/note_watcher_bloc.dart';
@@ -28,6 +29,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<Firestore>(() => firebaseInjectableModule.firestore);
+  g.registerFactory<ProductFormBloc>(() => ProductFormBloc());
   g.registerFactory<NoteActorBloc>(() => NoteActorBloc(g<INoteRepository>()));
   g.registerFactory<NoteFormBloc>(() => NoteFormBloc(g<INoteRepository>()));
   g.registerFactory<NoteWatcherBloc>(

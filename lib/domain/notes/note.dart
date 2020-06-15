@@ -8,7 +8,6 @@ import 'package:finished_notes_firebase_ddd_course/domain/core/failures.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/todo_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/value_objects.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/notes/value_objects.dart';
 
 part 'note.freezed.dart';
 

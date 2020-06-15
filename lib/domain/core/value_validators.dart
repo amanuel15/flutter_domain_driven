@@ -44,6 +44,27 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
   }
 }
 
+Either<ValueFailure<KtList<T>>, KtList<T>> validateListLength<T>(
+    KtList<T> input, int length) {
+  if (input.size == length) {
+    return right(input);
+  } else {
+    return left(ValueFailure.wrongCatagoryDepth(
+      failedValue: input,
+      length: length,
+    ));
+  }
+}
+
+Either<ValueFailure<int>, int> validateAmount(int input){
+  if (input.isNaN){
+    return left(ValueFailure.empty(failedValue: input));
+  } else {
+    if (input.isNegative) return right(input*-1);
+    return right(input);
+  }
+}
+
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   // Maybe not the most robust way of email validation but it's good enough
   const emailRegex =

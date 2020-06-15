@@ -20,6 +20,9 @@ mixin _$ValueFailure<T> {
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -32,6 +35,7 @@ mixin _$ValueFailure<T> {
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -45,6 +49,7 @@ mixin _$ValueFailure<T> {
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -57,6 +62,7 @@ mixin _$ValueFailure<T> {
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -99,6 +105,14 @@ class _$ValueFailureTearOff {
     return ListTooLong<T>(
       failedValue: failedValue,
       max: max,
+    );
+  }
+
+  WrongCatagoryDepth<T> wrongCatagoryDepth<T>(
+      {@required T failedValue, @required int length}) {
+    return WrongCatagoryDepth<T>(
+      failedValue: failedValue,
+      length: length,
     );
   }
 
@@ -186,6 +200,9 @@ class _$ExceedingLength<T>
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -195,6 +212,7 @@ class _$ExceedingLength<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -209,6 +227,7 @@ class _$ExceedingLength<T>
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -229,6 +248,7 @@ class _$ExceedingLength<T>
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -238,6 +258,7 @@ class _$ExceedingLength<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -252,6 +273,7 @@ class _$ExceedingLength<T>
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -327,6 +349,9 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -336,6 +361,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -350,6 +376,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -370,6 +397,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -379,6 +407,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -393,6 +422,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -466,6 +496,9 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -475,6 +508,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -489,6 +523,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -509,6 +544,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -518,6 +554,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -532,6 +569,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -618,6 +656,9 @@ class _$NumberTooLarge<T>
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -627,6 +668,7 @@ class _$NumberTooLarge<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -641,6 +683,7 @@ class _$NumberTooLarge<T>
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -661,6 +704,7 @@ class _$NumberTooLarge<T>
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -670,6 +714,7 @@ class _$NumberTooLarge<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -684,6 +729,7 @@ class _$NumberTooLarge<T>
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -770,6 +816,9 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -779,6 +828,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -793,6 +843,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -813,6 +864,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -822,6 +874,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -836,6 +889,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -859,6 +913,170 @@ abstract class ListTooLong<T> implements ValueFailure<T> {
 
   @override
   ListTooLong<T> copyWith({T failedValue, int max});
+}
+
+class _$WrongCatagoryDepth<T>
+    with DiagnosticableTreeMixin
+    implements WrongCatagoryDepth<T> {
+  const _$WrongCatagoryDepth(
+      {@required this.failedValue, @required this.length})
+      : assert(failedValue != null),
+        assert(length != null);
+
+  @override
+  final T failedValue;
+  @override
+  final int length;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.wrongCatagoryDepth(failedValue: $failedValue, length: $length)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.wrongCatagoryDepth'))
+      ..add(DiagnosticsProperty('failedValue', failedValue))
+      ..add(DiagnosticsProperty('length', length));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WrongCatagoryDepth<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.length, length) ||
+                const DeepCollectionEquality().equals(other.length, length)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(length);
+
+  @override
+  _$WrongCatagoryDepth<T> copyWith({
+    Object failedValue = freezed,
+    Object length = freezed,
+  }) {
+    return _$WrongCatagoryDepth<T>(
+      failedValue: failedValue == freezed ? this.failedValue : failedValue as T,
+      length: length == freezed ? this.length : length as int,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required
+        Result exceedingLength(@required T failedValue, @required int max),
+    @required Result empty(@required T failedValue),
+    @required Result multiline(@required T failedValue),
+    @required Result numberTooLarge(@required T failedValue, @required num max),
+    @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
+    @required Result invalidEmail(@required T failedValue),
+    @required Result shortPassword(@required T failedValue),
+    @required Result invalidPhotoUrl(@required T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(numberTooLarge != null);
+    assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidPhotoUrl != null);
+    return wrongCatagoryDepth(failedValue, length);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(@required T failedValue, @required int max),
+    Result empty(@required T failedValue),
+    Result multiline(@required T failedValue),
+    Result numberTooLarge(@required T failedValue, @required num max),
+    Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
+    Result invalidEmail(@required T failedValue),
+    Result shortPassword(@required T failedValue),
+    Result invalidPhotoUrl(@required T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongCatagoryDepth != null) {
+      return wrongCatagoryDepth(failedValue, length);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result numberTooLarge(NumberTooLarge<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(numberTooLarge != null);
+    assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidPhotoUrl != null);
+    return wrongCatagoryDepth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiline(Multiline<T> value),
+    Result numberTooLarge(NumberTooLarge<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongCatagoryDepth != null) {
+      return wrongCatagoryDepth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WrongCatagoryDepth<T> implements ValueFailure<T> {
+  const factory WrongCatagoryDepth(
+      {@required T failedValue,
+      @required int length}) = _$WrongCatagoryDepth<T>;
+
+  @override
+  T get failedValue;
+  int get length;
+
+  @override
+  WrongCatagoryDepth<T> copyWith({T failedValue, int length});
 }
 
 class _$InvalidEmail<T>
@@ -914,6 +1132,9 @@ class _$InvalidEmail<T>
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -923,6 +1144,7 @@ class _$InvalidEmail<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -937,6 +1159,7 @@ class _$InvalidEmail<T>
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -957,6 +1180,7 @@ class _$InvalidEmail<T>
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -966,6 +1190,7 @@ class _$InvalidEmail<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -980,6 +1205,7 @@ class _$InvalidEmail<T>
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -1056,6 +1282,9 @@ class _$ShortPassword<T>
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -1065,6 +1294,7 @@ class _$ShortPassword<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -1079,6 +1309,7 @@ class _$ShortPassword<T>
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -1099,6 +1330,7 @@ class _$ShortPassword<T>
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -1108,6 +1340,7 @@ class _$ShortPassword<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -1122,6 +1355,7 @@ class _$ShortPassword<T>
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -1198,6 +1432,9 @@ class _$InvalidPhotoUrl<T>
     @required Result multiline(@required T failedValue),
     @required Result numberTooLarge(@required T failedValue, @required num max),
     @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
@@ -1207,6 +1444,7 @@ class _$InvalidPhotoUrl<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -1221,6 +1459,7 @@ class _$InvalidPhotoUrl<T>
     Result multiline(@required T failedValue),
     Result numberTooLarge(@required T failedValue, @required num max),
     Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
@@ -1241,6 +1480,7 @@ class _$InvalidPhotoUrl<T>
     @required Result multiline(Multiline<T> value),
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
@@ -1250,6 +1490,7 @@ class _$InvalidPhotoUrl<T>
     assert(multiline != null);
     assert(numberTooLarge != null);
     assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
@@ -1264,6 +1505,7 @@ class _$InvalidPhotoUrl<T>
     Result multiline(Multiline<T> value),
     Result numberTooLarge(NumberTooLarge<T> value),
     Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),

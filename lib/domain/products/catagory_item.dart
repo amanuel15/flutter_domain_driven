@@ -11,13 +11,13 @@ part 'catagory_item.freezed.dart';
 abstract class CatagoryItem with _$CatagoryItem implements IEntity {
   const factory CatagoryItem({
     @required UniqueId id,
-    @required Catagory name,
+    @required CatagoryName name,
     @required bool done,
   }) = _CatagoryItem;
 
   factory CatagoryItem.empty() => CatagoryItem(
         id: UniqueId(),
-        name: Catagory(''),
+        name: CatagoryName(''),
         done: false,
       );
 }

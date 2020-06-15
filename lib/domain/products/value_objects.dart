@@ -114,6 +114,20 @@ class ImageUrl extends ValueObject<String> {
   const ImageUrl._(this.value);
 }
 
+class CatagoryName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory CatagoryName(String input) {
+    assert(input != null);
+    return CatagoryName._(
+      validateStringNotEmpty(input),
+    );
+  }
+
+  const CatagoryName._(this.value);
+}
+
 class ListImage<T> extends ValueObject<KtList<T>> {
   @override
   final Either<ValueFailure<KtList<T>>, KtList<T>> value;

@@ -9,17 +9,19 @@ part of 'catagory_item.dart';
 
 mixin _$CatagoryItem {
   UniqueId get id;
-  Catagory get name;
+  CatagoryName get name;
   bool get done;
 
-  CatagoryItem copyWith({UniqueId id, Catagory name, bool done});
+  CatagoryItem copyWith({UniqueId id, CatagoryName name, bool done});
 }
 
 class _$CatagoryItemTearOff {
   const _$CatagoryItemTearOff();
 
   _CatagoryItem call(
-      {@required UniqueId id, @required Catagory name, @required bool done}) {
+      {@required UniqueId id,
+      @required CatagoryName name,
+      @required bool done}) {
     return _CatagoryItem(
       id: id,
       name: name,
@@ -40,7 +42,7 @@ class _$_CatagoryItem implements _CatagoryItem {
   @override
   final UniqueId id;
   @override
-  final Catagory name;
+  final CatagoryName name;
   @override
   final bool done;
 
@@ -76,7 +78,7 @@ class _$_CatagoryItem implements _CatagoryItem {
   }) {
     return _$_CatagoryItem(
       id: id == freezed ? this.id : id as UniqueId,
-      name: name == freezed ? this.name : name as Catagory,
+      name: name == freezed ? this.name : name as CatagoryName,
       done: done == freezed ? this.done : done as bool,
     );
   }
@@ -85,16 +87,16 @@ class _$_CatagoryItem implements _CatagoryItem {
 abstract class _CatagoryItem implements CatagoryItem {
   const factory _CatagoryItem(
       {@required UniqueId id,
-      @required Catagory name,
+      @required CatagoryName name,
       @required bool done}) = _$_CatagoryItem;
 
   @override
   UniqueId get id;
   @override
-  Catagory get name;
+  CatagoryName get name;
   @override
   bool get done;
 
   @override
-  _CatagoryItem copyWith({UniqueId id, Catagory name, bool done});
+  _CatagoryItem copyWith({UniqueId id, CatagoryName name, bool done});
 }

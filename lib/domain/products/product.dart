@@ -12,23 +12,25 @@ part 'product.freezed.dart';
 @freezed
 abstract class Product with _$Product {
   const factory Product({
+    @required UniqueId id,
     @required ProductName productName,
     @required ProductDescription productDescription,
     @required ProductHypeDescription productHypeDescription,
     @required TotalAmount totalAmount,
     @required SoldAmount soldAmount,
     @required ListImage<ImageItem> images,
-    @required ListCatagories<CatagoryItem> route,
+    @required ListCatagories<CatagoryItem> catagories,
   }) = _Product;
 
   factory Product.empty() => Product(
+    id: UniqueId(),
     productName: ProductName(''),
     productDescription: ProductDescription(''),
     productHypeDescription: ProductHypeDescription(''),
     totalAmount: TotalAmount(0),
     soldAmount: SoldAmount(0),
     images: ListImage(emptyList()),
-    route: ListCatagories(emptyList()),
+    catagories: ListCatagories(emptyList()),
   );
 }
 
@@ -47,9 +49,9 @@ extension ProductX on Product {
           .getOrElse(0, (_) => none())
           .fold(() => right(unit), (f) => left(f)),
         )
-        .andThen(route.failureOrUnit)
+        .andThen(catagories.failureOrUnit)
         .andThen(
-          route.getOrCrash()
+          catagories.getOrCrash()
           .map((imageItem) => imageItem.failureOption)
           .filter((o) => o.isSome())
           .getOrElse(0, (_) => none())

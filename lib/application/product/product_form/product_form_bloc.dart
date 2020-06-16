@@ -6,6 +6,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/notes/i_note_repositor
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
+import 'package:finished_notes_firebase_ddd_course/infrastructure/products/product_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,9 +21,9 @@ part 'product_form_bloc.freezed.dart';
 
 @injectable
 class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
-  final INoteRepository _noteRepository;
+  final ProductRepository _productRepository;
 
-  ProductFormBloc(this._noteRepository);
+  ProductFormBloc(this._productRepository);
 
   @override
   ProductFormState get initialState => ProductFormState.initial();

@@ -21,4 +21,9 @@ extension DocumentReferenceX on DocumentReference {
 
   /// Nested subcollection under a [noteCollection]'s document.
   CollectionReference get todoCollection => collection('todos');
+
+  /// For Products
+  CollectionReference get productCollection => collection('products');
+
+  CollectionReference get catagoryCollection => collection('catagories');
 }

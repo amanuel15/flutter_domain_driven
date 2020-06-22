@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/errors.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/auth/i_auth_facade.dart';
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 
 extension FirestoreX on Firestore {
@@ -26,4 +27,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get productCollection => collection('products');
 
   CollectionReference get catagoryCollection => collection('catagories');
+
+  StorageReference get storageReference => FirebaseStorage.instance.ref().child('products');
 }

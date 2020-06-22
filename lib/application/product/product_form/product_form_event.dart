@@ -13,6 +13,7 @@ abstract class ProductFormEvent with _$ProductFormEvent {
       _TotalAmountChanged;
   const factory ProductFormEvent.soldAmountChanged(int soldNum) =
       _SoldAmountChanged;
+  // TODO: accomidate for the image picker when the button is pressed
   const factory ProductFormEvent.imagesChanged(
       KtList<ImageItemPrimitive> images) = _ImagesChanged;
   const factory ProductFormEvent.catagoriesChanged(

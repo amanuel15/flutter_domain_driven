@@ -22,7 +22,9 @@ abstract class IProductRepository {
   Stream<Either<CatagoryFailure, KtList<CatagoryItem>>> watchUncompletedCatagories();
 
   //functions for images
-  Future<Either<ImageFailure, KtList<ImageItem>>> getImages;
-  Future<Either<ImageFailure, Unit>> createImage;
+  Future<Either<ImageFailure, KtList<ImageItem>>> getImages(KtList<ImageUrl> imageUrl);
+  Future<Either<ImageFailure, Unit>> createImage(ImageItem imageItem);
+  //fuctions for getting image from local storage
+  Future<Either<ImageFailure, KtList<ImageItem>>> pickImage();
 
 }

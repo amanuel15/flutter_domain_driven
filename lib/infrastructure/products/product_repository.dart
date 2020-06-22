@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
@@ -9,6 +11,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart'
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/core/firestore_helpers.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/src/collection/kt_list.dart';
 
@@ -19,6 +22,7 @@ class ProductRepository implements IProductRepository {
   final Firestore _firestore;
   // TODO: create FirebaseStorage helpers
   final FirebaseStorage _firebaseStorage;
+  final _picker = ImagePicker();
 
   ProductRepository(this._firestore, this._firebaseStorage);
 
@@ -65,8 +69,21 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Future<Either<ImageFailure, Unit>> createImage;
+  Future<Either<ImageFailure, Unit>> createImage(ImageItem imageItem){
+    // TODO: implement createImage
+    throw UnimplementedError();
+  }
 
   @override
-  Future<Either<ImageFailure, KtList<ImageItem>>> getImages;
+  Future<Either<ImageFailure, KtList<ImageItem>>> getImages(KtList<ImageUrl> imageUrl){
+    // TODO: implement getImages
+    throw UnimplementedError();
+  }
+  @override
+  Future<Either<ImageFailure, KtList<ImageItem>>> pickImage() async {
+    // TODO: implement pickImage
+    PickedFile pickedFile = await _picker.getImage(source: ImageSource.gallery);
+    //final File file = File(pickedFile.path); // this casts the pickedfile to type file
+    throw UnimplementedError();
+  }
 }

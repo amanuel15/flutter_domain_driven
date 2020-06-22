@@ -18,6 +18,7 @@ abstract class Product with _$Product {
     @required ProductHypeDescription productHypeDescription,
     @required TotalAmount totalAmount,
     @required SoldAmount soldAmount,
+    // TODO: consider making this list image making a list of ImageUrl instead of Images
     @required ListImage<ImageItem> images,
     @required ListCatagories<CatagoryItem> catagories,
   }) = _Product;

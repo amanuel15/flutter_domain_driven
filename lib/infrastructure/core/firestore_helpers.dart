@@ -27,6 +27,8 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get productCollection => collection('products');
 
   CollectionReference get catagoryCollection => collection('catagories');
+}
 
+extension FirestoreReferenceX on StorageReference {
   StorageReference get storageReference => FirebaseStorage.instance.ref().child('products');
 }

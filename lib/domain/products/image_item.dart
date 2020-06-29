@@ -13,7 +13,7 @@ abstract class ImageItem with _$ImageItem implements IEntity {
     @required UniqueId id,
     @required ImageUrl name,
     @required bool done,
-    // TODO: add Uint8List or other file storage variable
+    // TODO: add FIle, PickedFile or other file storage variable
   }) = _ImageItem;
 
   factory ImageItem.empty() => ImageItem(

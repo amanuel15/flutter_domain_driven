@@ -75,6 +75,9 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
         );
       },
       imagesChanged: (e) async* {
+        final imageOption = await _productRepository.pickImage();
+        // TODO: yield states based on image picker repo
+        //yield imageOption.fold((l) => null, (r) => null);
         yield state.copyWith(
           product: state.product.copyWith(
             images: ListImage(

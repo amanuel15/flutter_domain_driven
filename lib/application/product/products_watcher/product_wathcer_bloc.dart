@@ -45,7 +45,7 @@ class ProductWathcerBloc extends Bloc<ProductWathcerEvent, ProductWathcerState> 
         _productStreamSubscription = _productRepository
             .watchUncompleted()
             .listen((products) => add(ProductWathcerEvent.productRecived(products)));
-      },
+      }, 
       productRecived: (e) async* {
         yield e.failureOrProducts.fold(
           (f) => ProductWathcerState.loadFailure(f), 

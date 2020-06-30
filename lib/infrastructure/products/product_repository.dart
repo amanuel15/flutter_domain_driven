@@ -53,19 +53,21 @@ class ProductRepository implements IProductRepository {
     yield* _firestore
         .collection('products')
         .orderBy('TotalAmount')
+        .limit(7)
         .snapshots()
         .map((snapshot) => right<ProductFailure, KtList<Product>>(snapshot
             .documents
             .map((doc) => ProductDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      return left(const ProductFailure.unexpected());
-    });
+          return left(const ProductFailure.unexpected());
+        });
   }
 
   @override
-  Stream<Either<ProductFailure, KtList<Product>>> watchUncompleted() {
-    // TODO: implement watchUncompleted
+  Stream<Either<ProductFailure, KtList<Product>>> watchUncompleted() async* {
+    yield* _firestore
+        .collection('products').startAfter(values)
     throw UnimplementedError();
   }
 

@@ -49,36 +49,36 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Stream<Either<ProductFailure, KtList<Product>>> watchAll() async* {
-    yield* _firestore
+  Future<Either<ProductFailure, KtList<Product>>> watchAll() {
+    return _firestore
         .collection('products')
         .orderBy('TotalAmount')
         .limit(7)
-        .snapshots()
-        .map((snapshot) => right<ProductFailure, KtList<Product>>(snapshot
+        .getDocuments()
+        .then((snapshot) => right<ProductFailure, KtList<Product>>(snapshot
             .documents
             .map((doc) => ProductDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
-        .onErrorReturnWith((e) {
-          return left(const ProductFailure.unexpected());
-        });
+        .catchError((e) {
+      return left(const ProductFailure.unexpected());
+    });
   }
 
   @override
-  Stream<Either<ProductFailure, KtList<Product>>> watchUncompleted() async* {
-    yield* _firestore
-        .collection('products').startAfter(values)
+  Future<Either<ProductFailure, KtList<Product>>> watchUncompleted() {
+    // return _firestore
+    //     .collection('products').startAfter(values)
     throw UnimplementedError();
   }
 
   @override
-  Stream<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories() {
+  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories() {
     // TODO: implement watchAllCatagories
     throw UnimplementedError();
   }
 
   @override
-  Stream<Either<CatagoryFailure, KtList<CatagoryItem>>>
+  Future<Either<CatagoryFailure, KtList<CatagoryItem>>>
       watchUncompletedCatagories() {
     // TODO: implement watchUncompletedCatagories
     throw UnimplementedError();

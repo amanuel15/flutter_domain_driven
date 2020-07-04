@@ -11,15 +11,15 @@ import 'package:kt_dart/collection.dart';
 abstract class IProductRepository {
   //functions for products
   // TODO: configure input parameters for [WathAll, watchUncomplete, getImages, WAtchUncompleteCatagories]
-  Stream<Either<ProductFailure, KtList<Product>>> watchAll();
-  Stream<Either<ProductFailure, KtList<Product>>> watchUncompleted();
+  Future<Either<ProductFailure, KtList<Product>>> watchAll();
+  Future<Either<ProductFailure, KtList<Product>>> watchUncompleted();
   Future<Either<ProductFailure, Unit>> create(Product product);
   Future<Either<ProductFailure, Unit>> update(Product product);
   Future<Either<ProductFailure, Unit>> delete(Product product);
 
   //functions for catagories
-  Stream<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories();
-  Stream<Either<CatagoryFailure, KtList<CatagoryItem>>> watchUncompletedCatagories();
+  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories();
+  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchUncompletedCatagories();
 
   //functions for images
   Future<Either<ImageFailure, KtList<ImageItem>>> getImages(KtList<ImageUrl> imageUrl);

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/auth/auth_bloc.dart';
@@ -11,9 +12,9 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) =>
-              Router.navigator.pushReplacementNamed(Router.notesOverviewPage),
+              ExtendedNavigator.of(context).pushProductsOverviewPage(),
           unauthenticated: (_) =>
-              Router.navigator.pushReplacementNamed(Router.signInPage),
+              ExtendedNavigator.of(context).pushSignInPage(),
         );
       },
       child: _PageWidget(),

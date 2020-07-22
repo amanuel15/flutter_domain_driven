@@ -1,6 +1,5 @@
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
-import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {

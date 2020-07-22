@@ -12,19 +12,36 @@ import 'package:finished_notes_firebase_ddd_course/presentation/pages/notes/note
 import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 
 class NotesOverviewPage extends HookWidget implements AutoRouteWrapper {
+  // @override
+  // Widget get wrappedRoute => MultiBlocProvider(
+  //       providers: [
+  //         BlocProvider<NoteWatcherBloc>(
+  //           create: (context) => getIt<NoteWatcherBloc>()
+  //             ..add(const NoteWatcherEvent.watchAllStarted()),
+  //         ),
+  //         BlocProvider<NoteActorBloc>(
+  //           create: (context) => getIt<NoteActorBloc>(),
+  //         ),
+  //       ],
+  //       child: this,
+  //     );
+
   @override
-  Widget get wrappedRoute => MultiBlocProvider(
-        providers: [
-          BlocProvider<NoteWatcherBloc>(
-            create: (context) => getIt<NoteWatcherBloc>()
-              ..add(const NoteWatcherEvent.watchAllStarted()),
-          ),
-          BlocProvider<NoteActorBloc>(
-            create: (context) => getIt<NoteActorBloc>(),
-          ),
-        ],
-        child: this,
-      );
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<NoteWatcherBloc>(create: (context) {
+          print('object');
+          return getIt<NoteWatcherBloc>()
+            ..add(const NoteWatcherEvent.watchAllStarted());
+        }),
+        BlocProvider<NoteActorBloc>(
+          create: (context) => getIt<NoteActorBloc>(),
+        ),
+      ],
+      child: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +51,8 @@ class NotesOverviewPage extends HookWidget implements AutoRouteWrapper {
           listener: (context, state) {
             state.maybeMap(
               unauthenticated: (_) =>
-                  Router.navigator.pushReplacementNamed(Router.signInPage),
+                  ExtendedNavigator.of(context).popAndPush(Routes.signInPage),
+              //Router.navigator.pushReplacementNamed(Router.signInPage),
               orElse: () {},
             );
           },
@@ -75,10 +93,14 @@ class NotesOverviewPage extends HookWidget implements AutoRouteWrapper {
         body: NotesOverviewBody(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Router.navigator.pushNamed(
-              Router.noteFormPage,
+            ExtendedNavigator.of(context).push(
+              Routes.noteFormPage,
               arguments: NoteFormPageArguments(editedNote: null),
             );
+            // Router.navigator.pushNamed(
+            //   Router.noteFormPage,
+            //   arguments: NoteFormPageArguments(editedNote: null),
+            // );
           },
           child: Icon(Icons.add),
         ),

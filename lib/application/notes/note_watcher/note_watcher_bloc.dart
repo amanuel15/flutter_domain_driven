@@ -32,6 +32,7 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
+        print('started...');
         yield const NoteWatcherState.loadInProgress();
         await _noteStreamSubscription?.cancel();
         _noteStreamSubscription = _noteRepository

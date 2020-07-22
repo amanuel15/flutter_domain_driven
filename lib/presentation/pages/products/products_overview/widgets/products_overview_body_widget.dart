@@ -1,12 +1,9 @@
-import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/products_watcher/product_wathcer_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/critical_failure_display_pwidget.dart';
-import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/error_product_card_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
 class ProductsOverviewBody extends StatelessWidget {
   final _watcherBloc = getIt<ProductWathcerBloc>();
@@ -18,7 +15,9 @@ class ProductsOverviewBody extends StatelessWidget {
       bloc: _watcherBloc,
       builder: (context, state) {
         return state.map(
-          initial: (_) => Container(),
+          initial: (_) => Container(
+            child: Text('initial'),
+          ),
           loadInProgress: (_) => const Center(
             child: CircularProgressIndicator(),
           ),
@@ -70,7 +69,7 @@ class ProductsOverviewBody extends StatelessWidget {
       },
     );
   }
-  
+
   Widget _buildLoaderListItem() {
     return const Center(
       child: CircularProgressIndicator(),

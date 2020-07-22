@@ -9,16 +9,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ProductsOverviewPage extends HookWidget implements AutoRouteWrapper {
+  // @override
+  // Widget get wrappedRoute => MultiBlocProvider(
+  //       providers: [
+  //         BlocProvider<ProductWathcerBloc>(
+  //           create: (context) => getIt<ProductWathcerBloc>()
+  //             ..add(const ProductWathcerEvent.watchAllStarted()),
+  //         ),
+  //       ],
+  //       child: this,
+  //     );
   @override
-  Widget get wrappedRoute => MultiBlocProvider(
-        providers: [
-          BlocProvider<ProductWathcerBloc>(
-            create: (context) => getIt<ProductWathcerBloc>()
-              ..add(const ProductWathcerEvent.watchAllStarted()),
-          ),
-        ],
-        child: this,
-      );
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ProductWathcerBloc>(create: (context) {
+          print('object');
+          return getIt<ProductWathcerBloc>()
+            ..add(const ProductWathcerEvent.watchAllStarted());
+        }),
+      ],
+      child: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +41,8 @@ class ProductsOverviewPage extends HookWidget implements AutoRouteWrapper {
           listener: (context, state) {
             state.maybeMap(
               unauthenticated: (_) =>
-                  Router.navigator.pushReplacementNamed(Router.signInPage),
+                  ExtendedNavigator.of(context).pushSignInPage(),
+              // Router.navigator.pushReplacementNamed(Router.signInPage),
               orElse: () {},
             );
           },

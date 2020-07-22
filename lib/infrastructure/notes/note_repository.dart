@@ -10,9 +10,7 @@ import 'package:finished_notes_firebase_ddd_course/infrastructure/notes/note_dto
 import 'package:rxdart/rxdart.dart';
 import 'package:kt_dart/collection.dart';
 
-@prod
-@lazySingleton
-@RegisterAs(INoteRepository)
+@LazySingleton(as: INoteRepository)
 class NoteRepository implements INoteRepository {
   final Firestore _firestore;
 

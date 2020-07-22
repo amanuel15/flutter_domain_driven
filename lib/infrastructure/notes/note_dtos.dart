@@ -5,7 +5,6 @@ import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dar
 import 'package:finished_notes_firebase_ddd_course/domain/notes/note.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/todo_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/value_objects.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/notes/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/core/firestore_helpers.dart';
 import 'package:kt_dart/collection.dart';
 

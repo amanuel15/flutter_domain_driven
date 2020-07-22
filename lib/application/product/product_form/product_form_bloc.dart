@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/notes/i_note_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
@@ -52,13 +51,15 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       },
       descriptionChanged: (e) async* {
         yield state.copyWith(
-          product: state.product.copyWith(productDescription: ProductDescription(e.descStr)),
+          product: state.product
+              .copyWith(productDescription: ProductDescription(e.descStr)),
           saveFailureOrSuccessOption: none(),
         );
       },
       hypeDescriptionChanged: (e) async* {
         yield state.copyWith(
-          product: state.product.copyWith(productHypeDescription: ProductHypeDescription(e.hypeDescStr)),
+          product: state.product.copyWith(
+              productHypeDescription: ProductHypeDescription(e.hypeDescStr)),
           saveFailureOrSuccessOption: none(),
         );
       },

@@ -12,7 +12,9 @@ class NotesOverviewBody extends StatelessWidget {
     return BlocBuilder<NoteWatcherBloc, NoteWatcherState>(
       builder: (context, state) {
         return state.map(
-          initial: (_) => Container(),
+          initial: (_) => Container(
+            child: Text('initial'),
+          ),
           loadInProgress: (_) => const Center(
             child: CircularProgressIndicator(),
           ),

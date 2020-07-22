@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:finished_notes_firebase_ddd_course/application/notes/note_form/note_form_bloc.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/value_objects.dart';
 
 class ColorField extends StatelessWidget {

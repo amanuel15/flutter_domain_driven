@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/notes/note_actor/note_actor_bloc.dart';
@@ -23,10 +24,14 @@ class NoteCard extends StatelessWidget {
       // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         onTap: () {
-          Router.navigator.pushNamed(
-            Router.noteFormPage,
+          ExtendedNavigator.of(context).push(
+            Routes.noteFormPage,
             arguments: NoteFormPageArguments(editedNote: note),
           );
+          // Router.navigator.pushNamed(
+          //   Router.noteFormPage,
+          //   arguments: NoteFormPageArguments(editedNote: note),
+          // );
         },
         onLongPress: () {
           final noteActorBloc = context.bloc<NoteActorBloc>();

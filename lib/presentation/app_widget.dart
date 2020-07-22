@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/auth/auth_bloc.dart';
@@ -10,24 +11,19 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
+          create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-        ),
+        )
       ],
       child: MaterialApp(
-        title: 'Workout Tracker',
+        title: 'Notes',
         debugShowCheckedModeBanner: false,
+        builder: ExtendedNavigator(router: Router()),
         theme: ThemeData.light().copyWith(
           primaryColor: Colors.green[800],
           accentColor: Colors.blueAccent,
-          appBarTheme: ThemeData.light().appBarTheme.copyWith(
-                brightness: Brightness.dark,
-                color: Colors.green[800],
-                iconTheme: ThemeData.dark().iconTheme,
-              ),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.blue[900],
-            foregroundColor: Colors.white,
           ),
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
@@ -35,9 +31,6 @@ class AppWidget extends StatelessWidget {
             ),
           ),
         ),
-        onGenerateRoute: Router.onGenerateRoute,
-        initialRoute: Router.splashPage,
-        navigatorKey: Router.navigator.key,
       ),
     );
   }

@@ -19,14 +19,13 @@ import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:kt_dart/collection.dart';
 
-@prod
-@lazySingleton
-@RegisterAs(IProductRepository)
+@LazySingleton(as: IProductRepository)
 class ProductRepository implements IProductRepository {
   final Firestore _firestore;
   // TODO: create FirebaseStorage helpers
   final FirebaseStorage _firebaseStorage;
   final _picker = ImagePicker();
+  DocumentSnapshot lastDoc;
 
   ProductRepository(this._firestore, this._firebaseStorage);
 
@@ -55,20 +54,33 @@ class ProductRepository implements IProductRepository {
         .orderBy('TotalAmount')
         .limit(7)
         .getDocuments()
-        .then((snapshot) => right<ProductFailure, KtList<Product>>(snapshot
-            .documents
-            .map((doc) => ProductDto.fromFirestore(doc).toDomain())
-            .toImmutableList()))
-        .catchError((e) {
+        .then((snapshot) {
+      lastDoc = snapshot.documents[snapshot.documents.length - 1];
+      return right<ProductFailure, KtList<Product>>(snapshot.documents
+          .map((doc) => ProductDto.fromFirestore(doc).toDomain())
+          .toImmutableList());
+    }).catchError((e) {
       return left(const ProductFailure.unexpected());
     });
   }
 
   @override
   Future<Either<ProductFailure, KtList<Product>>> watchUncompleted() {
-    // return _firestore
-    //     .collection('products').startAfter(values)
-    throw UnimplementedError();
+    return _firestore
+        .collection('products')
+        .orderBy('TotalAmount')
+        .startAfter([lastDoc])
+        .limit(7)
+        .getDocuments()
+        .then((snapshot) {
+          lastDoc = snapshot.documents[snapshot.documents.length - 1];
+          return right<ProductFailure, KtList<Product>>(snapshot.documents
+              .map((doc) => ProductDto.fromFirestore(doc).toDomain())
+              .toImmutableList());
+        })
+        .catchError((e) {
+          return left(const ProductFailure.unexpected());
+        });
   }
 
   @override
@@ -102,7 +114,7 @@ class ProductRepository implements IProductRepository {
     final PickedFile pickedFile =
         await _picker.getImage(source: ImageSource.gallery);
     //final File file = File(pickedFile.path); // this casts the pickedfile to type file
-    final File cropredFile = await ImageCropper.cropImage(
+    final File croppedFile = await ImageCropper.cropImage(
       sourcePath: pickedFile.path,
       aspectRatio: const CropAspectRatio(ratioX: 16.0, ratioY: 9.0),
       androidUiSettings: const AndroidUiSettings(

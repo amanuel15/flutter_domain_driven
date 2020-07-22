@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +53,10 @@ class NoteFormPage extends HookWidget {
                 (_) {
                   // Can't be just a simple pop. If another route (like a Flushbar) is on top of stack, we'll need to pop even that to get to
                   // the overview page.
-                  Router.navigator.popUntil((route) =>
-                      route.settings.name == Router.notesOverviewPage);
+                  ExtendedNavigator.of(context).popUntil((route) =>
+                      route.settings.name == Routes.notesOverviewPage);
+                  // Router.navigator.popUntil((route) =>
+                  //     route.settings.name == Router.notesOverviewPage);
                 },
               );
             },

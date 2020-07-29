@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsOverviewBody extends StatelessWidget {
-  final _watcherBloc = getIt<ProductWathcerBloc>();
+  //final _watcherBloc = getIt<ProductWathcerBloc>();
   final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductWathcerBloc, ProductWathcerState>(
-      bloc: _watcherBloc,
+      //bloc: _watcherBloc,
       builder: (context, state) {
         return state.map(
           initial: (_) => Container(
@@ -77,11 +77,11 @@ class ProductsOverviewBody extends StatelessWidget {
   }
 
   // Alternative for the scroll notification Handler.
-  bool _handleScrollNotification(notification) {
-    if (notification is ScrollEndNotification &&
-        _scrollController.position.extentAfter == 0) {
-      _watcherBloc.add(const ProductWathcerEvent.watchUncompletedStarted());
-    }
-    return false;
-  }
+  // bool _handleScrollNotification(notification) {
+  //   if (notification is ScrollEndNotification &&
+  //       _scrollController.position.extentAfter == 0) {
+  //     _watcherBloc.add(const ProductWathcerEvent.watchUncompletedStarted());
+  //   }
+  //   return false;
+  // }
 }

@@ -16,21 +16,21 @@ mixin _$ProductDto {
   String get id;
   String get productName;
   String get productDescription;
-  String get productHypeDescription;
+  String get hypeDescription;
   int get totalAmount;
   int get soldAmount;
-  List<ImageItemDto> get images;
-  List<CatagoryItemDto> get catagories;
+  List<ImageUrlDto> get images;
+  List<CatagoryNameDto> get catagories;
 
   ProductDto copyWith(
       {@JsonKey(ignore: true) String id,
       String productName,
       String productDescription,
-      String productHypeDescription,
+      String hypeDescription,
       int totalAmount,
       int soldAmount,
-      List<ImageItemDto> images,
-      List<CatagoryItemDto> catagories});
+      List<ImageUrlDto> images,
+      List<CatagoryNameDto> catagories});
 
   Map<String, dynamic> toJson();
 }
@@ -42,16 +42,16 @@ class _$ProductDtoTearOff {
       {@JsonKey(ignore: true) String id,
       @required String productName,
       @required String productDescription,
-      @required String productHypeDescription,
+      @required String hypeDescription,
       @required int totalAmount,
       @required int soldAmount,
-      @required List<ImageItemDto> images,
-      @required List<CatagoryItemDto> catagories}) {
+      @required List<ImageUrlDto> images,
+      @required List<CatagoryNameDto> catagories}) {
     return _ProductDto(
       id: id,
       productName: productName,
       productDescription: productDescription,
-      productHypeDescription: productHypeDescription,
+      hypeDescription: hypeDescription,
       totalAmount: totalAmount,
       soldAmount: soldAmount,
       images: images,
@@ -68,16 +68,16 @@ class _$_ProductDto implements _ProductDto {
       {@JsonKey(ignore: true) this.id,
       @required this.productName,
       @required this.productDescription,
-      @required this.productHypeDescription,
+      @required this.hypeDescription,
       @required this.totalAmount,
       @required this.soldAmount,
       @required this.images,
       @required this.catagories})
       : assert(productName != null),
         assert(productDescription != null),
-        assert(productHypeDescription != null),
-        assert(totalAmount != null),
-        assert(soldAmount != null),
+        assert(hypeDescription != null),
+        //assert(totalAmount != null),
+        //assert(soldAmount != null),
         assert(images != null),
         assert(catagories != null);
 
@@ -92,19 +92,19 @@ class _$_ProductDto implements _ProductDto {
   @override
   final String productDescription;
   @override
-  final String productHypeDescription;
+  final String hypeDescription;
   @override
   final int totalAmount;
   @override
   final int soldAmount;
   @override
-  final List<ImageItemDto> images;
+  final List<ImageUrlDto> images;
   @override
-  final List<CatagoryItemDto> catagories;
+  final List<CatagoryNameDto> catagories;
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, productHypeDescription: $productHypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
+    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
   }
 
   @override
@@ -119,9 +119,9 @@ class _$_ProductDto implements _ProductDto {
             (identical(other.productDescription, productDescription) ||
                 const DeepCollectionEquality()
                     .equals(other.productDescription, productDescription)) &&
-            (identical(other.productHypeDescription, productHypeDescription) ||
-                const DeepCollectionEquality().equals(
-                    other.productHypeDescription, productHypeDescription)) &&
+            (identical(other.hypeDescription, hypeDescription) ||
+                const DeepCollectionEquality()
+                    .equals(other.hypeDescription, hypeDescription)) &&
             (identical(other.totalAmount, totalAmount) ||
                 const DeepCollectionEquality()
                     .equals(other.totalAmount, totalAmount)) &&
@@ -141,7 +141,7 @@ class _$_ProductDto implements _ProductDto {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(productName) ^
       const DeepCollectionEquality().hash(productDescription) ^
-      const DeepCollectionEquality().hash(productHypeDescription) ^
+      const DeepCollectionEquality().hash(hypeDescription) ^
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
       const DeepCollectionEquality().hash(images) ^
@@ -152,7 +152,7 @@ class _$_ProductDto implements _ProductDto {
     Object id = freezed,
     Object productName = freezed,
     Object productDescription = freezed,
-    Object productHypeDescription = freezed,
+    Object hypeDescription = freezed,
     Object totalAmount = freezed,
     Object soldAmount = freezed,
     Object images = freezed,
@@ -165,16 +165,16 @@ class _$_ProductDto implements _ProductDto {
       productDescription: productDescription == freezed
           ? this.productDescription
           : productDescription as String,
-      productHypeDescription: productHypeDescription == freezed
-          ? this.productHypeDescription
-          : productHypeDescription as String,
+      hypeDescription: hypeDescription == freezed
+          ? this.hypeDescription
+          : hypeDescription as String,
       totalAmount:
           totalAmount == freezed ? this.totalAmount : totalAmount as int,
       soldAmount: soldAmount == freezed ? this.soldAmount : soldAmount as int,
-      images: images == freezed ? this.images : images as List<ImageItemDto>,
+      images: images == freezed ? this.images : images as List<ImageUrlDto>,
       catagories: catagories == freezed
           ? this.catagories
-          : catagories as List<CatagoryItemDto>,
+          : catagories as List<CatagoryNameDto>,
     );
   }
 
@@ -189,11 +189,11 @@ abstract class _ProductDto implements ProductDto {
       {@JsonKey(ignore: true) String id,
       @required String productName,
       @required String productDescription,
-      @required String productHypeDescription,
+      @required String hypeDescription,
       @required int totalAmount,
       @required int soldAmount,
-      @required List<ImageItemDto> images,
-      @required List<CatagoryItemDto> catagories}) = _$_ProductDto;
+      @required List<ImageUrlDto> images,
+      @required List<CatagoryNameDto> catagories}) = _$_ProductDto;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
       _$_ProductDto.fromJson;
@@ -206,244 +206,182 @@ abstract class _ProductDto implements ProductDto {
   @override
   String get productDescription;
   @override
-  String get productHypeDescription;
+  String get hypeDescription;
   @override
   int get totalAmount;
   @override
   int get soldAmount;
   @override
-  List<ImageItemDto> get images;
+  List<ImageUrlDto> get images;
   @override
-  List<CatagoryItemDto> get catagories;
+  List<CatagoryNameDto> get catagories;
 
   @override
   _ProductDto copyWith(
       {@JsonKey(ignore: true) String id,
       String productName,
       String productDescription,
-      String productHypeDescription,
+      String hypeDescription,
       int totalAmount,
       int soldAmount,
-      List<ImageItemDto> images,
-      List<CatagoryItemDto> catagories});
+      List<ImageUrlDto> images,
+      List<CatagoryNameDto> catagories});
 }
 
-ImageItemDto _$ImageItemDtoFromJson(Map<String, dynamic> json) {
-  return _ImageItemDto.fromJson(json);
+ImageUrlDto _$ImageUrlDtoFromJson(Map<String, dynamic> json) {
+  return _ImageUrlDto.fromJson(json);
 }
 
-mixin _$ImageItemDto {
-  String get id;
+mixin _$ImageUrlDto {
   String get name;
-  bool get done;
 
-  ImageItemDto copyWith({String id, String name, bool done});
+  ImageUrlDto copyWith({String name});
 
   Map<String, dynamic> toJson();
 }
 
-class _$ImageItemDtoTearOff {
-  const _$ImageItemDtoTearOff();
+class _$ImageUrlDtoTearOff {
+  const _$ImageUrlDtoTearOff();
 
-  _ImageItemDto call(
-      {@required String id, @required String name, @required bool done}) {
-    return _ImageItemDto(
-      id: id,
+  _ImageUrlDto call({@required String name}) {
+    return _ImageUrlDto(
       name: name,
-      done: done,
     );
   }
 }
 
-const $ImageItemDto = _$ImageItemDtoTearOff();
+const $ImageUrlDto = _$ImageUrlDtoTearOff();
 
 @JsonSerializable()
-class _$_ImageItemDto implements _ImageItemDto {
-  const _$_ImageItemDto(
-      {@required this.id, @required this.name, @required this.done})
-      : assert(id != null),
-        assert(name != null),
-        assert(done != null);
+class _$_ImageUrlDto implements _ImageUrlDto {
+  const _$_ImageUrlDto({@required this.name}) : assert(name != null);
 
-  factory _$_ImageItemDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_ImageItemDtoFromJson(json);
+  factory _$_ImageUrlDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_ImageUrlDtoFromJson(json);
 
-  @override
-  final String id;
   @override
   final String name;
-  @override
-  final bool done;
 
   @override
   String toString() {
-    return 'ImageItemDto(id: $id, name: $name, done: $done)';
+    return 'ImageUrlDto(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ImageItemDto &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other is _ImageUrlDto &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.done, done) ||
-                const DeepCollectionEquality().equals(other.done, done)));
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(done);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @override
-  _$_ImageItemDto copyWith({
-    Object id = freezed,
+  _$_ImageUrlDto copyWith({
     Object name = freezed,
-    Object done = freezed,
   }) {
-    return _$_ImageItemDto(
-      id: id == freezed ? this.id : id as String,
+    return _$_ImageUrlDto(
       name: name == freezed ? this.name : name as String,
-      done: done == freezed ? this.done : done as bool,
     );
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ImageItemDtoToJson(this);
+    return _$_$_ImageUrlDtoToJson(this);
   }
 }
 
-abstract class _ImageItemDto implements ImageItemDto {
-  const factory _ImageItemDto(
-      {@required String id,
-      @required String name,
-      @required bool done}) = _$_ImageItemDto;
+abstract class _ImageUrlDto implements ImageUrlDto {
+  const factory _ImageUrlDto({@required String name}) = _$_ImageUrlDto;
 
-  factory _ImageItemDto.fromJson(Map<String, dynamic> json) =
-      _$_ImageItemDto.fromJson;
+  factory _ImageUrlDto.fromJson(Map<String, dynamic> json) =
+      _$_ImageUrlDto.fromJson;
 
-  @override
-  String get id;
   @override
   String get name;
-  @override
-  bool get done;
 
   @override
-  _ImageItemDto copyWith({String id, String name, bool done});
+  _ImageUrlDto copyWith({String name});
 }
 
-CatagoryItemDto _$CatagoryItemDtoFromJson(Map<String, dynamic> json) {
-  return _CatagoryItemDto.fromJson(json);
+CatagoryNameDto _$CatagoryNameDtoFromJson(Map<String, dynamic> json) {
+  return _CatagoryNameDto.fromJson(json);
 }
 
-mixin _$CatagoryItemDto {
-  String get id;
+mixin _$CatagoryNameDto {
   String get name;
-  bool get done;
 
-  CatagoryItemDto copyWith({String id, String name, bool done});
+  CatagoryNameDto copyWith({String name});
 
   Map<String, dynamic> toJson();
 }
 
-class _$CatagoryItemDtoTearOff {
-  const _$CatagoryItemDtoTearOff();
+class _$CatagoryNameDtoTearOff {
+  const _$CatagoryNameDtoTearOff();
 
-  _CatagoryItemDto call(
-      {@required String id, @required String name, @required bool done}) {
-    return _CatagoryItemDto(
-      id: id,
+  _CatagoryNameDto call({@required String name}) {
+    return _CatagoryNameDto(
       name: name,
-      done: done,
     );
   }
 }
 
-const $CatagoryItemDto = _$CatagoryItemDtoTearOff();
+const $CatagoryNameDto = _$CatagoryNameDtoTearOff();
 
 @JsonSerializable()
-class _$_CatagoryItemDto implements _CatagoryItemDto {
-  const _$_CatagoryItemDto(
-      {@required this.id, @required this.name, @required this.done})
-      : assert(id != null),
-        assert(name != null),
-        assert(done != null);
+class _$_CatagoryNameDto implements _CatagoryNameDto {
+  const _$_CatagoryNameDto({@required this.name}) : assert(name != null);
 
-  factory _$_CatagoryItemDto.fromJson(Map<String, dynamic> json) =>
-      _$_$_CatagoryItemDtoFromJson(json);
+  factory _$_CatagoryNameDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_CatagoryNameDtoFromJson(json);
 
-  @override
-  final String id;
   @override
   final String name;
-  @override
-  final bool done;
 
   @override
   String toString() {
-    return 'CatagoryItemDto(id: $id, name: $name, done: $done)';
+    return 'CatagoryNameDto(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CatagoryItemDto &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other is _CatagoryNameDto &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.done, done) ||
-                const DeepCollectionEquality().equals(other.done, done)));
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(done);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @override
-  _$_CatagoryItemDto copyWith({
-    Object id = freezed,
+  _$_CatagoryNameDto copyWith({
     Object name = freezed,
-    Object done = freezed,
   }) {
-    return _$_CatagoryItemDto(
-      id: id == freezed ? this.id : id as String,
+    return _$_CatagoryNameDto(
       name: name == freezed ? this.name : name as String,
-      done: done == freezed ? this.done : done as bool,
     );
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CatagoryItemDtoToJson(this);
+    return _$_$_CatagoryNameDtoToJson(this);
   }
 }
 
-abstract class _CatagoryItemDto implements CatagoryItemDto {
-  const factory _CatagoryItemDto(
-      {@required String id,
-      @required String name,
-      @required bool done}) = _$_CatagoryItemDto;
+abstract class _CatagoryNameDto implements CatagoryNameDto {
+  const factory _CatagoryNameDto({@required String name}) = _$_CatagoryNameDto;
 
-  factory _CatagoryItemDto.fromJson(Map<String, dynamic> json) =
-      _$_CatagoryItemDto.fromJson;
+  factory _CatagoryNameDto.fromJson(Map<String, dynamic> json) =
+      _$_CatagoryNameDto.fromJson;
 
-  @override
-  String get id;
   @override
   String get name;
-  @override
-  bool get done;
 
   @override
-  _CatagoryItemDto copyWith({String id, String name, bool done});
+  _CatagoryNameDto copyWith({String name});
 }

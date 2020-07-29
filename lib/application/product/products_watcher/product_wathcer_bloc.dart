@@ -19,7 +19,7 @@ part 'product_wathcer_bloc.freezed.dart';
 class ProductWathcerBloc
     extends Bloc<ProductWathcerEvent, ProductWathcerState> {
   final IProductRepository _productRepository;
-  KtList<Product> oldProductsList;
+  KtList<Product> oldProductsList = emptyList();
 
   ProductWathcerBloc(this._productRepository);
 
@@ -34,7 +34,6 @@ class ProductWathcerBloc
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
-        print('started...');
         yield const ProductWathcerState.loadInProgress();
         _productRepository.watchAll().then(
             (products) => add(ProductWathcerEvent.productRecived(products)));
@@ -47,14 +46,18 @@ class ProductWathcerBloc
       },
       productRecived: (e) async* {
         // TODO: check if this actually send the combination of the old and the new list
+        print('product recived');
         yield e.failureOrProducts.fold(
           (f) => ProductWathcerState.loadFailure(f),
           (products) {
             if (oldProductsList.isNotEmpty()) {
+              print('old Is full');
               oldProductsList = oldProductsList + products;
             } else {
+              print('old is empty');
               oldProductsList = products;
             }
+            print('will return ${oldProductsList}');
             return ProductWathcerState.loadSuccess(oldProductsList);
           },
         );

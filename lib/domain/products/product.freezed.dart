@@ -11,21 +11,21 @@ mixin _$Product {
   UniqueId get id;
   ProductName get productName;
   ProductDescription get productDescription;
-  ProductHypeDescription get productHypeDescription;
+  ProductHypeDescription get hypeDescription;
   TotalAmount get totalAmount;
   SoldAmount get soldAmount;
-  ListImage<ImageItem> get images;
-  ListCatagories<CatagoryItem> get catagories;
+  ListImage<ImageUrl> get images;
+  ListCatagories<CatagoryName> get catagories;
 
   Product copyWith(
       {UniqueId id,
       ProductName productName,
       ProductDescription productDescription,
-      ProductHypeDescription productHypeDescription,
+      ProductHypeDescription hypeDescription,
       TotalAmount totalAmount,
       SoldAmount soldAmount,
-      ListImage<ImageItem> images,
-      ListCatagories<CatagoryItem> catagories});
+      ListImage<ImageUrl> images,
+      ListCatagories<CatagoryName> catagories});
 }
 
 class _$ProductTearOff {
@@ -35,16 +35,16 @@ class _$ProductTearOff {
       {@required UniqueId id,
       @required ProductName productName,
       @required ProductDescription productDescription,
-      @required ProductHypeDescription productHypeDescription,
+      @required ProductHypeDescription hypeDescription,
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
-      @required ListImage<ImageItem> images,
-      @required ListCatagories<CatagoryItem> catagories}) {
+      @required ListImage<ImageUrl> images,
+      @required ListCatagories<CatagoryName> catagories}) {
     return _Product(
       id: id,
       productName: productName,
       productDescription: productDescription,
-      productHypeDescription: productHypeDescription,
+      hypeDescription: hypeDescription,
       totalAmount: totalAmount,
       soldAmount: soldAmount,
       images: images,
@@ -60,7 +60,7 @@ class _$_Product implements _Product {
       {@required this.id,
       @required this.productName,
       @required this.productDescription,
-      @required this.productHypeDescription,
+      @required this.hypeDescription,
       @required this.totalAmount,
       @required this.soldAmount,
       @required this.images,
@@ -68,7 +68,7 @@ class _$_Product implements _Product {
       : assert(id != null),
         assert(productName != null),
         assert(productDescription != null),
-        assert(productHypeDescription != null),
+        assert(hypeDescription != null),
         assert(totalAmount != null),
         assert(soldAmount != null),
         assert(images != null),
@@ -81,19 +81,19 @@ class _$_Product implements _Product {
   @override
   final ProductDescription productDescription;
   @override
-  final ProductHypeDescription productHypeDescription;
+  final ProductHypeDescription hypeDescription;
   @override
   final TotalAmount totalAmount;
   @override
   final SoldAmount soldAmount;
   @override
-  final ListImage<ImageItem> images;
+  final ListImage<ImageUrl> images;
   @override
-  final ListCatagories<CatagoryItem> catagories;
+  final ListCatagories<CatagoryName> catagories;
 
   @override
   String toString() {
-    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, productHypeDescription: $productHypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
+    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
   }
 
   @override
@@ -108,9 +108,9 @@ class _$_Product implements _Product {
             (identical(other.productDescription, productDescription) ||
                 const DeepCollectionEquality()
                     .equals(other.productDescription, productDescription)) &&
-            (identical(other.productHypeDescription, productHypeDescription) ||
-                const DeepCollectionEquality().equals(
-                    other.productHypeDescription, productHypeDescription)) &&
+            (identical(other.hypeDescription, hypeDescription) ||
+                const DeepCollectionEquality()
+                    .equals(other.hypeDescription, hypeDescription)) &&
             (identical(other.totalAmount, totalAmount) ||
                 const DeepCollectionEquality()
                     .equals(other.totalAmount, totalAmount)) &&
@@ -130,7 +130,7 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(productName) ^
       const DeepCollectionEquality().hash(productDescription) ^
-      const DeepCollectionEquality().hash(productHypeDescription) ^
+      const DeepCollectionEquality().hash(hypeDescription) ^
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
       const DeepCollectionEquality().hash(images) ^
@@ -141,7 +141,7 @@ class _$_Product implements _Product {
     Object id = freezed,
     Object productName = freezed,
     Object productDescription = freezed,
-    Object productHypeDescription = freezed,
+    Object hypeDescription = freezed,
     Object totalAmount = freezed,
     Object soldAmount = freezed,
     Object images = freezed,
@@ -155,18 +155,18 @@ class _$_Product implements _Product {
       productDescription: productDescription == freezed
           ? this.productDescription
           : productDescription as ProductDescription,
-      productHypeDescription: productHypeDescription == freezed
-          ? this.productHypeDescription
-          : productHypeDescription as ProductHypeDescription,
+      hypeDescription: hypeDescription == freezed
+          ? this.hypeDescription
+          : hypeDescription as ProductHypeDescription,
       totalAmount: totalAmount == freezed
           ? this.totalAmount
           : totalAmount as TotalAmount,
       soldAmount:
           soldAmount == freezed ? this.soldAmount : soldAmount as SoldAmount,
-      images: images == freezed ? this.images : images as ListImage<ImageItem>,
+      images: images == freezed ? this.images : images as ListImage<ImageUrl>,
       catagories: catagories == freezed
           ? this.catagories
-          : catagories as ListCatagories<CatagoryItem>,
+          : catagories as ListCatagories<CatagoryName>,
     );
   }
 }
@@ -176,11 +176,11 @@ abstract class _Product implements Product {
       {@required UniqueId id,
       @required ProductName productName,
       @required ProductDescription productDescription,
-      @required ProductHypeDescription productHypeDescription,
+      @required ProductHypeDescription hypeDescription,
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
-      @required ListImage<ImageItem> images,
-      @required ListCatagories<CatagoryItem> catagories}) = _$_Product;
+      @required ListImage<ImageUrl> images,
+      @required ListCatagories<CatagoryName> catagories}) = _$_Product;
 
   @override
   UniqueId get id;
@@ -189,24 +189,24 @@ abstract class _Product implements Product {
   @override
   ProductDescription get productDescription;
   @override
-  ProductHypeDescription get productHypeDescription;
+  ProductHypeDescription get hypeDescription;
   @override
   TotalAmount get totalAmount;
   @override
   SoldAmount get soldAmount;
   @override
-  ListImage<ImageItem> get images;
+  ListImage<ImageUrl> get images;
   @override
-  ListCatagories<CatagoryItem> get catagories;
+  ListCatagories<CatagoryName> get catagories;
 
   @override
   _Product copyWith(
       {UniqueId id,
       ProductName productName,
       ProductDescription productDescription,
-      ProductHypeDescription productHypeDescription,
+      ProductHypeDescription hypeDescription,
       TotalAmount totalAmount,
       SoldAmount soldAmount,
-      ListImage<ImageItem> images,
-      ListCatagories<CatagoryItem> catagories});
+      ListImage<ImageUrl> images,
+      ListCatagories<CatagoryName> catagories});
 }

@@ -76,7 +76,6 @@ class Router extends RouterBase {
           editedNote: args.editedNote,
         ),
         settings: data,
-        fullscreenDialog: true,
       );
     },
   };

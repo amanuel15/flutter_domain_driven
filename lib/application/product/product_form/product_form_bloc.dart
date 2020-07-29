@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/i_product_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
-import 'package:finished_notes_firebase_ddd_course/infrastructure/products/product_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,7 +20,7 @@ part 'product_form_bloc.freezed.dart';
 
 @injectable
 class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
-  final ProductRepository _productRepository;
+  final IProductRepository _productRepository;
 
   ProductFormBloc(this._productRepository);
 
@@ -58,8 +58,8 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       },
       hypeDescriptionChanged: (e) async* {
         yield state.copyWith(
-          product: state.product.copyWith(
-              productHypeDescription: ProductHypeDescription(e.hypeDescStr)),
+          product: state.product
+              .copyWith(hypeDescription: ProductHypeDescription(e.hypeDescStr)),
           saveFailureOrSuccessOption: none(),
         );
       },
@@ -81,20 +81,20 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
         //yield imageOption.fold((l) => null, (r) => null);
         yield state.copyWith(
           product: state.product.copyWith(
-            images: ListImage(
-              e.images.map((primitive) => primitive.toDomain()),
-            ),
-          ),
+              // images: ListImage(
+              //   e.images.map((primitive) => primitive.toDomain()),
+              // ),
+              ),
           saveFailureOrSuccessOption: none(),
         );
       },
       catagoriesChanged: (e) async* {
         yield state.copyWith(
           product: state.product.copyWith(
-            catagories: ListCatagories(
-              e.catagories.map((primitive) => primitive.toDomain()),
-            ),
-          ),
+              // catagories: ListCatagories(
+              //   e.catagories.map((primitive) => primitive.toDomain()),
+              // ),
+              ),
           saveFailureOrSuccessOption: none(),
         );
       },

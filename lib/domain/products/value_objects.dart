@@ -22,35 +22,35 @@ class ProductName extends ValueObject<String> {
   const ProductName._(this.value);
 }
 
-class ProductDescription extends ValueObject<String>{
+class ProductDescription extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
   static const maxLength = 1000;
 
-  factory ProductDescription(String input){
+  factory ProductDescription(String input) {
     assert(input != null);
     return ProductDescription._(
       validateMaxStringLength(input, maxLength),
     );
   }
-  
+
   const ProductDescription._(this.value);
 }
 
-class ProductHypeDescription extends ValueObject<String>{
+class ProductHypeDescription extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
   static const maxLength = 1000;
 
-  factory ProductHypeDescription(String input){
+  factory ProductHypeDescription(String input) {
     assert(input != null);
     return ProductHypeDescription._(
       validateMaxStringLength(input, maxLength),
     );
   }
-  
+
   const ProductHypeDescription._(this.value);
 }
 
@@ -58,7 +58,7 @@ class TotalAmount extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;
 
-  factory TotalAmount(int input){
+  factory TotalAmount(int input) {
     assert(input != null);
     return TotalAmount._(
       validateAmount(input),
@@ -72,7 +72,7 @@ class SoldAmount extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;
 
-  factory SoldAmount(int input){
+  factory SoldAmount(int input) {
     assert(input != null);
     return SoldAmount._(
       validateAmount(input),

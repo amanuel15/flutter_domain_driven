@@ -5,7 +5,6 @@ import 'package:finished_notes_firebase_ddd_course/domain/notes/i_note_repositor
 import 'package:finished_notes_firebase_ddd_course/domain/notes/note.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/notes/note_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/core/firestore_helpers.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/notes/i_note_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/notes/note_dtos.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:kt_dart/collection.dart';

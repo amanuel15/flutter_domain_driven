@@ -18,11 +18,11 @@ abstract class ProductDto with _$ProductDto {
     @JsonKey(ignore: true) String id,
     @required String productName,
     @required String productDescription,
-    @required String productHypeDescription,
+    @required String hypeDescription,
     @required int totalAmount,
     @required int soldAmount,
-    @required List<ImageItemDto> images,
-    @required List<CatagoryItemDto> catagories,
+    @required List<ImageUrlDto> images,
+    @required List<CatagoryNameDto> catagories,
   }) = _ProductDto;
 
   factory ProductDto.fromDomain(Product product) {
@@ -30,26 +30,30 @@ abstract class ProductDto with _$ProductDto {
       id: product.id.getOrCrash(),
       productName: product.productName.getOrCrash(),
       productDescription: product.productDescription.getOrCrash(),
-      productHypeDescription: product.productHypeDescription.getOrCrash(),
+      hypeDescription: product.hypeDescription.getOrCrash(),
       totalAmount: product.totalAmount.getOrCrash(),
       soldAmount: product.soldAmount.getOrCrash(),
       images: product.images
           .getOrCrash()
-          .mapIndexed(
-            (index, imageItem) => ImageItemDto.fromDomain(imageItem),
-          )
+          .mapIndexed((index, imageUrl) => ImageUrlDto.fromDomain(imageUrl))
           .asList(),
       catagories: product.catagories
           .getOrCrash()
           .mapIndexed(
-            (index, catagoryItem) => CatagoryItemDto.fromDomain(catagoryItem),
-          )
+              (index, catagoryName) => CatagoryNameDto.fromDomain(catagoryName))
           .asList(),
+      // catagories: product.catagories
+      //     .getOrCrash()
+      //     .mapIndexed(
+      //       (index, catagoryItem) => CatagoryItemDto.fromDomain(catagoryItem),
+      //     )
+      //     .asList(),
     );
   }
 
-  factory ProductDto.fromJson(Map<String, dynamic> json) =>
-      _$ProductDtoFromJson(json);
+  factory ProductDto.fromJson(Map<String, dynamic> json) {
+    return _$ProductDtoFromJson(json);
+  }
 
   factory ProductDto.fromFirestore(DocumentSnapshot doc) {
     return ProductDto.fromJson(doc.data).copyWith(id: doc.documentID);
@@ -62,71 +66,118 @@ extension ProductDtoX on ProductDto {
       id: UniqueId.fromUniqueString(id),
       productName: ProductName(productName),
       productDescription: ProductDescription(productDescription),
-      productHypeDescription: ProductHypeDescription(productHypeDescription),
+      hypeDescription: ProductHypeDescription(hypeDescription),
       totalAmount: TotalAmount(totalAmount),
       soldAmount: SoldAmount(soldAmount),
+      //images: ListImage(images.map((dto) => dto.toDomain()).toImmutableList()),
       images: ListImage(images.map((dto) => dto.toDomain()).toImmutableList()),
-      catagories: ListCatagories(catagories.map((dto) => dto.toDomain()).toImmutableList()),
+      // catagories: ListCatagories(
+      //     catagories.map((dto) => dto.toDomain()).toImmutableList()),
+      catagories: ListCatagories(
+          catagories.map((dto) => dto.toDomain()).toImmutableList()),
     );
   }
 }
 
 @freezed
-abstract class ImageItemDto with _$ImageItemDto {
-  const factory ImageItemDto({
-    @required String id,
+abstract class ImageUrlDto with _$ImageUrlDto {
+  const factory ImageUrlDto({
     @required String name,
-    @required bool done,
-  }) = _ImageItemDto;
+  }) = _ImageUrlDto;
 
-  factory ImageItemDto.fromDomain(ImageItem imageItem) {
-    return ImageItemDto(
-      id: imageItem.id.getOrCrash(),
-      name: imageItem.name.getOrCrash(),
-      done: imageItem.done,
+  factory ImageUrlDto.fromDomain(ImageUrl imageUrl) {
+    return ImageUrlDto(
+      name: imageUrl.getOrCrash(),
     );
   }
 
-  factory ImageItemDto.fromJson(Map<String, dynamic> json) =>
-      _$ImageItemDtoFromJson(json);
+  factory ImageUrlDto.fromJson(Map<String, dynamic> json) =>
+      _$ImageUrlDtoFromJson(json);
 }
 
-extension ImageItemDtoX on ImageItemDto {
-  ImageItem toDomain() {
-    return ImageItem(
-      id: UniqueId.fromUniqueString(id),
-      name: ImageUrl(name),
-      done: done,
-    );
+extension ImageUrlDtoX on ImageUrlDto {
+  ImageUrl toDomain() {
+    return ImageUrl(name);
   }
 }
 
 @freezed
-abstract class CatagoryItemDto with _$CatagoryItemDto {
-  const factory CatagoryItemDto({
-    @required String id,
+abstract class CatagoryNameDto with _$CatagoryNameDto {
+  const factory CatagoryNameDto({
     @required String name,
-    @required bool done,
-  }) = _CatagoryItemDto;
+  }) = _CatagoryNameDto;
 
-  factory CatagoryItemDto.fromDomain(CatagoryItem catagoryItem) {
-    return CatagoryItemDto(
-      id: catagoryItem.id.getOrCrash(),
-      name: catagoryItem.name.getOrCrash(),
-      done: catagoryItem.done,
+  factory CatagoryNameDto.fromDomain(CatagoryName catagoryName) {
+    return CatagoryNameDto(
+      name: catagoryName.getOrCrash(),
     );
   }
 
-  factory CatagoryItemDto.fromJson(Map<String, dynamic> json) =>
-      _$CatagoryItemDtoFromJson(json);
+  factory CatagoryNameDto.fromJson(Map<String, dynamic> json) =>
+      _$CatagoryNameDtoFromJson(json);
 }
 
-extension CatagoryItemDtoX on CatagoryItemDto {
-  CatagoryItem toDomain() {
-    return CatagoryItem(
-      id: UniqueId.fromUniqueString(id),
-      name: CatagoryName(name),
-      done: done,
-    );
+extension CatagoryNameDtoX on CatagoryNameDto {
+  CatagoryName toDomain() {
+    return CatagoryName(name);
   }
 }
+// @freezed
+// abstract class ImageItemDto with _$ImageItemDto {
+//   const factory ImageItemDto({
+//     @required String id,
+//     @required String name,
+//     @required bool done,
+//   }) = _ImageItemDto;
+
+//   factory ImageItemDto.fromDomain(ImageItem imageItem) {
+//     return ImageItemDto(
+//       id: imageItem.id.getOrCrash(),
+//       name: imageItem.name.getOrCrash(),
+//       done: imageItem.done,
+//     );
+//   }
+
+//   factory ImageItemDto.fromJson(Map<String, dynamic> json) =>
+//       _$ImageItemDtoFromJson(json);
+// }
+
+// extension ImageItemDtoX on ImageItemDto {
+//   ImageItem toDomain() {
+//     return ImageItem(
+//       id: UniqueId.fromUniqueString(id),
+//       name: ImageUrl(name),
+//       done: done,
+//     );
+//   }
+// }
+
+// @freezed
+// abstract class CatagoryItemDto with _$CatagoryItemDto {
+//   const factory CatagoryItemDto({
+//     @required String id,
+//     @required String name,
+//     @required bool done,
+//   }) = _CatagoryItemDto;
+
+//   factory CatagoryItemDto.fromDomain(CatagoryItem catagoryItem) {
+//     return CatagoryItemDto(
+//       id: catagoryItem.id.getOrCrash(),
+//       name: catagoryItem.name.getOrCrash(),
+//       done: catagoryItem.done,
+//     );
+//   }
+
+//   factory CatagoryItemDto.fromJson(Map<String, dynamic> json) =>
+//       _$CatagoryItemDtoFromJson(json);
+// }
+
+// extension CatagoryItemDtoX on CatagoryItemDto {
+//   CatagoryItem toDomain() {
+//     return CatagoryItem(
+//       id: UniqueId.fromUniqueString(id),
+//       name: CatagoryName(name),
+//       done: done,
+//     );
+//   }
+// }

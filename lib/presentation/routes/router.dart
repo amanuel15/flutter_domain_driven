@@ -12,6 +12,6 @@ import 'package:finished_notes_firebase_ddd_course/presentation/pages/splash/spl
       MaterialRoute(page: SignInPage),
       MaterialRoute(page: NotesOverviewPage),
       MaterialRoute(page: ProductsOverviewPage),
-      MaterialRoute(page: NoteFormPage, fullscreenDialog: true),
+      MaterialRoute(page: NoteFormPage),
     ])
 class $Router {}

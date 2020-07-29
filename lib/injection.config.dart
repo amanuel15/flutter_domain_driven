@@ -50,7 +50,7 @@ void $initGetIt(GetIt g, {String environment}) {
   gh.factory<NoteActorBloc>(() => NoteActorBloc(g<INoteRepository>()));
   gh.factory<NoteFormBloc>(() => NoteFormBloc(g<INoteRepository>()));
   gh.factory<NoteWatcherBloc>(() => NoteWatcherBloc(g<INoteRepository>()));
-  gh.factory<ProductFormBloc>(() => ProductFormBloc(g<ProductRepository>()));
+  gh.factory<ProductFormBloc>(() => ProductFormBloc(g<IProductRepository>()));
   gh.factory<ProductWathcerBloc>(
       () => ProductWathcerBloc(g<IProductRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));

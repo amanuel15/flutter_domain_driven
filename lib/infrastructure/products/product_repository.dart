@@ -12,11 +12,9 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects
 import 'package:finished_notes_firebase_ddd_course/infrastructure/core/firestore_helpers.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/products/product_dtos.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:kt_dart/collection.dart';
 
 @LazySingleton(as: IProductRepository)
@@ -52,24 +50,27 @@ class ProductRepository implements IProductRepository {
     return _firestore
         .collection('products')
         .orderBy('TotalAmount')
-        .limit(7)
+        .limit(11)
         .getDocuments()
         .then((snapshot) {
       lastDoc = snapshot.documents[snapshot.documents.length - 1];
+      // TODO: make sure firestore data is verifiable and check mapping
       return right<ProductFailure, KtList<Product>>(snapshot.documents
           .map((doc) => ProductDto.fromFirestore(doc).toDomain())
           .toImmutableList());
     }).catchError((e) {
+      print('error');
       return left(const ProductFailure.unexpected());
     });
   }
 
   @override
   Future<Either<ProductFailure, KtList<Product>>> watchUncompleted() {
+    print('the last reference doc is: ${lastDoc.data}');
     return _firestore
         .collection('products')
         .orderBy('TotalAmount')
-        .startAfter([lastDoc])
+        .startAfter([lastDoc.data])
         .limit(7)
         .getDocuments()
         .then((snapshot) {

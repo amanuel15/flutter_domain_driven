@@ -19,7 +19,7 @@ part 'product_wathcer_bloc.freezed.dart';
 class ProductWathcerBloc
     extends Bloc<ProductWathcerEvent, ProductWathcerState> {
   final IProductRepository _productRepository;
-  KtList<Product> oldProductsList = emptyList();
+  List<Product> oldProductsList = [];
 
   ProductWathcerBloc(this._productRepository);
 
@@ -39,7 +39,7 @@ class ProductWathcerBloc
             (products) => add(ProductWathcerEvent.productRecived(products)));
       },
       watchUncompletedStarted: (e) async* {
-        yield const ProductWathcerState.loadInProgress();
+        //yield const ProductWathcerState.loadInProgress();
         //await _productStreamSubscription?.cancel();
         _productRepository.watchUncompleted().then(
             (products) => add(ProductWathcerEvent.productRecived(products)));
@@ -50,15 +50,16 @@ class ProductWathcerBloc
         yield e.failureOrProducts.fold(
           (f) => ProductWathcerState.loadFailure(f),
           (products) {
-            if (oldProductsList.isNotEmpty()) {
-              print('old Is full');
-              oldProductsList = oldProductsList + products;
+            if (oldProductsList.isNotEmpty) {
+              oldProductsList = oldProductsList + products.asList();
+              print('\n old Is full ${oldProductsList.length}');
             } else {
-              print('old is empty');
-              oldProductsList = products;
+              print('\n old is empty');
+              oldProductsList = products.asList();
             }
-            print('will return ${oldProductsList}');
-            return ProductWathcerState.loadSuccess(oldProductsList);
+            //print('\n will return ${oldProductsList}');
+            return ProductWathcerState.loadSuccess(
+                oldProductsList.toImmutableList());
           },
         );
       },

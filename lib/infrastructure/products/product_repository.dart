@@ -50,10 +50,10 @@ class ProductRepository implements IProductRepository {
     return _firestore
         .collection('products')
         .orderBy('TotalAmount')
-        .limit(11)
+        .limit(12)
         .getDocuments()
         .then((snapshot) {
-      lastDoc = snapshot.documents[snapshot.documents.length - 1];
+      lastDoc = snapshot.documents.last;
       // TODO: make sure firestore data is verifiable and check mapping
       return right<ProductFailure, KtList<Product>>(snapshot.documents
           .map((doc) => ProductDto.fromFirestore(doc).toDomain())
@@ -70,11 +70,13 @@ class ProductRepository implements IProductRepository {
     return _firestore
         .collection('products')
         .orderBy('TotalAmount')
-        .startAfter([lastDoc.data])
-        .limit(7)
+        .startAfter([lastDoc.data['TotalAmount']])
+        .limit(10)
         .getDocuments()
         .then((snapshot) {
-          lastDoc = snapshot.documents[snapshot.documents.length - 1];
+          //print(snapshot.documents);
+          lastDoc = snapshot.documents.last;
+          //print('the new last doc: ${lastDoc.data}');
           return right<ProductFailure, KtList<Product>>(snapshot.documents
               .map((doc) => ProductDto.fromFirestore(doc).toDomain())
               .toImmutableList());

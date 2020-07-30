@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -19,10 +21,10 @@ class ProductCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         onTap: () {
-          // Router.navigator.pushNamed(
-          //   Router.productFormPage,
-          //   arguments: ProductFormPageArguments(editedProduct: product),
-          // );
+          ExtendedNavigator.of(context).push(
+            Routes.productFormPage,
+            arguments: ProductFormPageArguments(editedProduct: product),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),

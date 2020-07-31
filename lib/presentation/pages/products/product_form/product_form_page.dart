@@ -1,13 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
+import 'package:finished_notes_firebase_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/description_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/name_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/total_amount_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/provider.dart';
 
 class ProductFormPage extends HookWidget {
   final Product editedProduct;
@@ -110,6 +118,41 @@ class ProductFormPageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        condition: (p, c) => p.showErrorMessages != c.showErrorMessages,
+        builder: (context, state) {
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                create: (_) => FormCatagories(),
+              ),
+              ChangeNotifierProvider(
+                create: (_) => FormImages(),
+              ),
+            ],
+            child: Form(
+              autovalidate: state.showErrorMessages,
+              child: const CustomScrollView(
+                slivers: <Widget>[
+                  SliverToBoxAdapter(
+                    child: NameField(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: DescriptionField(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: HypeDescriptionField(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: AmountField(),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }

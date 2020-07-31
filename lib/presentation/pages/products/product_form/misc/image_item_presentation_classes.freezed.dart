@@ -8,22 +8,17 @@ part of 'image_item_presentation_classes.dart';
 // **************************************************************************
 
 mixin _$ImageItemPrimitive {
-  UniqueId get id;
   String get name;
-  bool get done;
 
-  ImageItemPrimitive copyWith({UniqueId id, String name, bool done});
+  ImageItemPrimitive copyWith({String name});
 }
 
 class _$ImageItemPrimitiveTearOff {
   const _$ImageItemPrimitiveTearOff();
 
-  _ImageItemPrimitive call(
-      {@required UniqueId id, @required String name, @required bool done}) {
+  _ImageItemPrimitive call({@required String name}) {
     return _ImageItemPrimitive(
-      id: id,
       name: name,
-      done: done,
     );
   }
 }
@@ -33,22 +28,14 @@ const $ImageItemPrimitive = _$ImageItemPrimitiveTearOff();
 class _$_ImageItemPrimitive
     with DiagnosticableTreeMixin
     implements _ImageItemPrimitive {
-  const _$_ImageItemPrimitive(
-      {@required this.id, @required this.name, @required this.done})
-      : assert(id != null),
-        assert(name != null),
-        assert(done != null);
+  const _$_ImageItemPrimitive({@required this.name}) : assert(name != null);
 
   @override
-  final UniqueId id;
-  @override
   final String name;
-  @override
-  final bool done;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ImageItemPrimitive(id: $id, name: $name, done: $done)';
+    return 'ImageItemPrimitive(name: $name)';
   }
 
   @override
@@ -56,57 +43,38 @@ class _$_ImageItemPrimitive
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ImageItemPrimitive'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('done', done));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ImageItemPrimitive &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.done, done) ||
-                const DeepCollectionEquality().equals(other.done, done)));
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(done);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @override
   _$_ImageItemPrimitive copyWith({
-    Object id = freezed,
     Object name = freezed,
-    Object done = freezed,
   }) {
     return _$_ImageItemPrimitive(
-      id: id == freezed ? this.id : id as UniqueId,
       name: name == freezed ? this.name : name as String,
-      done: done == freezed ? this.done : done as bool,
     );
   }
 }
 
 abstract class _ImageItemPrimitive implements ImageItemPrimitive {
-  const factory _ImageItemPrimitive(
-      {@required UniqueId id,
-      @required String name,
-      @required bool done}) = _$_ImageItemPrimitive;
+  const factory _ImageItemPrimitive({@required String name}) =
+      _$_ImageItemPrimitive;
 
-  @override
-  UniqueId get id;
   @override
   String get name;
-  @override
-  bool get done;
 
   @override
-  _ImageItemPrimitive copyWith({UniqueId id, String name, bool done});
+  _ImageItemPrimitive copyWith({String name});
 }

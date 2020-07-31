@@ -8,22 +8,17 @@ part of 'catagory_item_presentation_classes.dart';
 // **************************************************************************
 
 mixin _$CatagoryItemPrimitive {
-  UniqueId get id;
   String get name;
-  bool get done;
 
-  CatagoryItemPrimitive copyWith({UniqueId id, String name, bool done});
+  CatagoryItemPrimitive copyWith({String name});
 }
 
 class _$CatagoryItemPrimitiveTearOff {
   const _$CatagoryItemPrimitiveTearOff();
 
-  _CatagoryItemPrimitive call(
-      {@required UniqueId id, @required String name, @required bool done}) {
+  _CatagoryItemPrimitive call({@required String name}) {
     return _CatagoryItemPrimitive(
-      id: id,
       name: name,
-      done: done,
     );
   }
 }
@@ -33,22 +28,14 @@ const $CatagoryItemPrimitive = _$CatagoryItemPrimitiveTearOff();
 class _$_CatagoryItemPrimitive
     with DiagnosticableTreeMixin
     implements _CatagoryItemPrimitive {
-  const _$_CatagoryItemPrimitive(
-      {@required this.id, @required this.name, @required this.done})
-      : assert(id != null),
-        assert(name != null),
-        assert(done != null);
+  const _$_CatagoryItemPrimitive({@required this.name}) : assert(name != null);
 
   @override
-  final UniqueId id;
-  @override
   final String name;
-  @override
-  final bool done;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CatagoryItemPrimitive(id: $id, name: $name, done: $done)';
+    return 'CatagoryItemPrimitive(name: $name)';
   }
 
   @override
@@ -56,57 +43,38 @@ class _$_CatagoryItemPrimitive
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CatagoryItemPrimitive'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('done', done));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _CatagoryItemPrimitive &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.done, done) ||
-                const DeepCollectionEquality().equals(other.done, done)));
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(done);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @override
   _$_CatagoryItemPrimitive copyWith({
-    Object id = freezed,
     Object name = freezed,
-    Object done = freezed,
   }) {
     return _$_CatagoryItemPrimitive(
-      id: id == freezed ? this.id : id as UniqueId,
       name: name == freezed ? this.name : name as String,
-      done: done == freezed ? this.done : done as bool,
     );
   }
 }
 
 abstract class _CatagoryItemPrimitive implements CatagoryItemPrimitive {
-  const factory _CatagoryItemPrimitive(
-      {@required UniqueId id,
-      @required String name,
-      @required bool done}) = _$_CatagoryItemPrimitive;
+  const factory _CatagoryItemPrimitive({@required String name}) =
+      _$_CatagoryItemPrimitive;
 
-  @override
-  UniqueId get id;
   @override
   String get name;
-  @override
-  bool get done;
 
   @override
-  _CatagoryItemPrimitive copyWith({UniqueId id, String name, bool done});
+  _CatagoryItemPrimitive copyWith({String name});
 }

@@ -8,39 +8,29 @@ import 'package:kt_dart/collection.dart';
 
 part 'catagory_item_presentation_classes.freezed.dart';
 
-class FormCatagory extends ValueNotifier<KtList<CatagoryItemPrimitive>> {
-  FormCatagory() : super(emptyList<CatagoryItemPrimitive>());
+class FormCatagories extends ValueNotifier<KtList<CatagoryItemPrimitive>> {
+  FormCatagories() : super(emptyList<CatagoryItemPrimitive>());
 }
 
 @freezed
 abstract class CatagoryItemPrimitive with _$CatagoryItemPrimitive {
   const factory CatagoryItemPrimitive({
-    @required UniqueId id,
     @required String name,
-    @required bool done,
   }) = _CatagoryItemPrimitive;
 
-  factory CatagoryItemPrimitive.empty() => CatagoryItemPrimitive(
-        id: UniqueId(),
+  factory CatagoryItemPrimitive.empty() => const CatagoryItemPrimitive(
         name: '',
-        done: false,
       );
 
-  factory CatagoryItemPrimitive.fromDomain(CatagoryItem catagoryItem) =>
+  factory CatagoryItemPrimitive.fromDomain(CatagoryName catagoryName) =>
       CatagoryItemPrimitive(
-        id: catagoryItem.id,
         // If we somehow get to this point, we missed something in other parts of the UI. It's better to throw an Error.
-        name: catagoryItem.name.getOrCrash(),
-        done: catagoryItem.done,
+        name: catagoryName.getOrCrash(),
       );
 }
 
 extension CatagoryItemPrimitiveX on CatagoryItemPrimitive {
-  CatagoryItem toDomain() {
-    return CatagoryItem(
-      id: id,
-      name: CatagoryName(name),
-      done: done,
-    );
+  CatagoryName toDomain() {
+    return CatagoryName(name);
   }
 }

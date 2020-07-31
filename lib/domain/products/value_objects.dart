@@ -31,7 +31,7 @@ class ProductDescription extends ValueObject<String> {
   factory ProductDescription(String input) {
     assert(input != null);
     return ProductDescription._(
-      validateMaxStringLength(input, maxLength),
+      validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
   }
 
@@ -47,7 +47,7 @@ class ProductHypeDescription extends ValueObject<String> {
   factory ProductHypeDescription(String input) {
     assert(input != null);
     return ProductHypeDescription._(
-      validateMaxStringLength(input, maxLength),
+      validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
   }
 

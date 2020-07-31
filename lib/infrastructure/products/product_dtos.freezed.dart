@@ -76,8 +76,8 @@ class _$_ProductDto implements _ProductDto {
       : assert(productName != null),
         assert(productDescription != null),
         assert(hypeDescription != null),
-        //assert(totalAmount != null),
-        //assert(soldAmount != null),
+        assert(totalAmount != null),
+        assert(soldAmount != null),
         assert(images != null),
         assert(catagories != null);
 

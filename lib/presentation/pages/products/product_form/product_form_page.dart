@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:finished_notes_firebase_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
@@ -46,7 +45,7 @@ class ProductFormPage extends HookWidget {
                         insufficientPermissions: (_) =>
                             'Insufficient permissions ❌',
                         unableToUpdate: (_) =>
-                            "Couldn't update the note. Was it deleted from another device?",
+                            "Couldn't update the product. Was it deleted from another device?",
                         unexpected: (_) =>
                             'Unexpected error occured, please contact support.'),
                   ).show(context);
@@ -119,8 +118,8 @@ class ProductFormPageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<NoteFormBloc, NoteFormState>(
-        condition: (p, c) => p.showErrorMessages != c.showErrorMessages,
+      body: BlocBuilder<ProductFormBloc, ProductFormState>(
+        condition: (p, c) => p.showErrorMessage != c.showErrorMessage,
         builder: (context, state) {
           return MultiProvider(
             providers: [
@@ -132,7 +131,7 @@ class ProductFormPageScaffold extends StatelessWidget {
               ),
             ],
             child: Form(
-              autovalidate: state.showErrorMessages,
+              autovalidate: state.showErrorMessage,
               child: const CustomScrollView(
                 slivers: <Widget>[
                   SliverToBoxAdapter(

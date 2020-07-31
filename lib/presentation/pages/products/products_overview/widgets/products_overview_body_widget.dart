@@ -1,5 +1,4 @@
 import 'package:finished_notes_firebase_ddd_course/application/product/products_watcher/product_wathcer_bloc.dart';
-import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/critical_failure_display_pwidget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';

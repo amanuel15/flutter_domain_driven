@@ -14,13 +14,10 @@ _$_ProductDto _$_$_ProductDtoFromJson(Map<String, dynamic> json) {
     totalAmount: json['totalAmount'] as int,
     soldAmount: json['soldAmount'] as int,
     images: (json['images'] as List)
-        ?.map((e) =>
-            e == null ? null : ImageUrlDto.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null ? null : ImageUrlDto(name: e as String))
         ?.toList(),
     catagories: (json['catagories'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CatagoryNameDto.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null ? null : CatagoryNameDto(name: e as String))
         ?.toList(),
   );
 }

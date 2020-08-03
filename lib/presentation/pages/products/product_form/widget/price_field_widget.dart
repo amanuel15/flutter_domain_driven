@@ -17,8 +17,8 @@ class PriceField extends HookWidget {
     return BlocConsumer<ProductFormBloc, ProductFormState>(
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
-        textEditingController.value =
-            state.product.soldAmount.getOrCrash() as TextEditingValue;
+        textEditingController.text =
+            state.product.soldAmount.getOrCrash().toString();
       },
       buildWhen: (p, c) => p.product.soldAmount != c.product.soldAmount,
       builder: (context, state) {

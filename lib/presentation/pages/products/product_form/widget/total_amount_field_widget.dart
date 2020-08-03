@@ -17,8 +17,8 @@ class AmountField extends HookWidget {
     return BlocConsumer<ProductFormBloc, ProductFormState>(
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
-        textEditingController.value =
-            state.product.totalAmount.getOrCrash() as TextEditingValue;
+        textEditingController.text =
+            state.product.totalAmount.getOrCrash().toString();
       },
       buildWhen: (p, c) => p.product.totalAmount != c.product.totalAmount,
       builder: (context, state) {

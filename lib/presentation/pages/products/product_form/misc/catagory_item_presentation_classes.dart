@@ -1,5 +1,3 @@
-import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';

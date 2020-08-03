@@ -31,7 +31,16 @@ class CatagoryField extends HookWidget {
       ],
       child: Consumer<FormCatagories>(
         builder: (context, formCatagories, child) {
-          return;
+          return Dialog(
+            child: Container(
+              height: 350.0,
+              width: 200.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Column(),
+            ),
+          );
         },
       ),
     );

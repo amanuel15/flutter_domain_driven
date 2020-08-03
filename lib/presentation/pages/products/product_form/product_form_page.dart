@@ -5,6 +5,8 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart'
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_fields.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/catagory_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/name_field_widget.dart';
@@ -145,6 +147,9 @@ class ProductFormPageScaffold extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: AmountField(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: AddField(),
                   ),
                 ],
               ),

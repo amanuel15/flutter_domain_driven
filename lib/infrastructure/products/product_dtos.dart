@@ -113,7 +113,7 @@ abstract class CatagoryNameDto with _$CatagoryNameDto {
     );
   }
 
-  factory CatagoryNameDto.fromJson(Map<String, dynamic> json) =>
+  factory CatagoryNameDto.fromJson(Map<String, String> json) =>
       _$CatagoryNameDtoFromJson(json);
 }
 

@@ -56,11 +56,11 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateListLength<T>(
   }
 }
 
-Either<ValueFailure<int>, int> validateAmount(int input){
-  if (input.isNaN){
+Either<ValueFailure<int>, int> validateAmount(int input) {
+  if (input.isNaN) {
     return left(ValueFailure.empty(failedValue: input));
   } else {
-    if (input.isNegative) return right(input*-1);
+    if (input.isNegative) return right(input * -1);
     return right(input);
   }
 }

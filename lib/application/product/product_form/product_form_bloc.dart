@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/i_product_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product_failure.dart';
@@ -91,10 +92,10 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       catagoriesChanged: (e) async* {
         yield state.copyWith(
           product: state.product.copyWith(
-              // catagories: ListCatagories(
-              //   e.catagories.map((primitive) => primitive.toDomain()),
-              // ),
-              ),
+            catagories: ListCatagories(
+              e.catagories.map((primitive) => primitive.toDomain()),
+            ),
+          ),
           saveFailureOrSuccessOption: none(),
         );
       },
@@ -116,6 +117,15 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
           showErrorMessage: true,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         );
+      },
+      catagoriesDeleted: (e) async* {
+        yield state.copyWith(
+          product: state.product.copyWith(
+            catagories: ListCatagories(emptyList()),
+          ),
+          saveFailureOrSuccessOption: none(),
+        );
+        print('deleted: ${state.product.catagories}');
       },
     );
   }

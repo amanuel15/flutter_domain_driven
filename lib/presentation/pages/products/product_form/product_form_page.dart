@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
@@ -16,6 +17,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class ProductFormPage extends HookWidget {
@@ -62,16 +64,244 @@ class ProductFormPage extends HookWidget {
         },
         buildWhen: (p, c) => p.isSaving != c.isSaving,
         builder: (context, state) {
-          return Stack(
-            children: <Widget>[
-              const ProductFormPageScaffold(),
-              SavingInProgressOverlay(isSaving: state.isSaving),
-            ],
-          );
+          final double screenHeight = MediaQuery.of(context).size.width;
+          final double screenWidth = MediaQuery.of(context).size.width;
+          ScreenUtil.init(context,
+              width: screenWidth, height: screenHeight, allowFontScaling: true);
+          return ProductFormPageScaffold();
+          // Stack(
+          //   children: <Widget>[
+          //     const ProductFormPageScaffold(),
+          //     SavingInProgressOverlay(isSaving: state.isSaving),
+          //     //selectCategoriesPopUp(context, state),
+          //   ],
+          // );
         },
       ),
     );
   }
+}
+
+Widget selectCategoriesPopUp(BuildContext context, ProductFormState state) {
+  final double screenHeight = MediaQuery.of(context).size.width;
+  final double screenWidth = MediaQuery.of(context).size.width;
+  return AnimatedPositioned(
+      height: 0.9.hp.toDouble(),
+      left: ScreenUtil().setWidth(screenWidth * 0.03).toDouble(),
+      width: ScreenUtil().setWidth(screenWidth * 0.94).toDouble(),
+      top: state.catagoryEditing ? screenHeight - 0.9.hp : screenHeight,
+      duration: const Duration(milliseconds: 500),
+      child: AbsorbPointer(
+        absorbing: state.catagoryEditing,
+        child: FocusScope(
+          autofocus: true,
+          //node: state.catagoryEditing ? FocusScope,
+          child: Material(
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(
+                          ScreenUtil().setWidth(20).toDouble()))),
+              shadowColor: Colors.black,
+              elevation: 10,
+              child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          // ignore: prefer_const_literals_to_create_immutables
+                          stops: [
+                        0,
+                        0.25,
+                        0.50,
+                        0.75
+                      ],
+                          colors: const [
+                        Color(0xFFCEF1E9),
+                        Color(0xFFDFD1AA),
+                        Color(0xFFADB9EC),
+                        Color(0xFFECB6E1)
+                      ])),
+                  child: Column(
+                    children: <Widget>[
+                      Card(
+                          elevation: 10,
+                          color: Colors.deepPurpleAccent,
+                          shadowColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(
+                                ScreenUtil().setWidth(20).toDouble()),
+                          )),
+                          child: SizedBox(
+                            height: 0.06.hp.toDouble(),
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  width: ScreenUtil()
+                                      .setWidth(screenWidth / 50)
+                                      .toDouble(),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    //undoCategory();
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.white,
+                                    size: 0.04.hp.toDouble(),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 0.7.wp.toDouble(),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    //cancelCategorySelection();
+                                  },
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Colors.white,
+                                    size: 0.04.hp.toDouble(),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
+                      ConstrainedBox(
+                        constraints:
+                            BoxConstraints(maxHeight: 0.7.hp.toDouble()),
+                        child: state.isEditing
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                backgroundColor:
+                                    Color.fromARGB(200, 189, 21, 249),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Color.fromARGB(200, 255, 55, 0),
+                                ),
+                              ))
+                            : ListView(
+                                // shrinkWrap: true,
+                                // children: <Widget>[
+                                //   SizedBox(
+                                //     height: 0.03.hp.toDouble(),
+                                //   ),
+                                //   SizedBox(
+                                //       height: 0.03.hp.toDouble(),
+                                //       width: 0.8.wp.toDouble(),
+                                //       child: AutoSizeText(
+                                //         selectedCategories.isEmpty
+                                //             ? "CATEGORIES"
+                                //             : selectedCategories.last
+                                //                 .toUpperCase(),
+                                //         maxLines: 1,
+                                //         textAlign: TextAlign.center,
+                                //         style: TextStyle(
+                                //             fontSize: 20.nsp.toDouble(),
+                                //             fontWeight: FontWeight.bold,
+                                //             foreground: Paint()
+                                //               ..shader = textLinearGradient),
+                                //       )),
+                                //   Center(
+                                //       child: categoriesList.isNotEmpty
+                                //           ? Column(
+                                //               children: categoriesList
+                                //                   .map((category) => Padding(
+                                //                         padding: EdgeInsets.fromLTRB(
+                                //                             ScreenUtil()
+                                //                                 .setWidth(
+                                //                                     screenWidth *
+                                //                                         0.02)
+                                //                                 .toDouble(),
+                                //                             ScreenUtil()
+                                //                                 .setHeight(
+                                //                                     screenHeight *
+                                //                                         0.01)
+                                //                                 .toDouble(),
+                                //                             0,
+                                //                             0),
+                                //                         child: Material(
+                                //                             clipBehavior:
+                                //                                 Clip.hardEdge,
+                                //                             type: MaterialType
+                                //                                 .card,
+                                //                             elevation: 5,
+                                //                             shape: RoundedRectangleBorder(
+                                //                                 borderRadius: BorderRadius.all(Radius.circular(
+                                //                                     ScreenUtil()
+                                //                                         .setWidth(
+                                //                                             20)
+                                //                                         .toDouble()))),
+                                //                             child: Ink(
+                                //                                 decoration:
+                                //                                     const BoxDecoration(
+                                //                                         gradient:
+                                //                                             LinearGradient(
+                                //                                                 colors: [
+                                //                                       Color.fromARGB(
+                                //                                           200,
+                                //                                           189,
+                                //                                           21,
+                                //                                           249),
+                                //                                       Color.fromARGB(
+                                //                                           200,
+                                //                                           255,
+                                //                                           55,
+                                //                                           0),
+                                //                                     ])),
+                                //                                 child: InkWell(
+                                //                                   onTap: () {
+                                //                                     chooseCategory(
+                                //                                         category);
+                                //                                   },
+                                //                                   child: SizedBox(
+                                //                                       height: ScreenUtil().setHeight(screenHeight / 18).toDouble(),
+                                //                                       width: ScreenUtil().setWidth(screenWidth * 0.9).toDouble(),
+                                //                                       child: Padding(
+                                //                                         padding: EdgeInsets.fromLTRB(
+                                //                                             0.03.wp.toDouble(),
+                                //                                             0.01.hp.toDouble(),
+                                //                                             0,
+                                //                                             0),
+                                //                                         child:
+                                //                                             AutoSizeText(
+                                //                                           category,
+                                //                                           maxLines:
+                                //                                               1,
+                                //                                           textAlign:
+                                //                                               TextAlign.center,
+                                //                                           style:
+                                //                                               TextStyle(
+                                //                                             color:
+                                //                                                 Colors.white,
+                                //                                             fontSize:
+                                //                                                 20.nsp.toDouble(),
+                                //                                           ),
+                                //                                         ),
+                                //                                       )),
+                                //                                 ))),
+                                //                       ))
+                                //                   .toList())
+                                //           : SizedBox(
+                                //               height: ScreenUtil()
+                                //                   .setHeight(screenHeight / 4)
+                                //                   .toDouble(),
+                                //               child: Align(
+                                //                 alignment: Alignment.center,
+                                //                 child: Text(
+                                //                   "NO CATEGORY SELECTED",
+                                //                   style: TextStyle(
+                                //                       fontSize:
+                                //                           24.nsp.toDouble()),
+                                //                 ),
+                                //               ))),
+                                // ],
+                                ),
+                      ),
+                    ],
+                  ))),
+        ),
+      ));
 }
 
 class SavingInProgressOverlay extends StatelessWidget {
@@ -119,7 +349,31 @@ class ProductFormPageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        bottomOpacity: 20,
+        actions: <Widget>[
+          InkWell(
+            //onTap: exitPage,
+            child: Icon(Icons.cancel),
+          )
+        ],
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(ScreenUtil().setWidth(10).toDouble()))),
+        elevation: 20,
+        backgroundColor: Colors.deepOrange,
+        title: Text(
+          'Flutter Demo',
+          style: TextStyle(
+              fontSize: ScreenUtil()
+                  .setSp(18, allowFontScalingSelf: true)
+                  .toDouble()),
+        ),
+      ),
       body: BlocBuilder<ProductFormBloc, ProductFormState>(
         condition: (p, c) => p.showErrorMessage != c.showErrorMessage,
         builder: (context, state) {
@@ -132,25 +386,77 @@ class ProductFormPageScaffold extends StatelessWidget {
                 create: (_) => FormImages(),
               ),
             ],
-            child: Form(
-              autovalidate: state.showErrorMessage,
-              child: const CustomScrollView(
-                slivers: <Widget>[
-                  SliverToBoxAdapter(
-                    child: NameField(),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: const [
+                      0,
+                      0.25,
+                      0.50,
+                      0.75
+                    ],
+                    colors: const [
+                      Color(0xFFCEF1E9),
+                      Color(0xFFDFD1AA),
+                      Color(0xFFADB9EC),
+                      Color(0xFFECB6E1)
+                    ]),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Form(
+                    autovalidate: state.showErrorMessage,
+                    // child: AbsorbPointer(
+                    //   absorbing: true,
+                    //   child: FocusScope(
+                    //     autofocus: true,
+                    //     child: SingleChildScrollView(
+                    //       padding: EdgeInsets.fromLTRB(
+                    //         ScreenUtil().setHeight(screenWidth / 30).toDouble(),
+                    //         0,
+                    //         ScreenUtil().setWidth(screenWidth / 25).toDouble(),
+                    //         0,
+                    //       ),
+                    //       child: Column(
+                    //         children: <Widget>[
+                    //           SizedBox(
+                    //             height: ScreenUtil()
+                    //                 .setHeight(screenHeight / 25)
+                    //                 .toDouble(),
+                    //           ),
+                    //           const NameField(),
+                    //           const DescriptionField(),
+                    //           const HypeDescriptionField(),
+                    //           const AmountField(),
+                    //           const AddField(),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    child: const CustomScrollView(
+                      slivers: <Widget>[
+                        SliverToBoxAdapter(
+                          child: NameField(),
+                        ),
+                        SliverToBoxAdapter(
+                          child: DescriptionField(),
+                        ),
+                        SliverToBoxAdapter(
+                          child: HypeDescriptionField(),
+                        ),
+                        SliverToBoxAdapter(
+                          child: AmountField(),
+                        ),
+                        SliverToBoxAdapter(
+                          child: AddField(),
+                        ),
+                      ],
+                    ),
                   ),
-                  SliverToBoxAdapter(
-                    child: DescriptionField(),
-                  ),
-                  SliverToBoxAdapter(
-                    child: HypeDescriptionField(),
-                  ),
-                  SliverToBoxAdapter(
-                    child: AmountField(),
-                  ),
-                  SliverToBoxAdapter(
-                    child: AddField(),
-                  ),
+                  selectCategoriesPopUp(context, state),
                 ],
               ),
             ),

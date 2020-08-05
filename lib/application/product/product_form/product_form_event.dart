@@ -19,4 +19,6 @@ abstract class ProductFormEvent with _$ProductFormEvent {
   const factory ProductFormEvent.catagoriesChanged(
       KtList<CatagoryItemPrimitive> catagories) = _CatagoriesChanged;
   const factory ProductFormEvent.saved() = _Saved;
+
+  const factory ProductFormEvent.catagoriesDeleted() = _CatagoriesDeleted;
 }

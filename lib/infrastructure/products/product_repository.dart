@@ -87,12 +87,6 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories() {
-    // TODO: implement watchAllCatagories
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<CatagoryFailure, KtList<CatagoryItem>>>
       watchUncompletedCatagories() {
     // TODO: implement watchUncompletedCatagories
@@ -125,5 +119,18 @@ class ProductRepository implements IProductRepository {
       ),
     );
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<CatagoryFailure, KtList<CatagoryName>>> watchAllCatagories(
+      {String path = 'Catagories'}) {
+    return _firestore.collection(path).getDocuments().then((snapshot) {
+      return right<CatagoryFailure, KtList<CatagoryName>>(snapshot.documents
+          .map((doc) =>
+              CatagoryNameDto.fromJson({"name": doc.documentID}).toDomain())
+          .toImmutableList());
+    }).catchError((e) {
+      return left(const CatagoryFailure.unexpected());
+    });
   }
 }

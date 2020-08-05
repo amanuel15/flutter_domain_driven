@@ -1,4 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:finished_notes_firebase_ddd_course/application/product/catagory_watcher/catagory_watcher_bloc.dart';
+import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +23,12 @@ class AddField extends HookWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     ScreenUtil.init(context,
         width: screenWidth, height: screenHeight, allowFontScaling: true);
+    ProductFormState stateF;
 
     return BlocListener<ProductFormBloc, ProductFormState>(
       condition: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
+        stateF = state;
         context.formCatagories = state.product.catagories.value.fold(
           (_) => mutableListOf<CatagoryItemPrimitive>(),
           (catagoryList) => catagoryList
@@ -140,6 +144,10 @@ class AddField extends HookWidget {
                                 clipBehavior: Clip.hardEdge,
                                 onPressed: () {
                                   //deleteSelectedCategory();
+                                  context.bloc<ProductFormBloc>().add(
+                                      const ProductFormEvent
+                                          .catagoriesDeleted());
+                                  context.formCatagories = emptyList();
                                 },
                                 color: Colors.deepPurpleAccent.withOpacity(0.8),
                                 elevation: 4,
@@ -175,9 +183,11 @@ class AddField extends HookWidget {
                                 .toDouble(),
                             color: const Color.fromRGBO(25, 25, 25, 0.9),
                             onPressed: () {
+                              stateF.copyWith(
+                                catagoryEditing: true,
+                              );
                               // addCategory();
-                              // print(
-                              //     'pressed $screenHeight, $screenWidth, $device');
+                              // print('pressed $screenHeight, $screenWidth, $device');
                             },
                           ),
                         ),
@@ -194,3 +204,5 @@ class AddField extends HookWidget {
     );
   }
 }
+
+//TODO: may be put this in the product form page, in a builder reacting to some state

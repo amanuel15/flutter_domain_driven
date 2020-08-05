@@ -18,13 +18,13 @@ abstract class IProductRepository {
   Future<Either<ProductFailure, Unit>> delete(Product product);
 
   //functions for catagories
-  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchAllCatagories();
-  Future<Either<CatagoryFailure, KtList<CatagoryItem>>> watchUncompletedCatagories();
+  Future<Either<CatagoryFailure, KtList<CatagoryName>>> watchAllCatagories(
+      {String path = 'Catagories'});
 
   //functions for images
-  Future<Either<ImageFailure, KtList<ImageItem>>> getImages(KtList<ImageUrl> imageUrl);
+  Future<Either<ImageFailure, KtList<ImageItem>>> getImages(
+      KtList<ImageUrl> imageUrl);
   Future<Either<ImageFailure, Unit>> createImage(ImageItem imageItem);
   //fuctions for getting image from local storage
   Future<Either<ImageFailure, KtList<ImageItem>>> pickImage();
-
 }

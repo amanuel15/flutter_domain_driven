@@ -10,34 +10,34 @@ part of 'catagory_watcher_bloc.dart';
 mixin _$CatagoryWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
-    @required Result watchUnCompletedStarted(),
+    @required Result watchCatagoriesStarted(),
+    @required Result watchSubCatagories(String path),
     @required
-        Result catagoryReceived(
-            Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+        Result catagoryRecived(
+            Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
   });
 
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
-    Result watchUnCompletedStarted(),
-    Result catagoryReceived(
-        Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+    Result watchCatagoriesStarted(),
+    Result watchSubCatagories(String path),
+    Result catagoryRecived(
+        Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
   });
 
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAllStarted(_WatchAllStarted value),
-    @required Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    @required Result catagoryReceived(_CatagoryReceived value),
+    @required Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    @required Result watchSubCatagories(_WatchSubCatagories value),
+    @required Result catagoryRecived(_CatagoryRecived value),
   });
 
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAllStarted(_WatchAllStarted value),
-    Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    Result catagoryReceived(_CatagoryReceived value),
+    Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    Result watchSubCatagories(_WatchSubCatagories value),
+    Result catagoryRecived(_CatagoryRecived value),
     @required Result orElse(),
   });
 }
@@ -45,17 +45,19 @@ mixin _$CatagoryWatcherEvent {
 class _$CatagoryWatcherEventTearOff {
   const _$CatagoryWatcherEventTearOff();
 
-  _WatchAllStarted watchAllStarted() {
-    return const _WatchAllStarted();
+  _WatchCatagoriesStarted watchCatagoriesStarted() {
+    return const _WatchCatagoriesStarted();
   }
 
-  _WatchUncompletedStarted watchUnCompletedStarted() {
-    return const _WatchUncompletedStarted();
+  _WatchSubCatagories watchSubCatagories(String path) {
+    return _WatchSubCatagories(
+      path,
+    );
   }
 
-  _CatagoryReceived catagoryReceived(
-      Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory) {
-    return _CatagoryReceived(
+  _CatagoryRecived catagoryRecived(
+      Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory) {
+    return _CatagoryRecived(
       failureOrCatagory,
     );
   }
@@ -63,17 +65,17 @@ class _$CatagoryWatcherEventTearOff {
 
 const $CatagoryWatcherEvent = _$CatagoryWatcherEventTearOff();
 
-class _$_WatchAllStarted implements _WatchAllStarted {
-  const _$_WatchAllStarted();
+class _$_WatchCatagoriesStarted implements _WatchCatagoriesStarted {
+  const _$_WatchCatagoriesStarted();
 
   @override
   String toString() {
-    return 'CatagoryWatcherEvent.watchAllStarted()';
+    return 'CatagoryWatcherEvent.watchCatagoriesStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WatchAllStarted);
+    return identical(this, other) || (other is _WatchCatagoriesStarted);
   }
 
   @override
@@ -82,30 +84,30 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
-    @required Result watchUnCompletedStarted(),
+    @required Result watchCatagoriesStarted(),
+    @required Result watchSubCatagories(String path),
     @required
-        Result catagoryReceived(
-            Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+        Result catagoryRecived(
+            Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
   }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return watchAllStarted();
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return watchCatagoriesStarted();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
-    Result watchUnCompletedStarted(),
-    Result catagoryReceived(
-        Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+    Result watchCatagoriesStarted(),
+    Result watchSubCatagories(String path),
+    Result catagoryRecived(
+        Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAllStarted != null) {
-      return watchAllStarted();
+    if (watchCatagoriesStarted != null) {
+      return watchCatagoriesStarted();
     }
     return orElse();
   }
@@ -113,132 +115,152 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAllStarted(_WatchAllStarted value),
-    @required Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    @required Result catagoryReceived(_CatagoryReceived value),
+    @required Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    @required Result watchSubCatagories(_WatchSubCatagories value),
+    @required Result catagoryRecived(_CatagoryRecived value),
   }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return watchAllStarted(this);
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return watchCatagoriesStarted(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAllStarted(_WatchAllStarted value),
-    Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    Result catagoryReceived(_CatagoryReceived value),
+    Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    Result watchSubCatagories(_WatchSubCatagories value),
+    Result catagoryRecived(_CatagoryRecived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAllStarted != null) {
-      return watchAllStarted(this);
+    if (watchCatagoriesStarted != null) {
+      return watchCatagoriesStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _WatchAllStarted implements CatagoryWatcherEvent {
-  const factory _WatchAllStarted() = _$_WatchAllStarted;
+abstract class _WatchCatagoriesStarted implements CatagoryWatcherEvent {
+  const factory _WatchCatagoriesStarted() = _$_WatchCatagoriesStarted;
 }
 
-class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
-  const _$_WatchUncompletedStarted();
+class _$_WatchSubCatagories implements _WatchSubCatagories {
+  const _$_WatchSubCatagories(this.path) : assert(path != null);
+
+  @override
+  final String path;
 
   @override
   String toString() {
-    return 'CatagoryWatcherEvent.watchUnCompletedStarted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WatchUncompletedStarted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result watchAllStarted(),
-    @required Result watchUnCompletedStarted(),
-    @required
-        Result catagoryReceived(
-            Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
-  }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return watchUnCompletedStarted();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
-    Result watchUnCompletedStarted(),
-    Result catagoryReceived(
-        Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (watchUnCompletedStarted != null) {
-      return watchUnCompletedStarted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result watchAllStarted(_WatchAllStarted value),
-    @required Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    @required Result catagoryReceived(_CatagoryReceived value),
-  }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return watchUnCompletedStarted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result watchAllStarted(_WatchAllStarted value),
-    Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    Result catagoryReceived(_CatagoryReceived value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (watchUnCompletedStarted != null) {
-      return watchUnCompletedStarted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WatchUncompletedStarted implements CatagoryWatcherEvent {
-  const factory _WatchUncompletedStarted() = _$_WatchUncompletedStarted;
-}
-
-class _$_CatagoryReceived implements _CatagoryReceived {
-  const _$_CatagoryReceived(this.failureOrCatagory)
-      : assert(failureOrCatagory != null);
-
-  @override
-  final Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory;
-
-  @override
-  String toString() {
-    return 'CatagoryWatcherEvent.catagoryReceived(failureOrCatagory: $failureOrCatagory)';
+    return 'CatagoryWatcherEvent.watchSubCatagories(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CatagoryReceived &&
+        (other is _WatchSubCatagories &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @override
+  _$_WatchSubCatagories copyWith({
+    Object path = freezed,
+  }) {
+    return _$_WatchSubCatagories(
+      path == freezed ? this.path : path as String,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchCatagoriesStarted(),
+    @required Result watchSubCatagories(String path),
+    @required
+        Result catagoryRecived(
+            Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
+  }) {
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return watchSubCatagories(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchCatagoriesStarted(),
+    Result watchSubCatagories(String path),
+    Result catagoryRecived(
+        Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchSubCatagories != null) {
+      return watchSubCatagories(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    @required Result watchSubCatagories(_WatchSubCatagories value),
+    @required Result catagoryRecived(_CatagoryRecived value),
+  }) {
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return watchSubCatagories(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    Result watchSubCatagories(_WatchSubCatagories value),
+    Result catagoryRecived(_CatagoryRecived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchSubCatagories != null) {
+      return watchSubCatagories(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchSubCatagories implements CatagoryWatcherEvent {
+  const factory _WatchSubCatagories(String path) = _$_WatchSubCatagories;
+
+  String get path;
+
+  _WatchSubCatagories copyWith({String path});
+}
+
+class _$_CatagoryRecived implements _CatagoryRecived {
+  const _$_CatagoryRecived(this.failureOrCatagory)
+      : assert(failureOrCatagory != null);
+
+  @override
+  final Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory;
+
+  @override
+  String toString() {
+    return 'CatagoryWatcherEvent.catagoryRecived(failureOrCatagory: $failureOrCatagory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CatagoryRecived &&
             (identical(other.failureOrCatagory, failureOrCatagory) ||
                 const DeepCollectionEquality()
                     .equals(other.failureOrCatagory, failureOrCatagory)));
@@ -250,43 +272,43 @@ class _$_CatagoryReceived implements _CatagoryReceived {
       const DeepCollectionEquality().hash(failureOrCatagory);
 
   @override
-  _$_CatagoryReceived copyWith({
+  _$_CatagoryRecived copyWith({
     Object failureOrCatagory = freezed,
   }) {
-    return _$_CatagoryReceived(
+    return _$_CatagoryRecived(
       failureOrCatagory == freezed
           ? this.failureOrCatagory
-          : failureOrCatagory as Either<CatagoryFailure, KtList<CatagoryItem>>,
+          : failureOrCatagory as Either<CatagoryFailure, KtList<CatagoryName>>,
     );
   }
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
-    @required Result watchUnCompletedStarted(),
+    @required Result watchCatagoriesStarted(),
+    @required Result watchSubCatagories(String path),
     @required
-        Result catagoryReceived(
-            Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+        Result catagoryRecived(
+            Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
   }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return catagoryReceived(failureOrCatagory);
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return catagoryRecived(failureOrCatagory);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
-    Result watchUnCompletedStarted(),
-    Result catagoryReceived(
-        Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory),
+    Result watchCatagoriesStarted(),
+    Result watchSubCatagories(String path),
+    Result catagoryRecived(
+        Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (catagoryReceived != null) {
-      return catagoryReceived(failureOrCatagory);
+    if (catagoryRecived != null) {
+      return catagoryRecived(failureOrCatagory);
     }
     return orElse();
   }
@@ -294,57 +316,57 @@ class _$_CatagoryReceived implements _CatagoryReceived {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAllStarted(_WatchAllStarted value),
-    @required Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    @required Result catagoryReceived(_CatagoryReceived value),
+    @required Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    @required Result watchSubCatagories(_WatchSubCatagories value),
+    @required Result catagoryRecived(_CatagoryRecived value),
   }) {
-    assert(watchAllStarted != null);
-    assert(watchUnCompletedStarted != null);
-    assert(catagoryReceived != null);
-    return catagoryReceived(this);
+    assert(watchCatagoriesStarted != null);
+    assert(watchSubCatagories != null);
+    assert(catagoryRecived != null);
+    return catagoryRecived(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAllStarted(_WatchAllStarted value),
-    Result watchUnCompletedStarted(_WatchUncompletedStarted value),
-    Result catagoryReceived(_CatagoryReceived value),
+    Result watchCatagoriesStarted(_WatchCatagoriesStarted value),
+    Result watchSubCatagories(_WatchSubCatagories value),
+    Result catagoryRecived(_CatagoryRecived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (catagoryReceived != null) {
-      return catagoryReceived(this);
+    if (catagoryRecived != null) {
+      return catagoryRecived(this);
     }
     return orElse();
   }
 }
 
-abstract class _CatagoryReceived implements CatagoryWatcherEvent {
-  const factory _CatagoryReceived(
-          Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory) =
-      _$_CatagoryReceived;
+abstract class _CatagoryRecived implements CatagoryWatcherEvent {
+  const factory _CatagoryRecived(
+          Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory) =
+      _$_CatagoryRecived;
 
-  Either<CatagoryFailure, KtList<CatagoryItem>> get failureOrCatagory;
+  Either<CatagoryFailure, KtList<CatagoryName>> get failureOrCatagory;
 
-  _CatagoryReceived copyWith(
-      {Either<CatagoryFailure, KtList<CatagoryItem>> failureOrCatagory});
+  _CatagoryRecived copyWith(
+      {Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory});
 }
 
 mixin _$CatagoryWatcherState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<CatagoryItem> catagories),
+    @required Result inProgress(),
+    @required Result loadSucess(KtList<CatagoryName> catagories),
     @required Result loadFailure(CatagoryFailure catagoryFailure),
   });
 
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<CatagoryItem> catagories),
+    Result inProgress(),
+    Result loadSucess(KtList<CatagoryName> catagories),
     Result loadFailure(CatagoryFailure catagoryFailure),
     @required Result orElse(),
   });
@@ -352,16 +374,16 @@ mixin _$CatagoryWatcherState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result loadInProgress(DataTransferInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
+    @required Result inProgress(InProgress value),
+    @required Result loadSucess(LoadSucess value),
     @required Result loadFailure(LoadFailure value),
   });
 
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result loadInProgress(DataTransferInProgress value),
-    Result loadSuccess(LoadSuccess value),
+    Result inProgress(InProgress value),
+    Result loadSucess(LoadSucess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   });
@@ -374,12 +396,12 @@ class _$CatagoryWatcherStateTearOff {
     return const Initial();
   }
 
-  DataTransferInProgress loadInProgress() {
-    return const DataTransferInProgress();
+  InProgress inProgress() {
+    return const InProgress();
   }
 
-  LoadSuccess loadSuccess(KtList<CatagoryItem> catagories) {
-    return LoadSuccess(
+  LoadSucess loadSucess(KtList<CatagoryName> catagories) {
+    return LoadSucess(
       catagories,
     );
   }
@@ -413,13 +435,13 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<CatagoryItem> catagories),
+    @required Result inProgress(),
+    @required Result loadSucess(KtList<CatagoryName> catagories),
     @required Result loadFailure(CatagoryFailure catagoryFailure),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
     return initial();
   }
@@ -428,8 +450,8 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<CatagoryItem> catagories),
+    Result inProgress(),
+    Result loadSucess(KtList<CatagoryName> catagories),
     Result loadFailure(CatagoryFailure catagoryFailure),
     @required Result orElse(),
   }) {
@@ -444,13 +466,13 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result loadInProgress(DataTransferInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
+    @required Result inProgress(InProgress value),
+    @required Result loadSucess(LoadSucess value),
     @required Result loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
     return initial(this);
   }
@@ -459,8 +481,8 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result loadInProgress(DataTransferInProgress value),
-    Result loadSuccess(LoadSuccess value),
+    Result inProgress(InProgress value),
+    Result loadSucess(LoadSucess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   }) {
@@ -476,17 +498,17 @@ abstract class Initial implements CatagoryWatcherState {
   const factory Initial() = _$Initial;
 }
 
-class _$DataTransferInProgress implements DataTransferInProgress {
-  const _$DataTransferInProgress();
+class _$InProgress implements InProgress {
+  const _$InProgress();
 
   @override
   String toString() {
-    return 'CatagoryWatcherState.loadInProgress()';
+    return 'CatagoryWatcherState.inProgress()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is DataTransferInProgress);
+    return identical(this, other) || (other is InProgress);
   }
 
   @override
@@ -496,29 +518,29 @@ class _$DataTransferInProgress implements DataTransferInProgress {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<CatagoryItem> catagories),
+    @required Result inProgress(),
+    @required Result loadSucess(KtList<CatagoryName> catagories),
     @required Result loadFailure(CatagoryFailure catagoryFailure),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
-    return loadInProgress();
+    return inProgress();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<CatagoryItem> catagories),
+    Result inProgress(),
+    Result loadSucess(KtList<CatagoryName> catagories),
     Result loadFailure(CatagoryFailure catagoryFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadInProgress != null) {
-      return loadInProgress();
+    if (inProgress != null) {
+      return inProgress();
     }
     return orElse();
   }
@@ -527,53 +549,53 @@ class _$DataTransferInProgress implements DataTransferInProgress {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result loadInProgress(DataTransferInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
+    @required Result inProgress(InProgress value),
+    @required Result loadSucess(LoadSucess value),
     @required Result loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
-    return loadInProgress(this);
+    return inProgress(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result loadInProgress(DataTransferInProgress value),
-    Result loadSuccess(LoadSuccess value),
+    Result inProgress(InProgress value),
+    Result loadSucess(LoadSucess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadInProgress != null) {
-      return loadInProgress(this);
+    if (inProgress != null) {
+      return inProgress(this);
     }
     return orElse();
   }
 }
 
-abstract class DataTransferInProgress implements CatagoryWatcherState {
-  const factory DataTransferInProgress() = _$DataTransferInProgress;
+abstract class InProgress implements CatagoryWatcherState {
+  const factory InProgress() = _$InProgress;
 }
 
-class _$LoadSuccess implements LoadSuccess {
-  const _$LoadSuccess(this.catagories) : assert(catagories != null);
+class _$LoadSucess implements LoadSucess {
+  const _$LoadSucess(this.catagories) : assert(catagories != null);
 
   @override
-  final KtList<CatagoryItem> catagories;
+  final KtList<CatagoryName> catagories;
 
   @override
   String toString() {
-    return 'CatagoryWatcherState.loadSuccess(catagories: $catagories)';
+    return 'CatagoryWatcherState.loadSucess(catagories: $catagories)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoadSuccess &&
+        (other is LoadSucess &&
             (identical(other.catagories, catagories) ||
                 const DeepCollectionEquality()
                     .equals(other.catagories, catagories)));
@@ -584,13 +606,13 @@ class _$LoadSuccess implements LoadSuccess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(catagories);
 
   @override
-  _$LoadSuccess copyWith({
+  _$LoadSucess copyWith({
     Object catagories = freezed,
   }) {
-    return _$LoadSuccess(
+    return _$LoadSucess(
       catagories == freezed
           ? this.catagories
-          : catagories as KtList<CatagoryItem>,
+          : catagories as KtList<CatagoryName>,
     );
   }
 
@@ -598,29 +620,29 @@ class _$LoadSuccess implements LoadSuccess {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<CatagoryItem> catagories),
+    @required Result inProgress(),
+    @required Result loadSucess(KtList<CatagoryName> catagories),
     @required Result loadFailure(CatagoryFailure catagoryFailure),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
-    return loadSuccess(catagories);
+    return loadSucess(catagories);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<CatagoryItem> catagories),
+    Result inProgress(),
+    Result loadSucess(KtList<CatagoryName> catagories),
     Result loadFailure(CatagoryFailure catagoryFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadSuccess != null) {
-      return loadSuccess(catagories);
+    if (loadSucess != null) {
+      return loadSucess(catagories);
     }
     return orElse();
   }
@@ -629,40 +651,40 @@ class _$LoadSuccess implements LoadSuccess {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result loadInProgress(DataTransferInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
+    @required Result inProgress(InProgress value),
+    @required Result loadSucess(LoadSucess value),
     @required Result loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
-    return loadSuccess(this);
+    return loadSucess(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result loadInProgress(DataTransferInProgress value),
-    Result loadSuccess(LoadSuccess value),
+    Result inProgress(InProgress value),
+    Result loadSucess(LoadSucess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadSuccess != null) {
-      return loadSuccess(this);
+    if (loadSucess != null) {
+      return loadSucess(this);
     }
     return orElse();
   }
 }
 
-abstract class LoadSuccess implements CatagoryWatcherState {
-  const factory LoadSuccess(KtList<CatagoryItem> catagories) = _$LoadSuccess;
+abstract class LoadSucess implements CatagoryWatcherState {
+  const factory LoadSucess(KtList<CatagoryName> catagories) = _$LoadSucess;
 
-  KtList<CatagoryItem> get catagories;
+  KtList<CatagoryName> get catagories;
 
-  LoadSuccess copyWith({KtList<CatagoryItem> catagories});
+  LoadSucess copyWith({KtList<CatagoryName> catagories});
 }
 
 class _$LoadFailure implements LoadFailure {
@@ -705,13 +727,13 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadSuccess(KtList<CatagoryItem> catagories),
+    @required Result inProgress(),
+    @required Result loadSucess(KtList<CatagoryName> catagories),
     @required Result loadFailure(CatagoryFailure catagoryFailure),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
     return loadFailure(catagoryFailure);
   }
@@ -720,8 +742,8 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
-    Result loadSuccess(KtList<CatagoryItem> catagories),
+    Result inProgress(),
+    Result loadSucess(KtList<CatagoryName> catagories),
     Result loadFailure(CatagoryFailure catagoryFailure),
     @required Result orElse(),
   }) {
@@ -736,13 +758,13 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(Initial value),
-    @required Result loadInProgress(DataTransferInProgress value),
-    @required Result loadSuccess(LoadSuccess value),
+    @required Result inProgress(InProgress value),
+    @required Result loadSucess(LoadSucess value),
     @required Result loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
-    assert(loadInProgress != null);
-    assert(loadSuccess != null);
+    assert(inProgress != null);
+    assert(loadSucess != null);
     assert(loadFailure != null);
     return loadFailure(this);
   }
@@ -751,8 +773,8 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
-    Result loadInProgress(DataTransferInProgress value),
-    Result loadSuccess(LoadSuccess value),
+    Result inProgress(InProgress value),
+    Result loadSucess(LoadSucess value),
     Result loadFailure(LoadFailure value),
     @required Result orElse(),
   }) {

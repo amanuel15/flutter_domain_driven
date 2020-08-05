@@ -21,4 +21,5 @@ abstract class ProductFormEvent with _$ProductFormEvent {
   const factory ProductFormEvent.saved() = _Saved;
 
   const factory ProductFormEvent.catagoriesDeleted() = _CatagoriesDeleted;
+  const factory ProductFormEvent.catagoryAdded() = _CatagoryAdded;
 }

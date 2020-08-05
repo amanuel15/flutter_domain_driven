@@ -183,9 +183,10 @@ class AddField extends HookWidget {
                                 .toDouble(),
                             color: const Color.fromRGBO(25, 25, 25, 0.9),
                             onPressed: () {
-                              stateF.copyWith(
-                                catagoryEditing: true,
-                              );
+                              context
+                                  .bloc<ProductFormBloc>()
+                                  .add(const ProductFormEvent.catagoryAdded());
+                              print('editing: ${stateF.catagoryEditing}');
                               // addCategory();
                               // print('pressed $screenHeight, $screenWidth, $device');
                             },

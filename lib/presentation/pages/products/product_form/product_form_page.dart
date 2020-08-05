@@ -83,8 +83,9 @@ class ProductFormPage extends HookWidget {
 }
 
 Widget selectCategoriesPopUp(BuildContext context, ProductFormState state) {
-  final double screenHeight = MediaQuery.of(context).size.width;
+  final double screenHeight = MediaQuery.of(context).size.height;
   final double screenWidth = MediaQuery.of(context).size.width;
+  print('popup height: $screenHeight width: $screenWidth');
   return AnimatedPositioned(
       height: 0.9.hp.toDouble(),
       left: ScreenUtil().setWidth(screenWidth * 0.03).toDouble(),
@@ -351,6 +352,7 @@ class ProductFormPageScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    print('scafold height: $screenHeight width: $screenWidth');
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(

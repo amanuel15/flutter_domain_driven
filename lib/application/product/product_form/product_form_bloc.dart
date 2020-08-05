@@ -32,101 +32,95 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
   Stream<ProductFormState> mapEventToState(
     ProductFormEvent event,
   ) async* {
-    yield* event.map(
-      initialized: (e) async* {
-        yield e.initialProductOption.fold(
-          () => state,
-          (initialProduct) {
-            return state.copyWith(
-              product: initialProduct,
-              isEditing: true,
-            );
-          },
-        );
-      },
-      nameChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product.copyWith(productName: ProductName(e.nameStr)),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      descriptionChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product
-              .copyWith(productDescription: ProductDescription(e.descStr)),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      hypeDescriptionChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product
-              .copyWith(hypeDescription: ProductHypeDescription(e.hypeDescStr)),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      totalAmountChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product.copyWith(totalAmount: TotalAmount(e.totalNum)),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      soldAmountChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product.copyWith(soldAmount: SoldAmount(e.soldNum)),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      imagesChanged: (e) async* {
-        final imageOption = await _productRepository.pickImage();
-        // TODO: yield states based on image picker repo
-        //yield imageOption.fold((l) => null, (r) => null);
-        yield state.copyWith(
-          product: state.product.copyWith(
-              // images: ListImage(
-              //   e.images.map((primitive) => primitive.toDomain()),
-              // ),
-              ),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      catagoriesChanged: (e) async* {
-        yield state.copyWith(
-          product: state.product.copyWith(
-            catagories: ListCatagories(
-              e.catagories.map((primitive) => primitive.toDomain()),
+    yield* event.map(initialized: (e) async* {
+      yield e.initialProductOption.fold(
+        () => state,
+        (initialProduct) {
+          return state.copyWith(
+            product: initialProduct,
+            isEditing: true,
+          );
+        },
+      );
+    }, nameChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product.copyWith(productName: ProductName(e.nameStr)),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, descriptionChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product
+            .copyWith(productDescription: ProductDescription(e.descStr)),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, hypeDescriptionChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product
+            .copyWith(hypeDescription: ProductHypeDescription(e.hypeDescStr)),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, totalAmountChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product.copyWith(totalAmount: TotalAmount(e.totalNum)),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, soldAmountChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product.copyWith(soldAmount: SoldAmount(e.soldNum)),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, imagesChanged: (e) async* {
+      final imageOption = await _productRepository.pickImage();
+      // TODO: yield states based on image picker repo
+      //yield imageOption.fold((l) => null, (r) => null);
+      yield state.copyWith(
+        product: state.product.copyWith(
+            // images: ListImage(
+            //   e.images.map((primitive) => primitive.toDomain()),
+            // ),
             ),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, catagoriesChanged: (e) async* {
+      yield state.copyWith(
+        product: state.product.copyWith(
+          catagories: ListCatagories(
+            e.catagories.map((primitive) => primitive.toDomain()),
           ),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
-      saved: (e) async* {
-        Either<ProductFailure, Unit> failureOrSuccess;
+        ),
+        saveFailureOrSuccessOption: none(),
+      );
+    }, saved: (e) async* {
+      Either<ProductFailure, Unit> failureOrSuccess;
 
-        yield state.copyWith(
-          isSaving: true,
-          saveFailureOrSuccessOption: none(),
-        );
+      yield state.copyWith(
+        isSaving: true,
+        saveFailureOrSuccessOption: none(),
+      );
 
-        if (state.product.failureOption.isNone()) {
-          failureOrSuccess = state.isEditing
-              ? await _productRepository.update(state.product)
-              : await _productRepository.create(state.product);
-        }
-        yield state.copyWith(
-          isSaving: false,
-          showErrorMessage: true,
-          saveFailureOrSuccessOption: optionOf(failureOrSuccess),
-        );
-      },
-      catagoriesDeleted: (e) async* {
-        yield state.copyWith(
-          product: state.product.copyWith(
-            catagories: ListCatagories(emptyList()),
-          ),
-          saveFailureOrSuccessOption: none(),
-        );
-        print('deleted: ${state.product.catagories}');
-      },
-    );
+      if (state.product.failureOption.isNone()) {
+        failureOrSuccess = state.isEditing
+            ? await _productRepository.update(state.product)
+            : await _productRepository.create(state.product);
+      }
+      yield state.copyWith(
+        isSaving: false,
+        showErrorMessage: true,
+        saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+      );
+    }, catagoriesDeleted: (e) async* {
+      yield state.copyWith(
+        product: state.product.copyWith(
+          catagories: ListCatagories(emptyList()),
+        ),
+        saveFailureOrSuccessOption: none(),
+      );
+      print('deleted: ${state.product.catagories}');
+    }, catagoryAdded: (e) async* {
+      yield state.copyWith(
+        catagoryEditing: true,
+        saveFailureOrSuccessOption: none(),
+      );
+    });
   }
 }

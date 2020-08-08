@@ -11,7 +11,7 @@ mixin _$CatagoryWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result watchCatagoriesStarted(),
-    @required Result watchSubCatagories(String path),
+    @required Result watchSubCatagories(List<String> path),
     @required
         Result catagoryRecived(
             Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
@@ -20,7 +20,7 @@ mixin _$CatagoryWatcherEvent {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result watchCatagoriesStarted(),
-    Result watchSubCatagories(String path),
+    Result watchSubCatagories(List<String> path),
     Result catagoryRecived(
         Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
@@ -49,7 +49,7 @@ class _$CatagoryWatcherEventTearOff {
     return const _WatchCatagoriesStarted();
   }
 
-  _WatchSubCatagories watchSubCatagories(String path) {
+  _WatchSubCatagories watchSubCatagories(List<String> path) {
     return _WatchSubCatagories(
       path,
     );
@@ -85,7 +85,7 @@ class _$_WatchCatagoriesStarted implements _WatchCatagoriesStarted {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result watchCatagoriesStarted(),
-    @required Result watchSubCatagories(String path),
+    @required Result watchSubCatagories(List<String> path),
     @required
         Result catagoryRecived(
             Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
@@ -100,7 +100,7 @@ class _$_WatchCatagoriesStarted implements _WatchCatagoriesStarted {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result watchCatagoriesStarted(),
-    Result watchSubCatagories(String path),
+    Result watchSubCatagories(List<String> path),
     Result catagoryRecived(
         Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
@@ -149,7 +149,7 @@ class _$_WatchSubCatagories implements _WatchSubCatagories {
   const _$_WatchSubCatagories(this.path) : assert(path != null);
 
   @override
-  final String path;
+  final List<String> path;
 
   @override
   String toString() {
@@ -173,7 +173,7 @@ class _$_WatchSubCatagories implements _WatchSubCatagories {
     Object path = freezed,
   }) {
     return _$_WatchSubCatagories(
-      path == freezed ? this.path : path as String,
+      path == freezed ? this.path : path as List<String>,
     );
   }
 
@@ -181,7 +181,7 @@ class _$_WatchSubCatagories implements _WatchSubCatagories {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result watchCatagoriesStarted(),
-    @required Result watchSubCatagories(String path),
+    @required Result watchSubCatagories(List<String> path),
     @required
         Result catagoryRecived(
             Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
@@ -196,7 +196,7 @@ class _$_WatchSubCatagories implements _WatchSubCatagories {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result watchCatagoriesStarted(),
-    Result watchSubCatagories(String path),
+    Result watchSubCatagories(List<String> path),
     Result catagoryRecived(
         Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),
@@ -238,11 +238,11 @@ class _$_WatchSubCatagories implements _WatchSubCatagories {
 }
 
 abstract class _WatchSubCatagories implements CatagoryWatcherEvent {
-  const factory _WatchSubCatagories(String path) = _$_WatchSubCatagories;
+  const factory _WatchSubCatagories(List<String> path) = _$_WatchSubCatagories;
 
-  String get path;
+  List<String> get path;
 
-  _WatchSubCatagories copyWith({String path});
+  _WatchSubCatagories copyWith({List<String> path});
 }
 
 class _$_CatagoryRecived implements _CatagoryRecived {
@@ -286,7 +286,7 @@ class _$_CatagoryRecived implements _CatagoryRecived {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result watchCatagoriesStarted(),
-    @required Result watchSubCatagories(String path),
+    @required Result watchSubCatagories(List<String> path),
     @required
         Result catagoryRecived(
             Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
@@ -301,7 +301,7 @@ class _$_CatagoryRecived implements _CatagoryRecived {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result watchCatagoriesStarted(),
-    Result watchSubCatagories(String path),
+    Result watchSubCatagories(List<String> path),
     Result catagoryRecived(
         Either<CatagoryFailure, KtList<CatagoryName>> failureOrCatagory),
     @required Result orElse(),

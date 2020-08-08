@@ -19,7 +19,7 @@ abstract class IProductRepository {
 
   //functions for catagories
   Future<Either<CatagoryFailure, KtList<CatagoryName>>> watchAllCatagories(
-      {String path = 'Catagories'});
+      {List<String> path = const ['Catagories']});
 
   //functions for images
   Future<Either<ImageFailure, KtList<ImageItem>>> getImages(

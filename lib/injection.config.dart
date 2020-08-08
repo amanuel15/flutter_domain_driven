@@ -15,6 +15,7 @@ import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/notes/note_actor/note_actor_bloc.dart';
 import 'application/notes/note_form/note_form_bloc.dart';
 import 'application/notes/note_watcher/note_watcher_bloc.dart';
+import 'application/product/catagory_watcher/catagory_watcher_bloc.dart';
 import 'application/product/product_form/product_form_bloc.dart';
 import 'application/product/products_watcher/product_wathcer_bloc.dart';
 import 'domain/auth/i_auth_facade.dart';
@@ -55,6 +56,8 @@ void $initGetIt(GetIt g, {String environment}) {
       () => ProductWathcerBloc(g<IProductRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   gh.factory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
+  gh.factory<CatagoryWatcherBloc>(
+      () => CatagoryWatcherBloc(g<IProductRepository>()));
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}

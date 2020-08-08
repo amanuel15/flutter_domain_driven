@@ -46,14 +46,14 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
 
 Either<ValueFailure<KtList<T>>, KtList<T>> validateListLength<T>(
     KtList<T> input, int length) {
-  if (input.size == length) {
-    return right(input);
-  } else {
-    return left(ValueFailure.wrongCatagoryDepth(
-      failedValue: input,
-      length: length,
-    ));
-  }
+  // if (input.size == length) {
+  return right(input);
+  // } else {
+  //   return left(ValueFailure.wrongCatagoryDepth(
+  //     failedValue: input,
+  //     length: length,
+  //   ));
+  // }
 }
 
 Either<ValueFailure<int>, int> validateAmount(int input) {

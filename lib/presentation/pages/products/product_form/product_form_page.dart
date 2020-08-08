@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dartz/dartz.dart';
+import 'package:finished_notes_firebase_ddd_course/application/product/catagory_watcher/catagory_watcher_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
@@ -12,6 +13,7 @@ import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/p
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/name_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/total_amount_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/critical_failure_display_pwidget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +32,15 @@ class ProductFormPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<ProductFormBloc>()
-        ..add(ProductFormEvent.initialized(optionOf(editedProduct))),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) => getIt<ProductFormBloc>()
+              ..add(ProductFormEvent.initialized(optionOf(editedProduct)))),
+        // BlocProvider(
+        //   create: (context) => getIt<CatagoryWatcherBloc>(),
+        // ),
+      ],
       child: BlocConsumer<ProductFormBloc, ProductFormState>(
         listenWhen: (p, c) =>
             p.saveFailureOrSuccessOption != c.saveFailureOrSuccessOption,
@@ -68,7 +76,8 @@ class ProductFormPage extends HookWidget {
           final double screenWidth = MediaQuery.of(context).size.width;
           ScreenUtil.init(context,
               width: screenWidth, height: screenHeight, allowFontScaling: true);
-          return ProductFormPageScaffold();
+
+          return const ProductFormPageScaffold();
           // Stack(
           //   children: <Widget>[
           //     const ProductFormPageScaffold(),
@@ -82,226 +91,284 @@ class ProductFormPage extends HookWidget {
   }
 }
 
-Widget selectCategoriesPopUp(BuildContext context, ProductFormState state) {
+Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
   final double screenHeight = MediaQuery.of(context).size.height;
   final double screenWidth = MediaQuery.of(context).size.width;
-  print('popup height: $screenHeight width: $screenWidth');
+  final Shader textLinearGradient = const LinearGradient(
+    colors: <Color>[
+      Color.fromARGB(200, 189, 21, 249),
+      Color.fromARGB(200, 255, 55, 0),
+    ],
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
   return AnimatedPositioned(
       height: 0.9.hp.toDouble(),
       left: ScreenUtil().setWidth(screenWidth * 0.03).toDouble(),
       width: ScreenUtil().setWidth(screenWidth * 0.94).toDouble(),
-      top: state.catagoryEditing ? screenHeight - 0.9.hp : screenHeight,
+      top: stateF.catagoryEditing ? screenHeight - 0.9.hp : screenHeight,
       duration: const Duration(milliseconds: 500),
       child: AbsorbPointer(
-        absorbing: state.catagoryEditing,
-        child: FocusScope(
-          autofocus: true,
-          //node: state.catagoryEditing ? FocusScope,
-          child: Material(
-              clipBehavior: Clip.hardEdge,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(
-                          ScreenUtil().setWidth(20).toDouble()))),
-              shadowColor: Colors.black,
-              elevation: 10,
-              child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          // ignore: prefer_const_literals_to_create_immutables
-                          stops: [
-                        0,
-                        0.25,
-                        0.50,
-                        0.75
-                      ],
-                          colors: const [
-                        Color(0xFFCEF1E9),
-                        Color(0xFFDFD1AA),
-                        Color(0xFFADB9EC),
-                        Color(0xFFECB6E1)
-                      ])),
-                  child: Column(
-                    children: <Widget>[
-                      Card(
-                          elevation: 10,
-                          color: Colors.deepPurpleAccent,
-                          shadowColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(
-                                ScreenUtil().setWidth(20).toDouble()),
-                          )),
-                          child: SizedBox(
-                            height: 0.06.hp.toDouble(),
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: ScreenUtil()
-                                      .setWidth(screenWidth / 50)
-                                      .toDouble(),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    //undoCategory();
-                                  },
-                                  child: Icon(
-                                    Icons.arrow_back,
-                                    color: Colors.white,
-                                    size: 0.04.hp.toDouble(),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 0.7.wp.toDouble(),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    //cancelCategorySelection();
-                                  },
-                                  child: Icon(
-                                    Icons.clear,
-                                    color: Colors.white,
-                                    size: 0.04.hp.toDouble(),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
-                      ConstrainedBox(
-                        constraints:
-                            BoxConstraints(maxHeight: 0.7.hp.toDouble()),
-                        child: state.isEditing
-                            ? const Center(
-                                child: CircularProgressIndicator(
-                                backgroundColor:
-                                    Color.fromARGB(200, 189, 21, 249),
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color.fromARGB(200, 255, 55, 0),
-                                ),
-                              ))
-                            : ListView(
-                                // shrinkWrap: true,
-                                // children: <Widget>[
-                                //   SizedBox(
-                                //     height: 0.03.hp.toDouble(),
-                                //   ),
-                                //   SizedBox(
-                                //       height: 0.03.hp.toDouble(),
-                                //       width: 0.8.wp.toDouble(),
-                                //       child: AutoSizeText(
-                                //         selectedCategories.isEmpty
-                                //             ? "CATEGORIES"
-                                //             : selectedCategories.last
-                                //                 .toUpperCase(),
-                                //         maxLines: 1,
-                                //         textAlign: TextAlign.center,
-                                //         style: TextStyle(
-                                //             fontSize: 20.nsp.toDouble(),
-                                //             fontWeight: FontWeight.bold,
-                                //             foreground: Paint()
-                                //               ..shader = textLinearGradient),
-                                //       )),
-                                //   Center(
-                                //       child: categoriesList.isNotEmpty
-                                //           ? Column(
-                                //               children: categoriesList
-                                //                   .map((category) => Padding(
-                                //                         padding: EdgeInsets.fromLTRB(
-                                //                             ScreenUtil()
-                                //                                 .setWidth(
-                                //                                     screenWidth *
-                                //                                         0.02)
-                                //                                 .toDouble(),
-                                //                             ScreenUtil()
-                                //                                 .setHeight(
-                                //                                     screenHeight *
-                                //                                         0.01)
-                                //                                 .toDouble(),
-                                //                             0,
-                                //                             0),
-                                //                         child: Material(
-                                //                             clipBehavior:
-                                //                                 Clip.hardEdge,
-                                //                             type: MaterialType
-                                //                                 .card,
-                                //                             elevation: 5,
-                                //                             shape: RoundedRectangleBorder(
-                                //                                 borderRadius: BorderRadius.all(Radius.circular(
-                                //                                     ScreenUtil()
-                                //                                         .setWidth(
-                                //                                             20)
-                                //                                         .toDouble()))),
-                                //                             child: Ink(
-                                //                                 decoration:
-                                //                                     const BoxDecoration(
-                                //                                         gradient:
-                                //                                             LinearGradient(
-                                //                                                 colors: [
-                                //                                       Color.fromARGB(
-                                //                                           200,
-                                //                                           189,
-                                //                                           21,
-                                //                                           249),
-                                //                                       Color.fromARGB(
-                                //                                           200,
-                                //                                           255,
-                                //                                           55,
-                                //                                           0),
-                                //                                     ])),
-                                //                                 child: InkWell(
-                                //                                   onTap: () {
-                                //                                     chooseCategory(
-                                //                                         category);
-                                //                                   },
-                                //                                   child: SizedBox(
-                                //                                       height: ScreenUtil().setHeight(screenHeight / 18).toDouble(),
-                                //                                       width: ScreenUtil().setWidth(screenWidth * 0.9).toDouble(),
-                                //                                       child: Padding(
-                                //                                         padding: EdgeInsets.fromLTRB(
-                                //                                             0.03.wp.toDouble(),
-                                //                                             0.01.hp.toDouble(),
-                                //                                             0,
-                                //                                             0),
-                                //                                         child:
-                                //                                             AutoSizeText(
-                                //                                           category,
-                                //                                           maxLines:
-                                //                                               1,
-                                //                                           textAlign:
-                                //                                               TextAlign.center,
-                                //                                           style:
-                                //                                               TextStyle(
-                                //                                             color:
-                                //                                                 Colors.white,
-                                //                                             fontSize:
-                                //                                                 20.nsp.toDouble(),
-                                //                                           ),
-                                //                                         ),
-                                //                                       )),
-                                //                                 ))),
-                                //                       ))
-                                //                   .toList())
-                                //           : SizedBox(
-                                //               height: ScreenUtil()
-                                //                   .setHeight(screenHeight / 4)
-                                //                   .toDouble(),
-                                //               child: Align(
-                                //                 alignment: Alignment.center,
-                                //                 child: Text(
-                                //                   "NO CATEGORY SELECTED",
-                                //                   style: TextStyle(
-                                //                       fontSize:
-                                //                           24.nsp.toDouble()),
-                                //                 ),
-                                //               ))),
-                                // ],
-                                ),
-                      ),
+        absorbing: !stateF.catagoryEditing,
+        child: Material(
+            clipBehavior: Clip.hardEdge,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                    top:
+                        Radius.circular(ScreenUtil().setWidth(20).toDouble()))),
+            shadowColor: Colors.black,
+            elevation: 10,
+            child: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        stops: [
+                      0,
+                      0.25,
+                      0.50,
+                      0.75
                     ],
-                  ))),
-        ),
+                        colors: const [
+                      Color(0xFFCEF1E9),
+                      Color(0xFFDFD1AA),
+                      Color(0xFFADB9EC),
+                      Color(0xFFECB6E1)
+                    ])),
+                child: Column(
+                  children: <Widget>[
+                    Card(
+                        elevation: 10,
+                        color: Colors.deepPurpleAccent,
+                        shadowColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(
+                              ScreenUtil().setWidth(20).toDouble()),
+                        )),
+                        child: SizedBox(
+                          height: 0.06.hp.toDouble(),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: ScreenUtil()
+                                    .setWidth(screenWidth / 50)
+                                    .toDouble(),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  context.bloc<ProductFormBloc>().add(
+                                      const ProductFormEvent.catagoryAdded());
+                                  //undoCategory();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                  size: 0.04.hp.toDouble(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 0.7.wp.toDouble(),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  //cancelCategorySelection();
+                                },
+                                child: Icon(
+                                  Icons.clear,
+                                  color: Colors.white,
+                                  size: 0.04.hp.toDouble(),
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxHeight: 0.7.hp.toDouble()),
+                      child: BlocProvider<CatagoryWatcherBloc>(
+                        create: (context) {
+                          return getIt<CatagoryWatcherBloc>()
+                            ..add(const CatagoryWatcherEvent
+                                .watchCatagoriesStarted());
+                        },
+                        child: BlocBuilder<CatagoryWatcherBloc,
+                            CatagoryWatcherState>(
+                          builder: (context, state) {
+                            return state.map(
+                              initial: (_) => Container(),
+                              inProgress: (_) => const Center(
+                                child: CircularProgressIndicator(
+                                  backgroundColor:
+                                      Color.fromARGB(200, 189, 21, 249),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color.fromARGB(200, 255, 55, 0),
+                                  ),
+                                ),
+                              ),
+                              loadSucess: (state) {
+                                final catagories = state.catagories.asList();
+                                return ListView(
+                                  shrinkWrap: true,
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height: 0.03.hp.toDouble(),
+                                    ),
+                                    SizedBox(
+                                      height: 0.03.hp.toDouble(),
+                                      width: 0.8.wp.toDouble(),
+                                      child: AutoSizeText(
+                                        'CATEGORIES',
+                                        maxLines: 1,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20.nsp.toDouble(),
+                                          fontWeight: FontWeight.bold,
+                                          foreground: Paint()
+                                            ..shader = textLinearGradient,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Column(
+                                        children: catagories
+                                            .map(
+                                              (catagory) => Padding(
+                                                padding: EdgeInsets.fromLTRB(
+                                                  ScreenUtil()
+                                                      .setWidth(
+                                                          screenWidth * 0.02)
+                                                      .toDouble(),
+                                                  ScreenUtil()
+                                                      .setHeight(
+                                                          screenHeight * 0.01)
+                                                      .toDouble(),
+                                                  0,
+                                                  0,
+                                                ),
+                                                child: Material(
+                                                  clipBehavior: Clip.hardEdge,
+                                                  type: MaterialType.card,
+                                                  elevation: 5,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(
+                                                          ScreenUtil()
+                                                              .setWidth(20)
+                                                              .toDouble()),
+                                                    ),
+                                                  ),
+                                                  child: Ink(
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        colors: [
+                                                          Color.fromARGB(200,
+                                                              189, 21, 249),
+                                                          Color.fromARGB(
+                                                              200, 255, 55, 0),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        List<String> newPath =
+                                                            stateF.choosenCatagories +
+                                                                [
+                                                                  catagory
+                                                                      .getOrCrash()
+                                                                ];
+                                                        print('ui ${newPath}');
+                                                        if (newPath.length <
+                                                            4) {
+                                                          context
+                                                              .bloc<
+                                                                  ProductFormBloc>()
+                                                              .add(ProductFormEvent
+                                                                  .catagorySelected(
+                                                                      catagory
+                                                                          .getOrCrash()));
+                                                          context
+                                                              .bloc<
+                                                                  CatagoryWatcherBloc>()
+                                                              .add(CatagoryWatcherEvent
+                                                                  .watchSubCatagories(
+                                                                      newPath));
+                                                        } else {
+                                                          context
+                                                              .bloc<
+                                                                  ProductFormBloc>()
+                                                              .add(ProductFormEvent
+                                                                  .catagorySelected(
+                                                                      catagory
+                                                                          .getOrCrash()));
+                                                          context
+                                                              .bloc<
+                                                                  ProductFormBloc>()
+                                                              .add(const ProductFormEvent
+                                                                  .catagoryAdded());
+                                                        }
+                                                      },
+                                                      child: SizedBox(
+                                                        height: ScreenUtil()
+                                                            .setHeight(
+                                                                screenHeight /
+                                                                    18)
+                                                            .toDouble(),
+                                                        width: ScreenUtil()
+                                                            .setWidth(
+                                                                screenWidth *
+                                                                    0.9)
+                                                            .toDouble(),
+                                                        child: Padding(
+                                                          padding: EdgeInsets
+                                                              .fromLTRB(
+                                                                  0.03
+                                                                      .wp
+                                                                      .toDouble(),
+                                                                  0.01
+                                                                      .hp
+                                                                      .toDouble(),
+                                                                  0,
+                                                                  0),
+                                                          child: AutoSizeText(
+                                                            catagory
+                                                                .getOrCrash(),
+                                                            maxLines: 1,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 20
+                                                                  .nsp
+                                                                  .toDouble(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                              loadFailure: (state) {
+                                return CriticalCatagoryFailureDisplay(
+                                  failure: state.catagoryFailure,
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ))),
       ));
 }
 
@@ -352,7 +419,7 @@ class ProductFormPageScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    print('scafold height: $screenHeight width: $screenWidth');
+    FocusScopeNode focusNode = FocusScopeNode();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -368,6 +435,7 @@ class ProductFormPageScaffold extends StatelessWidget {
                 bottom: Radius.circular(ScreenUtil().setWidth(10).toDouble()))),
         elevation: 20,
         backgroundColor: Colors.deepOrange,
+        centerTitle: true,
         title: Text(
           'Flutter Demo',
           style: TextStyle(
@@ -376,8 +444,14 @@ class ProductFormPageScaffold extends StatelessWidget {
                   .toDouble()),
         ),
       ),
-      body: BlocBuilder<ProductFormBloc, ProductFormState>(
-        condition: (p, c) => p.showErrorMessage != c.showErrorMessage,
+      body: BlocConsumer<ProductFormBloc, ProductFormState>(
+        listener: (context, state) {
+          if (state.catagoryEditing) {
+            focusNode.unfocus();
+          }
+        },
+        //condition: (p, c) => p.showErrorMessage != c.showErrorMessage,
+        //condition: (p, c) => p.catagoryEditing != c.catagoryEditing,
         builder: (context, state) {
           return MultiProvider(
             providers: [
@@ -411,21 +485,18 @@ class ProductFormPageScaffold extends StatelessWidget {
                   Form(
                     autovalidate: state.showErrorMessage,
                     // child: AbsorbPointer(
-                    //   absorbing: true,
+                    //   absorbing: state.isEditing && !state.catagoryEditing,
                     //   child: FocusScope(
                     //     autofocus: true,
+                    //     //node: ,
                     //     child: SingleChildScrollView(
                     //       padding: EdgeInsets.fromLTRB(
-                    //         ScreenUtil().setHeight(screenWidth / 30).toDouble(),
-                    //         0,
-                    //         ScreenUtil().setWidth(screenWidth / 25).toDouble(),
-                    //         0,
-                    //       ),
+                    //           0.04.wp.toDouble(), 0, 0.04.wp.toDouble(), 0),
                     //       child: Column(
                     //         children: <Widget>[
                     //           SizedBox(
                     //             height: ScreenUtil()
-                    //                 .setHeight(screenHeight / 25)
+                    //                 .setHeight(screenHeight / 35)
                     //                 .toDouble(),
                     //           ),
                     //           const NameField(),
@@ -438,24 +509,31 @@ class ProductFormPageScaffold extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
-                    child: const CustomScrollView(
-                      slivers: <Widget>[
-                        SliverToBoxAdapter(
-                          child: NameField(),
+                    child: AbsorbPointer(
+                      absorbing: state.catagoryEditing,
+                      child: FocusScope(
+                        autofocus: true,
+                        node: focusNode,
+                        child: const CustomScrollView(
+                          slivers: <Widget>[
+                            SliverToBoxAdapter(
+                              child: NameField(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: DescriptionField(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: HypeDescriptionField(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: AmountField(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: AddField(),
+                            ),
+                          ],
                         ),
-                        SliverToBoxAdapter(
-                          child: DescriptionField(),
-                        ),
-                        SliverToBoxAdapter(
-                          child: HypeDescriptionField(),
-                        ),
-                        SliverToBoxAdapter(
-                          child: AmountField(),
-                        ),
-                        SliverToBoxAdapter(
-                          child: AddField(),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                   selectCategoriesPopUp(context, state),

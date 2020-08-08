@@ -24,7 +24,6 @@ class ProductsOverviewPage extends HookWidget implements AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductWathcerBloc>(create: (context) {
-          print('object');
           return getIt<ProductWathcerBloc>()
             ..add(const ProductWathcerEvent.watchAllStarted());
         }),

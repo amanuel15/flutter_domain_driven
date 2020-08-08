@@ -186,7 +186,8 @@ class AddField extends HookWidget {
                               context
                                   .bloc<ProductFormBloc>()
                                   .add(const ProductFormEvent.catagoryAdded());
-                              print('editing: ${stateF.catagoryEditing}');
+                              // print('editing: ${stateF.catagoryEditing}');
+                              // print('editing: ${stateF.product}');
                               // addCategory();
                               // print('pressed $screenHeight, $screenWidth, $device');
                             },

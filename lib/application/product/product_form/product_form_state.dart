@@ -9,6 +9,7 @@ abstract class ProductFormState with _$ProductFormState {
     @required bool isSaving,
     @required bool catagoryEditing,
     @required bool catagorySaving,
+    @required List<String> choosenCatagories,
     @required Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
     @required Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption,
   }) = _ProductFormState;
@@ -20,6 +21,7 @@ abstract class ProductFormState with _$ProductFormState {
         isSaving: false,
         catagoryEditing: false,
         catagorySaving: false,
+        choosenCatagories: ['Catagories'],
         saveFailureOrCatagoryOption: none(),
         saveFailureOrSuccessOption: none(),
       );

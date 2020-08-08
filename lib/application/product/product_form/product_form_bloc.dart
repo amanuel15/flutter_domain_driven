@@ -118,7 +118,13 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       print('deleted: ${state.product.catagories}');
     }, catagoryAdded: (e) async* {
       yield state.copyWith(
-        catagoryEditing: true,
+        catagoryEditing: !state.catagoryEditing,
+        saveFailureOrSuccessOption: none(),
+      );
+    }, catagorySelected: (e) async* {
+      print('plus ${state.choosenCatagories + [e.catagory]}');
+      yield state.copyWith(
+        choosenCatagories: state.choosenCatagories + [e.catagory],
         saveFailureOrSuccessOption: none(),
       );
     });

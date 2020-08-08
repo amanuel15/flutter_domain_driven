@@ -22,6 +22,7 @@ mixin _$ProductFormEvent {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   });
 
   @optionalTypeArgs
@@ -37,6 +38,7 @@ mixin _$ProductFormEvent {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   });
 
@@ -53,6 +55,7 @@ mixin _$ProductFormEvent {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   });
 
   @optionalTypeArgs
@@ -68,6 +71,7 @@ mixin _$ProductFormEvent {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   });
 }
@@ -135,6 +139,12 @@ class _$ProductFormEventTearOff {
   _CatagoryAdded catagoryAdded() {
     return const _CatagoryAdded();
   }
+
+  _CatagorySelected catagorySelected(String catagory) {
+    return _CatagorySelected(
+      catagory,
+    );
+  }
 }
 
 const $ProductFormEvent = _$ProductFormEventTearOff();
@@ -191,6 +201,7 @@ class _$_Initialized implements _Initialized {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -203,6 +214,7 @@ class _$_Initialized implements _Initialized {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return initialized(initialProductOption);
   }
 
@@ -220,6 +232,7 @@ class _$_Initialized implements _Initialized {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -243,6 +256,7 @@ class _$_Initialized implements _Initialized {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -255,6 +269,7 @@ class _$_Initialized implements _Initialized {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return initialized(this);
   }
 
@@ -272,6 +287,7 @@ class _$_Initialized implements _Initialized {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -338,6 +354,7 @@ class _$_NameChanged implements _NameChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -350,6 +367,7 @@ class _$_NameChanged implements _NameChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return nameChanged(nameStr);
   }
 
@@ -367,6 +385,7 @@ class _$_NameChanged implements _NameChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -390,6 +409,7 @@ class _$_NameChanged implements _NameChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -402,6 +422,7 @@ class _$_NameChanged implements _NameChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return nameChanged(this);
   }
 
@@ -419,6 +440,7 @@ class _$_NameChanged implements _NameChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -484,6 +506,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -496,6 +519,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return descriptionChanged(descStr);
   }
 
@@ -513,6 +537,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -536,6 +561,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -548,6 +574,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return descriptionChanged(this);
   }
 
@@ -565,6 +592,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -632,6 +660,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -644,6 +673,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return hypeDescriptionChanged(hypeDescStr);
   }
 
@@ -661,6 +691,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -684,6 +715,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -696,6 +728,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return hypeDescriptionChanged(this);
   }
 
@@ -713,6 +746,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -780,6 +814,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -792,6 +827,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return totalAmountChanged(totalNum);
   }
 
@@ -809,6 +845,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -832,6 +869,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -844,6 +882,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return totalAmountChanged(this);
   }
 
@@ -861,6 +900,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -926,6 +966,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -938,6 +979,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return soldAmountChanged(soldNum);
   }
 
@@ -955,6 +997,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -978,6 +1021,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -990,6 +1034,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return soldAmountChanged(this);
   }
 
@@ -1007,6 +1052,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1072,6 +1118,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1084,6 +1131,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return imagesChanged(images);
   }
 
@@ -1101,6 +1149,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1124,6 +1173,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1136,6 +1186,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return imagesChanged(this);
   }
 
@@ -1153,6 +1204,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1222,6 +1274,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1234,6 +1287,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoriesChanged(catagories);
   }
 
@@ -1251,6 +1305,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1274,6 +1329,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1286,6 +1342,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoriesChanged(this);
   }
 
@@ -1303,6 +1360,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1353,6 +1411,7 @@ class _$_Saved implements _Saved {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1365,6 +1424,7 @@ class _$_Saved implements _Saved {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return saved();
   }
 
@@ -1382,6 +1442,7 @@ class _$_Saved implements _Saved {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1405,6 +1466,7 @@ class _$_Saved implements _Saved {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1417,6 +1479,7 @@ class _$_Saved implements _Saved {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return saved(this);
   }
 
@@ -1434,6 +1497,7 @@ class _$_Saved implements _Saved {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1479,6 +1543,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1491,6 +1556,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoriesDeleted();
   }
 
@@ -1508,6 +1574,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1531,6 +1598,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1543,6 +1611,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoriesDeleted(this);
   }
 
@@ -1560,6 +1629,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1605,6 +1675,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result saved(),
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1617,6 +1688,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoryAdded();
   }
 
@@ -1634,6 +1706,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result saved(),
     Result catagoriesDeleted(),
     Result catagoryAdded(),
+    Result catagorySelected(String catagory),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1657,6 +1730,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result saved(_Saved value),
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1669,6 +1743,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(saved != null);
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
+    assert(catagorySelected != null);
     return catagoryAdded(this);
   }
 
@@ -1686,6 +1761,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result saved(_Saved value),
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1700,6 +1776,159 @@ abstract class _CatagoryAdded implements ProductFormEvent {
   const factory _CatagoryAdded() = _$_CatagoryAdded;
 }
 
+class _$_CatagorySelected implements _CatagorySelected {
+  const _$_CatagorySelected(this.catagory) : assert(catagory != null);
+
+  @override
+  final String catagory;
+
+  @override
+  String toString() {
+    return 'ProductFormEvent.catagorySelected(catagory: $catagory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CatagorySelected &&
+            (identical(other.catagory, catagory) ||
+                const DeepCollectionEquality()
+                    .equals(other.catagory, catagory)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(catagory);
+
+  @override
+  _$_CatagorySelected copyWith({
+    Object catagory = freezed,
+  }) {
+    return _$_CatagorySelected(
+      catagory == freezed ? this.catagory : catagory as String,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Product> initialProductOption),
+    @required Result nameChanged(String nameStr),
+    @required Result descriptionChanged(String descStr),
+    @required Result hypeDescriptionChanged(String hypeDescStr),
+    @required Result totalAmountChanged(int totalNum),
+    @required Result soldAmountChanged(int soldNum),
+    @required Result imagesChanged(KtList<ImageItemPrimitive> images),
+    @required
+        Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    @required Result saved(),
+    @required Result catagoriesDeleted(),
+    @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    return catagorySelected(catagory);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Product> initialProductOption),
+    Result nameChanged(String nameStr),
+    Result descriptionChanged(String descStr),
+    Result hypeDescriptionChanged(String hypeDescStr),
+    Result totalAmountChanged(int totalNum),
+    Result soldAmountChanged(int soldNum),
+    Result imagesChanged(KtList<ImageItemPrimitive> images),
+    Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    Result saved(),
+    Result catagoriesDeleted(),
+    Result catagoryAdded(),
+    Result catagorySelected(String catagory),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (catagorySelected != null) {
+      return catagorySelected(catagory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    @required Result totalAmountChanged(_TotalAmountChanged value),
+    @required Result soldAmountChanged(_SoldAmountChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result catagoriesChanged(_CatagoriesChanged value),
+    @required Result saved(_Saved value),
+    @required Result catagoriesDeleted(_CatagoriesDeleted value),
+    @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    return catagorySelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    Result totalAmountChanged(_TotalAmountChanged value),
+    Result soldAmountChanged(_SoldAmountChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result catagoriesChanged(_CatagoriesChanged value),
+    Result saved(_Saved value),
+    Result catagoriesDeleted(_CatagoriesDeleted value),
+    Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (catagorySelected != null) {
+      return catagorySelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CatagorySelected implements ProductFormEvent {
+  const factory _CatagorySelected(String catagory) = _$_CatagorySelected;
+
+  String get catagory;
+
+  _CatagorySelected copyWith({String catagory});
+}
+
 mixin _$ProductFormState {
   Product get product;
   bool get showErrorMessage;
@@ -1707,6 +1936,7 @@ mixin _$ProductFormState {
   bool get isSaving;
   bool get catagoryEditing;
   bool get catagorySaving;
+  List<String> get choosenCatagories;
   Option<Either<CatagoryFailure, Unit>> get saveFailureOrCatagoryOption;
   Option<Either<ProductFailure, Unit>> get saveFailureOrSuccessOption;
 
@@ -1717,6 +1947,7 @@ mixin _$ProductFormState {
       bool isSaving,
       bool catagoryEditing,
       bool catagorySaving,
+      List<String> choosenCatagories,
       Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption});
 }
@@ -1738,6 +1969,8 @@ class _$ProductFormStateTearOff {
       @required
           bool catagorySaving,
       @required
+          List<String> choosenCatagories,
+      @required
           Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       @required
           Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption}) {
@@ -1748,6 +1981,7 @@ class _$ProductFormStateTearOff {
       isSaving: isSaving,
       catagoryEditing: catagoryEditing,
       catagorySaving: catagorySaving,
+      choosenCatagories: choosenCatagories,
       saveFailureOrCatagoryOption: saveFailureOrCatagoryOption,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption,
     );
@@ -1764,6 +1998,7 @@ class _$_ProductFormState implements _ProductFormState {
       @required this.isSaving,
       @required this.catagoryEditing,
       @required this.catagorySaving,
+      @required this.choosenCatagories,
       @required this.saveFailureOrCatagoryOption,
       @required this.saveFailureOrSuccessOption})
       : assert(product != null),
@@ -1772,6 +2007,7 @@ class _$_ProductFormState implements _ProductFormState {
         assert(isSaving != null),
         assert(catagoryEditing != null),
         assert(catagorySaving != null),
+        assert(choosenCatagories != null),
         assert(saveFailureOrCatagoryOption != null),
         assert(saveFailureOrSuccessOption != null);
 
@@ -1788,13 +2024,15 @@ class _$_ProductFormState implements _ProductFormState {
   @override
   final bool catagorySaving;
   @override
+  final List<String> choosenCatagories;
+  @override
   final Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption;
   @override
   final Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'ProductFormState(product: $product, showErrorMessage: $showErrorMessage, isEditing: $isEditing, isSaving: $isSaving, catagoryEditing: $catagoryEditing, catagorySaving: $catagorySaving, saveFailureOrCatagoryOption: $saveFailureOrCatagoryOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'ProductFormState(product: $product, showErrorMessage: $showErrorMessage, isEditing: $isEditing, isSaving: $isSaving, catagoryEditing: $catagoryEditing, catagorySaving: $catagorySaving, choosenCatagories: $choosenCatagories, saveFailureOrCatagoryOption: $saveFailureOrCatagoryOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -1819,6 +2057,9 @@ class _$_ProductFormState implements _ProductFormState {
             (identical(other.catagorySaving, catagorySaving) ||
                 const DeepCollectionEquality()
                     .equals(other.catagorySaving, catagorySaving)) &&
+            (identical(other.choosenCatagories, choosenCatagories) ||
+                const DeepCollectionEquality()
+                    .equals(other.choosenCatagories, choosenCatagories)) &&
             (identical(other.saveFailureOrCatagoryOption,
                     saveFailureOrCatagoryOption) ||
                 const DeepCollectionEquality().equals(
@@ -1840,6 +2081,7 @@ class _$_ProductFormState implements _ProductFormState {
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(catagoryEditing) ^
       const DeepCollectionEquality().hash(catagorySaving) ^
+      const DeepCollectionEquality().hash(choosenCatagories) ^
       const DeepCollectionEquality().hash(saveFailureOrCatagoryOption) ^
       const DeepCollectionEquality().hash(saveFailureOrSuccessOption);
 
@@ -1851,6 +2093,7 @@ class _$_ProductFormState implements _ProductFormState {
     Object isSaving = freezed,
     Object catagoryEditing = freezed,
     Object catagorySaving = freezed,
+    Object choosenCatagories = freezed,
     Object saveFailureOrCatagoryOption = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
@@ -1867,6 +2110,9 @@ class _$_ProductFormState implements _ProductFormState {
       catagorySaving: catagorySaving == freezed
           ? this.catagorySaving
           : catagorySaving as bool,
+      choosenCatagories: choosenCatagories == freezed
+          ? this.choosenCatagories
+          : choosenCatagories as List<String>,
       saveFailureOrCatagoryOption: saveFailureOrCatagoryOption == freezed
           ? this.saveFailureOrCatagoryOption
           : saveFailureOrCatagoryOption
@@ -1893,6 +2139,8 @@ abstract class _ProductFormState implements ProductFormState {
       @required
           bool catagorySaving,
       @required
+          List<String> choosenCatagories,
+      @required
           Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       @required
           Option<Either<ProductFailure, Unit>>
@@ -1911,6 +2159,8 @@ abstract class _ProductFormState implements ProductFormState {
   @override
   bool get catagorySaving;
   @override
+  List<String> get choosenCatagories;
+  @override
   Option<Either<CatagoryFailure, Unit>> get saveFailureOrCatagoryOption;
   @override
   Option<Either<ProductFailure, Unit>> get saveFailureOrSuccessOption;
@@ -1923,6 +2173,7 @@ abstract class _ProductFormState implements ProductFormState {
       bool isSaving,
       bool catagoryEditing,
       bool catagorySaving,
+      List<String> choosenCatagories,
       Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption});
 }

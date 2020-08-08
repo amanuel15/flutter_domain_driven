@@ -123,14 +123,44 @@ class ProductRepository implements IProductRepository {
 
   @override
   Future<Either<CatagoryFailure, KtList<CatagoryName>>> watchAllCatagories(
-      {String path = 'Catagories'}) {
-    return _firestore.collection(path).getDocuments().then((snapshot) {
-      return right<CatagoryFailure, KtList<CatagoryName>>(snapshot.documents
-          .map((doc) =>
-              CatagoryNameDto.fromJson({"name": doc.documentID}).toDomain())
-          .toImmutableList());
-    }).catchError((e) {
-      return left(const CatagoryFailure.unexpected());
-    });
+      {List<String> path = const ['Catagories']}) {
+    if (path.length == 1) {
+      print('in 1 $path');
+      return _firestore.collection(path[0]).getDocuments().then((snapshot) {
+        return right<CatagoryFailure, KtList<CatagoryName>>(snapshot.documents
+            .map((doc) =>
+                CatagoryNameDto.fromJson({"name": doc.documentID}).toDomain())
+            .toImmutableList());
+      }).catchError((e) {
+        return left(const CatagoryFailure.unexpected());
+      });
+    } else if (path.length == 2) {
+      print('in 2 $path');
+      return _firestore
+          .collection('${path[0]}/${path[1]}/subCatagory')
+          .getDocuments()
+          .then((snapshot) {
+        return right<CatagoryFailure, KtList<CatagoryName>>(snapshot.documents
+            .map((doc) =>
+                CatagoryNameDto.fromJson({"name": doc.documentID}).toDomain())
+            .toImmutableList());
+      }).catchError((e) {
+        return left(const CatagoryFailure.unexpected());
+      });
+    } else {
+      print('in 3 $path');
+      return _firestore
+          .collection(
+              '${path[0]}/${path[1]}/subCatagory/${path[2]}/subSubCatagory')
+          .getDocuments()
+          .then((snapshot) {
+        return right<CatagoryFailure, KtList<CatagoryName>>(snapshot.documents
+            .map((doc) =>
+                CatagoryNameDto.fromJson({"name": doc.documentID}).toDomain())
+            .toImmutableList());
+      }).catchError((e) {
+        return left(const CatagoryFailure.unexpected());
+      });
+    }
   }
 }

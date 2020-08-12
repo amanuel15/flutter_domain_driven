@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/failures.dart';
 
@@ -83,4 +84,35 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   } else {
     return left(ValueFailure.shortPassword(failedValue: input));
   }
+}
+
+Either<ValueFailure<ImageProperties>, ImageProperties> validateImageParameter(
+    {ImageProperties imageProperties,
+    double aspectRatio,
+    int minWidth,
+    int maxWidth,
+    int minHeight,
+    int maxHeight}) {
+//  img.Image imageFromFile;
+//  decodeImageFromList(imageProperties.image.readAsBytesSync()).then((value) => {
+//        imageFromFile = value,
+//      });
+  if (imageProperties.rawImage.width < minWidth ||
+      imageProperties.rawImage.height < minHeight) {
+    return left(ValueFailure.invalidImageParameter(
+        image: imageProperties.image,
+        isSmall: true,
+        isLarge: false,
+        correctAspectRatio: true));
+  } else if (imageProperties.rawImage.width > maxWidth ||
+      imageProperties.rawImage.height > maxHeight) {
+    return left(ValueFailure.invalidImageParameter(
+        image: imageProperties.image,
+        isSmall: false,
+        isLarge: true,
+        correctAspectRatio: true));
+  } else {
+    return right(imageProperties);
+  }
+//}
 }

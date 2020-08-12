@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -36,4 +38,9 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidPhotoUrl({
     @required T failedValue,
   }) = InvalidPhotoUrl<T>;
+  const factory ValueFailure.invalidImageParameter(
+      {File image,
+      bool isSmall,
+      bool isLarge,
+      bool correctAspectRatio}) = InvalidImageParameter<T>;
 }

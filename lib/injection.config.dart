@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -16,6 +17,7 @@ import 'application/notes/note_actor/note_actor_bloc.dart';
 import 'application/notes/note_form/note_form_bloc.dart';
 import 'application/notes/note_watcher/note_watcher_bloc.dart';
 import 'application/product/catagory_watcher/catagory_watcher_bloc.dart';
+import 'application/product/image_watcher/image_watcher_bloc.dart';
 import 'application/product/product_form/product_form_bloc.dart';
 import 'application/product/products_watcher/product_wathcer_bloc.dart';
 import 'domain/auth/i_auth_facade.dart';
@@ -34,6 +36,8 @@ import 'infrastructure/products/product_repository.dart';
 void $initGetIt(GetIt g, {String environment}) {
   final gh = GetItHelper(g, environment);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  gh.lazySingleton<CloudFunctions>(
+      () => firebaseInjectableModule.cloudFunctions);
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseStorage>(
       () => firebaseInjectableModule.firebaseStorage);
@@ -46,8 +50,13 @@ void $initGetIt(GetIt g, {String environment}) {
         g<FirebaseUserMapper>(),
       ));
   gh.lazySingleton<INoteRepository>(() => NoteRepository(g<Firestore>()));
-  gh.lazySingleton<IProductRepository>(
-      () => ProductRepository(g<Firestore>(), g<FirebaseStorage>()));
+  gh.lazySingleton<IProductRepository>(() => ProductRepository(
+        g<Firestore>(),
+        g<FirebaseStorage>(),
+        g<FirebaseAuth>(),
+        g<CloudFunctions>(),
+      ));
+  gh.factory<ImagewatcherBloc>(() => ImagewatcherBloc(g<IProductRepository>()));
   gh.factory<NoteActorBloc>(() => NoteActorBloc(g<INoteRepository>()));
   gh.factory<NoteFormBloc>(() => NoteFormBloc(g<INoteRepository>()));
   gh.factory<NoteWatcherBloc>(() => NoteWatcherBloc(g<INoteRepository>()));

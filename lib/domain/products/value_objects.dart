@@ -2,13 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/failures.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_validators.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
+import 'package:flutter/material.dart';
 import 'package:kt_dart/collection.dart';
 
 class ProductName extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const maxLength = 30;
+  static const maxLength = 100;
 
   factory ProductName(String input) {
     assert(input != null);
@@ -174,4 +176,41 @@ class ListCatagories<T> extends ValueObject<KtList<T>> {
   bool get isFull {
     return length == maxLength;
   }
+}
+
+class ProductImage extends ValueObject<ImageProperties> {
+  factory ProductImage(
+      {@required ImageProperties imageProperties, String imageType}) {
+    assert(imageProperties != null);
+    if (imageType == "LandScape") {
+      const minWidth = 853;
+      const minHeight = 480;
+      const maxWidth = 2560;
+      const maxHeight = 1440;
+      const aspectRatio = 16 / 9;
+      return ProductImage._(validateImageParameter(
+          imageProperties: imageProperties,
+          aspectRatio: aspectRatio,
+          minWidth: minWidth,
+          maxWidth: maxWidth,
+          minHeight: minHeight,
+          maxHeight: maxHeight));
+    } else {
+      const minHeight = 853;
+      const minWidth = 480;
+      const maxHeight = 2560;
+      const maxWidth = 1440;
+      const aspectRatio = 16 / 9;
+      return ProductImage._(validateImageParameter(
+          imageProperties: imageProperties,
+          aspectRatio: aspectRatio,
+          minWidth: minWidth,
+          maxWidth: maxWidth,
+          minHeight: minHeight,
+          maxHeight: maxHeight));
+    }
+  }
+  const ProductImage._(this.value);
+  @override
+  final Either<ValueFailure<ImageProperties>, ImageProperties> value;
 }

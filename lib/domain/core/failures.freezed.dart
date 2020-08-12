@@ -8,10 +8,6 @@ part of 'failures.dart';
 // **************************************************************************
 
 mixin _$ValueFailure<T> {
-  T get failedValue;
-
-  ValueFailure<T> copyWith({T failedValue});
-
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
@@ -26,6 +22,9 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   });
 
   @optionalTypeArgs
@@ -39,6 +38,8 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   });
 
@@ -53,6 +54,7 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   });
 
   @optionalTypeArgs
@@ -66,6 +68,7 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   });
 }
@@ -131,6 +134,16 @@ class _$ValueFailureTearOff {
   InvalidPhotoUrl<T> invalidPhotoUrl<T>({@required T failedValue}) {
     return InvalidPhotoUrl<T>(
       failedValue: failedValue,
+    );
+  }
+
+  InvalidImageParameter<T> invalidImageParameter<T>(
+      {File image, bool isSmall, bool isLarge, bool correctAspectRatio}) {
+    return InvalidImageParameter<T>(
+      image: image,
+      isSmall: isSmall,
+      isLarge: isLarge,
+      correctAspectRatio: correctAspectRatio,
     );
   }
 }
@@ -206,6 +219,9 @@ class _$ExceedingLength<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -216,6 +232,7 @@ class _$ExceedingLength<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -231,6 +248,8 @@ class _$ExceedingLength<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -252,6 +271,7 @@ class _$ExceedingLength<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -262,6 +282,7 @@ class _$ExceedingLength<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return exceedingLength(this);
   }
 
@@ -277,6 +298,7 @@ class _$ExceedingLength<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -291,11 +313,9 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
   const factory ExceedingLength({@required T failedValue, @required int max}) =
       _$ExceedingLength<T>;
 
-  @override
   T get failedValue;
   int get max;
 
-  @override
   ExceedingLength<T> copyWith({T failedValue, int max});
 }
 
@@ -355,6 +375,9 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -365,6 +388,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return empty(failedValue);
   }
 
@@ -380,6 +404,8 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -401,6 +427,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -411,6 +438,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return empty(this);
   }
 
@@ -426,6 +454,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -439,10 +468,8 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 abstract class Empty<T> implements ValueFailure<T> {
   const factory Empty({@required T failedValue}) = _$Empty<T>;
 
-  @override
   T get failedValue;
 
-  @override
   Empty<T> copyWith({T failedValue});
 }
 
@@ -502,6 +529,9 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -512,6 +542,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return multiline(failedValue);
   }
 
@@ -527,6 +558,8 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -548,6 +581,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -558,6 +592,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return multiline(this);
   }
 
@@ -573,6 +608,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -586,10 +622,8 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
 abstract class Multiline<T> implements ValueFailure<T> {
   const factory Multiline({@required T failedValue}) = _$Multiline<T>;
 
-  @override
   T get failedValue;
 
-  @override
   Multiline<T> copyWith({T failedValue});
 }
 
@@ -662,6 +696,9 @@ class _$NumberTooLarge<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -672,6 +709,7 @@ class _$NumberTooLarge<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return numberTooLarge(failedValue, max);
   }
 
@@ -687,6 +725,8 @@ class _$NumberTooLarge<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -708,6 +748,7 @@ class _$NumberTooLarge<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -718,6 +759,7 @@ class _$NumberTooLarge<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return numberTooLarge(this);
   }
 
@@ -733,6 +775,7 @@ class _$NumberTooLarge<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -747,11 +790,9 @@ abstract class NumberTooLarge<T> implements ValueFailure<T> {
   const factory NumberTooLarge({@required T failedValue, @required num max}) =
       _$NumberTooLarge<T>;
 
-  @override
   T get failedValue;
   num get max;
 
-  @override
   NumberTooLarge<T> copyWith({T failedValue, num max});
 }
 
@@ -822,6 +863,9 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -832,6 +876,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return listTooLong(failedValue, max);
   }
 
@@ -847,6 +892,8 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -868,6 +915,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -878,6 +926,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return listTooLong(this);
   }
 
@@ -893,6 +942,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -907,11 +957,9 @@ abstract class ListTooLong<T> implements ValueFailure<T> {
   const factory ListTooLong({@required T failedValue, @required int max}) =
       _$ListTooLong<T>;
 
-  @override
   T get failedValue;
   int get max;
 
-  @override
   ListTooLong<T> copyWith({T failedValue, int max});
 }
 
@@ -985,6 +1033,9 @@ class _$WrongCatagoryDepth<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -995,6 +1046,7 @@ class _$WrongCatagoryDepth<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return wrongCatagoryDepth(failedValue, length);
   }
 
@@ -1010,6 +1062,8 @@ class _$WrongCatagoryDepth<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1031,6 +1085,7 @@ class _$WrongCatagoryDepth<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1041,6 +1096,7 @@ class _$WrongCatagoryDepth<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return wrongCatagoryDepth(this);
   }
 
@@ -1056,6 +1112,7 @@ class _$WrongCatagoryDepth<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1071,11 +1128,9 @@ abstract class WrongCatagoryDepth<T> implements ValueFailure<T> {
       {@required T failedValue,
       @required int length}) = _$WrongCatagoryDepth<T>;
 
-  @override
   T get failedValue;
   int get length;
 
-  @override
   WrongCatagoryDepth<T> copyWith({T failedValue, int length});
 }
 
@@ -1138,6 +1193,9 @@ class _$InvalidEmail<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1148,6 +1206,7 @@ class _$InvalidEmail<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return invalidEmail(failedValue);
   }
 
@@ -1163,6 +1222,8 @@ class _$InvalidEmail<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1184,6 +1245,7 @@ class _$InvalidEmail<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1194,6 +1256,7 @@ class _$InvalidEmail<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return invalidEmail(this);
   }
 
@@ -1209,6 +1272,7 @@ class _$InvalidEmail<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1222,10 +1286,8 @@ class _$InvalidEmail<T>
 abstract class InvalidEmail<T> implements ValueFailure<T> {
   const factory InvalidEmail({@required T failedValue}) = _$InvalidEmail<T>;
 
-  @override
   T get failedValue;
 
-  @override
   InvalidEmail<T> copyWith({T failedValue});
 }
 
@@ -1288,6 +1350,9 @@ class _$ShortPassword<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1298,6 +1363,7 @@ class _$ShortPassword<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return shortPassword(failedValue);
   }
 
@@ -1313,6 +1379,8 @@ class _$ShortPassword<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1334,6 +1402,7 @@ class _$ShortPassword<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1344,6 +1413,7 @@ class _$ShortPassword<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return shortPassword(this);
   }
 
@@ -1359,6 +1429,7 @@ class _$ShortPassword<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1372,10 +1443,8 @@ class _$ShortPassword<T>
 abstract class ShortPassword<T> implements ValueFailure<T> {
   const factory ShortPassword({@required T failedValue}) = _$ShortPassword<T>;
 
-  @override
   T get failedValue;
 
-  @override
   ShortPassword<T> copyWith({T failedValue});
 }
 
@@ -1438,6 +1507,9 @@ class _$InvalidPhotoUrl<T>
     @required Result invalidEmail(@required T failedValue),
     @required Result shortPassword(@required T failedValue),
     @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1448,6 +1520,7 @@ class _$InvalidPhotoUrl<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return invalidPhotoUrl(failedValue);
   }
 
@@ -1463,6 +1536,8 @@ class _$InvalidPhotoUrl<T>
     Result invalidEmail(@required T failedValue),
     Result shortPassword(@required T failedValue),
     Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1484,6 +1559,7 @@ class _$InvalidPhotoUrl<T>
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1494,6 +1570,7 @@ class _$InvalidPhotoUrl<T>
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
     return invalidPhotoUrl(this);
   }
 
@@ -1509,6 +1586,7 @@ class _$InvalidPhotoUrl<T>
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1523,9 +1601,202 @@ abstract class InvalidPhotoUrl<T> implements ValueFailure<T> {
   const factory InvalidPhotoUrl({@required T failedValue}) =
       _$InvalidPhotoUrl<T>;
 
-  @override
   T get failedValue;
 
-  @override
   InvalidPhotoUrl<T> copyWith({T failedValue});
+}
+
+class _$InvalidImageParameter<T>
+    with DiagnosticableTreeMixin
+    implements InvalidImageParameter<T> {
+  const _$InvalidImageParameter(
+      {this.image, this.isSmall, this.isLarge, this.correctAspectRatio});
+
+  @override
+  final File image;
+  @override
+  final bool isSmall;
+  @override
+  final bool isLarge;
+  @override
+  final bool correctAspectRatio;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.invalidImageParameter(image: $image, isSmall: $isSmall, isLarge: $isLarge, correctAspectRatio: $correctAspectRatio)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ValueFailure<$T>.invalidImageParameter'))
+      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('isSmall', isSmall))
+      ..add(DiagnosticsProperty('isLarge', isLarge))
+      ..add(DiagnosticsProperty('correctAspectRatio', correctAspectRatio));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidImageParameter<T> &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
+            (identical(other.isSmall, isSmall) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSmall, isSmall)) &&
+            (identical(other.isLarge, isLarge) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLarge, isLarge)) &&
+            (identical(other.correctAspectRatio, correctAspectRatio) ||
+                const DeepCollectionEquality()
+                    .equals(other.correctAspectRatio, correctAspectRatio)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(image) ^
+      const DeepCollectionEquality().hash(isSmall) ^
+      const DeepCollectionEquality().hash(isLarge) ^
+      const DeepCollectionEquality().hash(correctAspectRatio);
+
+  @override
+  _$InvalidImageParameter<T> copyWith({
+    Object image = freezed,
+    Object isSmall = freezed,
+    Object isLarge = freezed,
+    Object correctAspectRatio = freezed,
+  }) {
+    return _$InvalidImageParameter<T>(
+      image: image == freezed ? this.image : image as File,
+      isSmall: isSmall == freezed ? this.isSmall : isSmall as bool,
+      isLarge: isLarge == freezed ? this.isLarge : isLarge as bool,
+      correctAspectRatio: correctAspectRatio == freezed
+          ? this.correctAspectRatio
+          : correctAspectRatio as bool,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required
+        Result exceedingLength(@required T failedValue, @required int max),
+    @required Result empty(@required T failedValue),
+    @required Result multiline(@required T failedValue),
+    @required Result numberTooLarge(@required T failedValue, @required num max),
+    @required Result listTooLong(@required T failedValue, @required int max),
+    @required
+        Result wrongCatagoryDepth(
+            @required T failedValue, @required int length),
+    @required Result invalidEmail(@required T failedValue),
+    @required Result shortPassword(@required T failedValue),
+    @required Result invalidPhotoUrl(@required T failedValue),
+    @required
+        Result invalidImageParameter(
+            File image, bool isSmall, bool isLarge, bool correctAspectRatio),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(numberTooLarge != null);
+    assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
+    return invalidImageParameter(image, isSmall, isLarge, correctAspectRatio);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(@required T failedValue, @required int max),
+    Result empty(@required T failedValue),
+    Result multiline(@required T failedValue),
+    Result numberTooLarge(@required T failedValue, @required num max),
+    Result listTooLong(@required T failedValue, @required int max),
+    Result wrongCatagoryDepth(@required T failedValue, @required int length),
+    Result invalidEmail(@required T failedValue),
+    Result shortPassword(@required T failedValue),
+    Result invalidPhotoUrl(@required T failedValue),
+    Result invalidImageParameter(
+        File image, bool isSmall, bool isLarge, bool correctAspectRatio),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidImageParameter != null) {
+      return invalidImageParameter(image, isSmall, isLarge, correctAspectRatio);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result numberTooLarge(NumberTooLarge<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    @required Result invalidImageParameter(InvalidImageParameter<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(numberTooLarge != null);
+    assert(listTooLong != null);
+    assert(wrongCatagoryDepth != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidPhotoUrl != null);
+    assert(invalidImageParameter != null);
+    return invalidImageParameter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiline(Multiline<T> value),
+    Result numberTooLarge(NumberTooLarge<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result wrongCatagoryDepth(WrongCatagoryDepth<T> value),
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result invalidPhotoUrl(InvalidPhotoUrl<T> value),
+    Result invalidImageParameter(InvalidImageParameter<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidImageParameter != null) {
+      return invalidImageParameter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidImageParameter<T> implements ValueFailure<T> {
+  const factory InvalidImageParameter(
+      {File image,
+      bool isSmall,
+      bool isLarge,
+      bool correctAspectRatio}) = _$InvalidImageParameter<T>;
+
+  File get image;
+  bool get isSmall;
+  bool get isLarge;
+  bool get correctAspectRatio;
+
+  InvalidImageParameter<T> copyWith(
+      {File image, bool isSmall, bool isLarge, bool correctAspectRatio});
 }

@@ -25,7 +25,7 @@ mixin _$ProductFormEvent {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -47,7 +47,7 @@ mixin _$ProductFormEvent {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -180,7 +180,7 @@ class _$ProductFormEventTearOff {
     );
   }
 
-  _ImagesRecived imagesRecived(KtList<ImageItemPrimitive> imageProperties) {
+  _ImagesRecived imagesRecived(KtList<ImageProperties> imageProperties) {
     return _ImagesRecived(
       imageProperties,
     );
@@ -263,7 +263,7 @@ class _$_Initialized implements _Initialized {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -306,7 +306,7 @@ class _$_Initialized implements _Initialized {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -452,7 +452,7 @@ class _$_NameChanged implements _NameChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -495,7 +495,7 @@ class _$_NameChanged implements _NameChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -640,7 +640,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -683,7 +683,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -830,7 +830,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -873,7 +873,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1020,7 +1020,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1063,7 +1063,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1208,7 +1208,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1251,7 +1251,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1396,7 +1396,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1439,7 +1439,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1588,7 +1588,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1631,7 +1631,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1761,7 +1761,7 @@ class _$_Saved implements _Saved {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1804,7 +1804,7 @@ class _$_Saved implements _Saved {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -1929,7 +1929,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -1972,7 +1972,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2097,7 +2097,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -2140,7 +2140,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2282,7 +2282,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -2325,7 +2325,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2454,7 +2454,7 @@ class _$_ImageAdded implements _ImageAdded {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -2497,7 +2497,7 @@ class _$_ImageAdded implements _ImageAdded {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2643,7 +2643,7 @@ class _$_ImageSelected implements _ImageSelected {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -2686,7 +2686,7 @@ class _$_ImageSelected implements _ImageSelected {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2787,7 +2787,7 @@ class _$_ImagesRecived implements _ImagesRecived {
       : assert(imageProperties != null);
 
   @override
-  final KtList<ImageItemPrimitive> imageProperties;
+  final KtList<ImageProperties> imageProperties;
 
   @override
   String toString() {
@@ -2815,7 +2815,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     return _$_ImagesRecived(
       imageProperties == freezed
           ? this.imageProperties
-          : imageProperties as KtList<ImageItemPrimitive>,
+          : imageProperties as KtList<ImageProperties>,
     );
   }
 
@@ -2837,7 +2837,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -2880,7 +2880,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -2968,12 +2968,12 @@ class _$_ImagesRecived implements _ImagesRecived {
 }
 
 abstract class _ImagesRecived implements ProductFormEvent {
-  const factory _ImagesRecived(KtList<ImageItemPrimitive> imageProperties) =
+  const factory _ImagesRecived(KtList<ImageProperties> imageProperties) =
       _$_ImagesRecived;
 
-  KtList<ImageItemPrimitive> get imageProperties;
+  KtList<ImageProperties> get imageProperties;
 
-  _ImagesRecived copyWith({KtList<ImageItemPrimitive> imageProperties});
+  _ImagesRecived copyWith({KtList<ImageProperties> imageProperties});
 }
 
 class _$_PortraitSelected implements _PortraitSelected {
@@ -3031,7 +3031,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -3074,7 +3074,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -3232,7 +3232,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -3275,7 +3275,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),
@@ -3422,7 +3422,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     @required Result catagorySelected(String catagory),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
-    @required Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
     @required Result portraitSelected(ImageProperties imageProperties),
     @required Result changeImagePosition(int newPosition, int lastPosition),
     @required Result imagesFetched(List<ImageProperties> images),
@@ -3465,7 +3465,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     Result catagorySelected(String catagory),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
-    Result imagesRecived(KtList<ImageItemPrimitive> imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
     Result portraitSelected(ImageProperties imageProperties),
     Result changeImagePosition(int newPosition, int lastPosition),
     Result imagesFetched(List<ImageProperties> images),

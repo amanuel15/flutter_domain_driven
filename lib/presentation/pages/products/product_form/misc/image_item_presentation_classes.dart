@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_item.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -32,5 +35,13 @@ abstract class ImageItemPrimitive with _$ImageItemPrimitive {
 extension ImageItemPrimitiveX on ImageItemPrimitive {
   ImageUrl toDomain() {
     return ImageUrl(name);
+  }
+
+  ImageProperties toImageProperties() {
+    return ImageProperties(
+      image: File(''),
+      downloadUrl: name,
+      path: '',
+    );
   }
 }

@@ -11,6 +11,6 @@ abstract class ImagewatcherEvent with _$ImagewatcherEvent {
   const factory ImagewatcherEvent.addImage(
       {File image, String imagePath, String imageType}) = _AddImage;
   const factory ImagewatcherEvent.imagesRecived(
-          Either<ImageFailure, List<ImageProperties>> failureOrimages) =
+          Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages) =
       _ImagesRecived;
 }

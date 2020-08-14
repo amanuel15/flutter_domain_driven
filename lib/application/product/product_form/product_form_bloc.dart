@@ -162,6 +162,7 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       },
       changeImagePosition: (e) async* {
         List<ImageProperties> images = state.fetchedImages;
+        print('images ${state.fetchedImages}');
         final selectedImage = images.removeAt(e.lastPosition);
         images.insert(e.newPosition, selectedImage);
         yield state.copyWith(
@@ -170,9 +171,10 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
         );
       },
       imagesRecived: (e) async* {
+        print('recived ${e.imageProperties.size}');
         yield state.copyWith(
-          selectedImages:
-              _productRepository.getImages(e.imageProperties).asList(),
+          selectedImages: e.imageProperties.asList(),
+          saveFailureOrSuccessOption: none(),
         );
       },
     );

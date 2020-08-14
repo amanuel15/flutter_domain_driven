@@ -73,10 +73,13 @@ class AddImageWidget extends HookWidget {
                       Center(
                         child: InkWell(
                           onTap: () {
-                            context.bloc<ProductFormBloc>().add(
-                                  ProductFormEvent.imagesRecived(
-                                      context.formImages),
-                                );
+                            // context.bloc<ProductFormBloc>().add(
+                            //       ProductFormEvent.imagesRecived(context
+                            //           .formImages
+                            //           .map((imageItemPrimitive) =>
+                            //               imageItemPrimitive
+                            //                   .toImageProperties())),
+                            //     );
                             context.bloc<ImagewatcherBloc>().add(
                                   ImagewatcherEvent.started(
                                       imageUrls.toImmutableList()),

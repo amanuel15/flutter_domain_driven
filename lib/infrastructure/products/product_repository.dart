@@ -235,8 +235,30 @@ class ProductRepository implements IProductRepository {
 
   @override
   Future<Either<ImageFailure, ImageProperties>> deleteImage(
-      ImageProperties imageProperties) {
-    // TODO: implement deleteImage
-    throw UnimplementedError();
+      ImageProperties imageProperties) async {
+    final StorageReference storageReference = _firebaseStorage.ref().child(
+        'products/${imageProperties.path}/${imageProperties.image.absolute.path.split('/').last}');
+//    print("delteing ${storageReference.path}");
+
+//    try {
+//      final downloadUrl = await storageReference.getDownloadURL();
+//
+//      print(" working download URL ${downloadUrl.toString()}");
+//    } catch (e) {
+//      if (e.message.toString() == 'Object does not exist at location.') {
+//        print('Object does not exist at location');
+//        return left(const ImageFailure.imageDoesNotExist());
+//      }
+//    }
+    try {
+      await storageReference.delete();
+      return right<ImageFailure, ImageProperties>(imageProperties);
+    } catch (error) {
+      if (error.message.toString() == "Object does not exist at location.") {
+        return left(const ImageFailure.unexpected());
+      } else {
+        return left(const ImageFailure.deleteFailed());
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_properties.freezed.dart';
@@ -17,4 +18,10 @@ abstract class ImageProperties with _$ImageProperties {
         downloadUrl: '',
         path: '',
       );
+}
+
+extension ImagePropertiesX on ImageProperties {
+  ImageItemPrimitive toPrimitive() {
+    return ImageItemPrimitive(name: downloadUrl);
+  }
 }

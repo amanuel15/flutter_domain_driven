@@ -34,16 +34,16 @@ class ImagewatcherBloc extends Bloc<ImagewatcherEvent, ImagewatcherState> {
   Stream<ImagewatcherState> mapEventToState(
     ImagewatcherEvent event,
   ) async* {
-    event.map(
+    yield* event.map(
       started: (e) async* {
         //yield const ImagewatcherState.loading();
-        print('statred');
+        //print('statred: ${e.imageUrls}');
         yield ImagewatcherState.loadSucess(
             _imageRepository.getImages(e.imageUrls));
       },
       imageDeleted: (e) async* {
-        yield const ImagewatcherState.deleting();
-        yield _imageRepository.deleteImage(e.imageProperties).then(
+        //yield const ImagewatcherState.deleting();
+        yield await _imageRepository.deleteImage(e.imageProperties).then(
               (either) => either.fold(
                 (f) => ImagewatcherState.deleteFailure(f),
                 (imageProperties) =>

@@ -6,6 +6,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/image_watcher/image_watcher_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icon_shadow/icon_shadow.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:kt_dart/collection.dart';
+import 'package:provider/provider.dart';
 
 Flushbar uploadingImageProgressIndicator = FlushbarHelper.createLoading(
   title: "Uploading Image",
@@ -24,6 +28,23 @@ Flushbar uploadingImageProgressIndicator = FlushbarHelper.createLoading(
     valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
   ),
 );
+
+void changeImagePosition(
+    BuildContext context, int newPosition, int lastPosition) {
+  List<ImageItemPrimitive> a = context.formImages.asList();
+  final selectedImage = a.removeAt(lastPosition);
+  a.insert(newPosition, selectedImage);
+  context.formImages = a.toImmutableList();
+}
+
+void deleteImage(BuildContext context, ImageItemPrimitive item) {
+  List<ImageItemPrimitive> a = context.formImages.asList();
+  a.remove(item);
+  //print(a);
+  context.formImages = a.toImmutableList();
+  context.bloc<ProductFormBloc>().add(ProductFormEvent.imagesRecived(
+      context.formImages.map((v) => v.toImageProperties())));
+}
 
 Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
   final double screenHeight = MediaQuery.of(context).size.height;
@@ -64,11 +85,14 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                 listener: (context, state) {
               state.maybeMap(
                   loadSucess: (success) {
-                    print('success: ${success.imageProperties}');
-                    // context.bloc<ProductFormBloc>().add(
-                    //       ProductFormEvent.imagesRecived(
-                    //           success.imageProperties),
-                    //     );
+                    //print('success: ${success.imageProperties}');
+                    context.bloc<ProductFormBloc>().add(
+                          ProductFormEvent.imagesRecived(
+                              success.imageProperties),
+                        );
+                  },
+                  deleteSuccess: (value) {
+                    deleteImage(context, value.imageProperties.toPrimitive());
                   },
                   uploadedImageResult: (imageUploadSuccessFailure) {
                     if (!uploadingImageProgressIndicator.isDismissed()) {
@@ -117,268 +141,304 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                   },
                   orElse: () {});
             }, builder: (context, state) {
-              return ListView(
-                padding: const EdgeInsets.all(0),
-                children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      //imagePageClose();
-                    },
-                    child: Card(
-                      elevation: 10,
-                      color: Colors.deepPurpleAccent,
-                      shadowColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(
-                            ScreenUtil().setWidth(20).toDouble()),
-                      )),
-                      child: SizedBox(
-                        height: 0.06.hp.toDouble(),
-                        child: Row(
-                          children: <Widget>[
-                            SizedBox(
-                              width: ScreenUtil()
-                                  .setWidth(screenWidth / 50)
-                                  .toDouble(),
-                            ),
-                            Icon(
-                              Icons.arrow_downward,
-                              color: Colors.white,
-                              size: ScreenUtil()
-                                  .setWidth(screenHeight / 30)
-                                  .toDouble(),
-                            ),
-                            const AutoSizeText(
-                              "Slide Down",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
-                            ),
-                          ],
+              state.maybeMap(
+                  loadSucess: (success) {
+                    //print('success: ${success.imageProperties}');
+                    // context.bloc<ProductFormBloc>().add(
+                    //       ProductFormEvent.imagesRecived(
+                    //           success.imageProperties),
+                    //     );
+                  },
+                  // deleteSuccess: (value) {
+                  //   deleteImage(context, value.imageProperties.toPrimitive());
+                  // },
+                  orElse: () {});
+              return Consumer<FormImages>(
+                  builder: (context, formImages, child) {
+                return ListView(
+                  padding: const EdgeInsets.all(0),
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        //imagePageClose();
+                      },
+                      child: Card(
+                        elevation: 10,
+                        color: Colors.deepPurpleAccent,
+                        shadowColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(
+                              ScreenUtil().setWidth(20).toDouble()),
+                        )),
+                        child: SizedBox(
+                          height: 0.06.hp.toDouble(),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: ScreenUtil()
+                                    .setWidth(screenWidth / 50)
+                                    .toDouble(),
+                              ),
+                              Icon(
+                                Icons.arrow_downward,
+                                color: Colors.white,
+                                size: ScreenUtil()
+                                    .setWidth(screenHeight / 30)
+                                    .toDouble(),
+                              ),
+                              const AutoSizeText(
+                                "Slide Down",
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      SizedBox(height: 0.03.hp.toDouble()),
-                      stateF.selectedImages.isNotEmpty
-                          ? CarouselSlider(
-                              carouselController: _controller,
-                              options: CarouselOptions(
-                                aspectRatio: 19 / 9,
-                                enableInfiniteScroll: false,
-                                enlargeCenterPage: true,
-                              ),
-                              items: stateF.selectedImages
-                                  .map((item) => Stack(
-                                        overflow: Overflow.clip,
-                                        children: <Widget>[
-                                          CachedNetworkImage(
-                                            width: ScreenUtil()
-                                                    .setHeight(screenHeight / 4)
-                                                    .toDouble() *
-                                                (19 / 9),
-                                            imageUrl: item.downloadUrl,
-                                            fit: BoxFit.fitWidth,
-                                          ),
-                                          Align(
-                                              alignment: Alignment.topRight,
-                                              child: Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    0,
-                                                    .003.hp.toDouble(),
-                                                    0.02.wp.toDouble(),
-                                                    0),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    //deleteImage(item);
-                                                  },
-                                                  child: IconShadowWidget(
-                                                    Icon(
-                                                      Icons.cancel,
-                                                      color: Colors.white,
-                                                      size: .03.hp.toDouble(),
-                                                    ),
-                                                    shadowColor: Colors.grey,
-                                                    showShadow: true,
-                                                  ),
-                                                ),
-                                              )),
-                                          Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    0.02.wp.toDouble(),
-                                                    .003.hp.toDouble(),
-                                                    0,
-                                                    0),
-                                                child: GestureDetector(
-                                                  onTap: () async {
-                                                    final oldIndex = stateF
-                                                        .selectedImages
-                                                        .indexOf(item);
-                                                    _asyncInputDialog(
-                                                            context,
-                                                            stateF
-                                                                .selectedImages
-                                                                .length)
-                                                        .then((newIndex) {
-                                                      if (newIndex == null) {
-                                                      } else {
-                                                        context
-                                                            .bloc<
-                                                                ProductFormBloc>()
-                                                            .add(ProductFormEvent
-                                                                .changeImagePosition(
-                                                                    newIndex,
-                                                                    oldIndex));
-                                                      }
-                                                    });
-                                                  },
-                                                  child: IconShadowWidget(
-                                                    Icon(
-                                                      Icons.edit,
-                                                      color: Colors.white,
-                                                      size: 0.03.hp.toDouble(),
-                                                    ),
-                                                    shadowColor: Colors.grey,
-                                                  ),
-                                                ),
-                                              )),
-                                          Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: Padding(
+                    Column(
+                      children: <Widget>[
+                        SizedBox(height: 0.03.hp.toDouble()),
+                        context.formImages.asList().isNotEmpty
+                            ? CarouselSlider(
+                                carouselController: _controller,
+                                options: CarouselOptions(
+                                  aspectRatio: 19 / 9,
+                                  enableInfiniteScroll: false,
+                                  enlargeCenterPage: true,
+                                ),
+                                items: context.formImages
+                                    .asList()
+                                    .map((item) => Stack(
+                                          overflow: Overflow.clip,
+                                          children: <Widget>[
+                                            CachedNetworkImage(
+                                              width: ScreenUtil()
+                                                      .setHeight(
+                                                          screenHeight / 4)
+                                                      .toDouble() *
+                                                  (19 / 9),
+                                              imageUrl: item.name,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                            Align(
+                                                alignment: Alignment.topRight,
+                                                child: Padding(
                                                   padding: EdgeInsets.fromLTRB(
                                                       0,
-                                                      0,
-                                                      0.04.wp.toDouble(),
-                                                      10),
-                                                  child: Text(
-                                                    (stateF.selectedImages
-                                                                .indexOf(item) +
-                                                            1)
-                                                        .toString(),
-                                                    style: TextStyle(
+                                                      .003.hp.toDouble(),
+                                                      0.02.wp.toDouble(),
+                                                      0),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      context
+                                                          .bloc<
+                                                              ImagewatcherBloc>()
+                                                          .add(ImagewatcherEvent
+                                                              .imageDeleted(
+                                                                  item.toImageProperties(),
+                                                                  ''));
+                                                      deleteImage(
+                                                          context, item);
+                                                    },
+                                                    child: IconShadowWidget(
+                                                      Icon(
+                                                        Icons.cancel,
                                                         color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: ScreenUtil()
-                                                            .setSp(16)
-                                                            .toDouble()),
-                                                  )))
-                                        ],
-                                      ))
-                                  .toList(),
-                            )
-                          : SizedBox(
-                              height: .25.hp.toDouble(),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: AutoSizeText(
-                                  "NO IMAGES SELECTED",
-                                  style: TextStyle(
-                                      fontSize: ScreenUtil()
-                                          .setSp(24, allowFontScalingSelf: true)
-                                          .toDouble(),
-                                      color: Colors.black.withOpacity(0.4)),
-                                  maxLines: 1,
-                                ),
-                              )),
-                      SizedBox(
-                        height: .01.hp.toDouble(),
-                      ),
-                      SizedBox(
-                        height: 0.05.hp.toDouble(),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                _controller.previousPage(
-                                    duration:
-                                        const Duration(milliseconds: 500));
-                              },
-                              child: IconShadowWidget(
-                                Icon(
-                                  Icons.arrow_back_ios,
-                                  color: const Color.fromRGBO(25, 25, 25, 0.7),
-                                  size: 0.03.hp.toDouble(),
-                                ),
-                                showShadow: true,
-                              ),
-                            ),
-                            SizedBox(
-                              width: ScreenUtil()
-                                  .setWidth(screenWidth * 0.6)
-                                  .toDouble(),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                _controller.nextPage(
-                                    duration:
-                                        const Duration(milliseconds: 500));
-                              },
-                              child: IconShadowWidget(
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: const Color.fromRGBO(25, 25, 25, 0.7),
-                                  size: 0.03.hp.toDouble(),
-                                ),
-                                showShadow: true,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: .05.hp.toDouble(),
-                      ),
-                      SizedBox(
-                        height: 0.07.hp.toDouble(),
-                        child: Material(
-                          elevation: 10,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                  bottom: Radius.circular(
-                                      ScreenUtil().setWidth(20).toDouble()))),
-                          clipBehavior: Clip.hardEdge,
-                          child: Ink(
-                              width: 0.9.wp.toDouble(),
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                      colors: [
-                                        Color.fromRGBO(255, 94, 0, 1),
-                                        Color.fromRGBO(255, 00, 112, 1)
-                                      ],
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight),
-                                  border:
-                                      Border.all(color: Colors.transparent)),
-                              child: InkWell(
-                                onTap: () async {
-                                  await getFile(
-                                      context,
-                                      const CropAspectRatio(
-                                          ratioX: 16.0, ratioY: 9.0),
-                                      1080,
-                                      1920,
-                                      "LandScape");
-                                },
-                                child: Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    color: const Color.fromRGBO(255, 215, 0, 1),
-                                    size: 0.0625.hp.toDouble(),
+                                                        size: .03.hp.toDouble(),
+                                                      ),
+                                                      shadowColor: Colors.grey,
+                                                      showShadow: true,
+                                                    ),
+                                                  ),
+                                                )),
+                                            Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0.02.wp.toDouble(),
+                                                      .003.hp.toDouble(),
+                                                      0,
+                                                      0),
+                                                  child: GestureDetector(
+                                                    onTap: () async {
+                                                      final oldIndex = context
+                                                          .formImages
+                                                          .indexOf(item);
+                                                      _asyncInputDialog(
+                                                              context,
+                                                              context.formImages
+                                                                  .size)
+                                                          .then((newIndex) {
+                                                        if (newIndex == null) {
+                                                        } else {
+                                                          changeImagePosition(
+                                                              context,
+                                                              newIndex - 1,
+                                                              oldIndex);
+                                                          // context
+                                                          //     .bloc<
+                                                          //         ProductFormBloc>()
+                                                          //     .add(ProductFormEvent
+                                                          //         .changeImagePosition(
+                                                          //             newIndex,
+                                                          //             oldIndex));
+                                                        }
+                                                      });
+                                                    },
+                                                    child: IconShadowWidget(
+                                                      Icon(
+                                                        Icons.edit,
+                                                        color: Colors.white,
+                                                        size:
+                                                            0.03.hp.toDouble(),
+                                                      ),
+                                                      shadowColor: Colors.grey,
+                                                    ),
+                                                  ),
+                                                )),
+                                            Align(
+                                                alignment:
+                                                    Alignment.bottomRight,
+                                                child: Padding(
+                                                    padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            0,
+                                                            0,
+                                                            0.04.wp.toDouble(),
+                                                            10),
+                                                    child: Text(
+                                                      (context.formImages
+                                                                  .indexOf(
+                                                                      item) +
+                                                              1)
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: ScreenUtil()
+                                                              .setSp(16)
+                                                              .toDouble()),
+                                                    )))
+                                          ],
+                                        ))
+                                    .toList(),
+                              )
+                            : SizedBox(
+                                height: .25.hp.toDouble(),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: AutoSizeText(
+                                    "NO IMAGES SELECTED",
+                                    style: TextStyle(
+                                        fontSize: ScreenUtil()
+                                            .setSp(24,
+                                                allowFontScalingSelf: true)
+                                            .toDouble(),
+                                        color: Colors.black.withOpacity(0.4)),
+                                    maxLines: 1,
                                   ),
-                                ),
-                              )),
+                                )),
+                        SizedBox(
+                          height: .01.hp.toDouble(),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
+                        SizedBox(
+                          height: 0.05.hp.toDouble(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  _controller.previousPage(
+                                      duration:
+                                          const Duration(milliseconds: 500));
+                                },
+                                child: IconShadowWidget(
+                                  Icon(
+                                    Icons.arrow_back_ios,
+                                    color:
+                                        const Color.fromRGBO(25, 25, 25, 0.7),
+                                    size: 0.03.hp.toDouble(),
+                                  ),
+                                  showShadow: true,
+                                ),
+                              ),
+                              SizedBox(
+                                width: ScreenUtil()
+                                    .setWidth(screenWidth * 0.6)
+                                    .toDouble(),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  _controller.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 500));
+                                },
+                                child: IconShadowWidget(
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    color:
+                                        const Color.fromRGBO(25, 25, 25, 0.7),
+                                    size: 0.03.hp.toDouble(),
+                                  ),
+                                  showShadow: true,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: .05.hp.toDouble(),
+                        ),
+                        SizedBox(
+                          height: 0.07.hp.toDouble(),
+                          child: Material(
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    bottom: Radius.circular(
+                                        ScreenUtil().setWidth(20).toDouble()))),
+                            clipBehavior: Clip.hardEdge,
+                            child: Ink(
+                                width: 0.9.wp.toDouble(),
+                                decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                        colors: [
+                                          Color.fromRGBO(255, 94, 0, 1),
+                                          Color.fromRGBO(255, 00, 112, 1)
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight),
+                                    border:
+                                        Border.all(color: Colors.transparent)),
+                                child: InkWell(
+                                  onTap: () async {
+                                    await getFile(
+                                        context,
+                                        const CropAspectRatio(
+                                            ratioX: 16.0, ratioY: 9.0),
+                                        1080,
+                                        1920,
+                                        "LandScape");
+                                  },
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color:
+                                          const Color.fromRGBO(255, 215, 0, 1),
+                                      size: 0.0625.hp.toDouble(),
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              });
             })),
       ),
     ),

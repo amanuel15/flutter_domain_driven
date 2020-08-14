@@ -18,7 +18,7 @@ mixin _$ImagewatcherEvent {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   });
 
   @optionalTypeArgs
@@ -28,7 +28,7 @@ mixin _$ImagewatcherEvent {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   });
 
@@ -86,7 +86,7 @@ class _$ImagewatcherEventTearOff {
   }
 
   _ImagesRecived imagesRecived(
-      Either<ImageFailure, List<ImageProperties>> failureOrimages) {
+      Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages) {
     return _ImagesRecived(
       failureOrimages,
     );
@@ -149,7 +149,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   }) {
     assert(started != null);
     assert(imageDeleted != null);
@@ -167,7 +167,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -286,7 +286,7 @@ class _$_ImageDeleted with DiagnosticableTreeMixin implements _ImageDeleted {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   }) {
     assert(started != null);
     assert(imageDeleted != null);
@@ -304,7 +304,7 @@ class _$_ImageDeleted with DiagnosticableTreeMixin implements _ImageDeleted {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -425,7 +425,7 @@ class _$_ImageUploaded with DiagnosticableTreeMixin implements _ImageUploaded {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   }) {
     assert(started != null);
     assert(imageDeleted != null);
@@ -443,7 +443,7 @@ class _$_ImageUploaded with DiagnosticableTreeMixin implements _ImageUploaded {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -568,7 +568,7 @@ class _$_AddImage with DiagnosticableTreeMixin implements _AddImage {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   }) {
     assert(started != null);
     assert(imageDeleted != null);
@@ -586,7 +586,7 @@ class _$_AddImage with DiagnosticableTreeMixin implements _AddImage {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -647,7 +647,7 @@ class _$_ImagesRecived with DiagnosticableTreeMixin implements _ImagesRecived {
       : assert(failureOrimages != null);
 
   @override
-  final Either<ImageFailure, List<ImageProperties>> failureOrimages;
+  final Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -683,7 +683,7 @@ class _$_ImagesRecived with DiagnosticableTreeMixin implements _ImagesRecived {
     return _$_ImagesRecived(
       failureOrimages == freezed
           ? this.failureOrimages
-          : failureOrimages as Either<ImageFailure, List<ImageProperties>>,
+          : failureOrimages as Either<ImageFailure, List<ImageItemPrimitive>>,
     );
   }
 
@@ -698,7 +698,7 @@ class _$_ImagesRecived with DiagnosticableTreeMixin implements _ImagesRecived {
     @required Result addImage(File image, String imagePath, String imageType),
     @required
         Result imagesRecived(
-            Either<ImageFailure, List<ImageProperties>> failureOrimages),
+            Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
   }) {
     assert(started != null);
     assert(imageDeleted != null);
@@ -716,7 +716,7 @@ class _$_ImagesRecived with DiagnosticableTreeMixin implements _ImagesRecived {
     Result imageUploaded(ImageProperties imageProperties, String imageType),
     Result addImage(File image, String imagePath, String imageType),
     Result imagesRecived(
-        Either<ImageFailure, List<ImageProperties>> failureOrimages),
+        Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -763,13 +763,13 @@ class _$_ImagesRecived with DiagnosticableTreeMixin implements _ImagesRecived {
 
 abstract class _ImagesRecived implements ImagewatcherEvent {
   const factory _ImagesRecived(
-          Either<ImageFailure, List<ImageProperties>> failureOrimages) =
+          Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages) =
       _$_ImagesRecived;
 
-  Either<ImageFailure, List<ImageProperties>> get failureOrimages;
+  Either<ImageFailure, List<ImageItemPrimitive>> get failureOrimages;
 
   _ImagesRecived copyWith(
-      {Either<ImageFailure, List<ImageProperties>> failureOrimages});
+      {Either<ImageFailure, List<ImageItemPrimitive>> failureOrimages});
 }
 
 mixin _$ImagewatcherState {

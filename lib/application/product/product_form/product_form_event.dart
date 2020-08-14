@@ -28,7 +28,7 @@ abstract class ProductFormEvent with _$ProductFormEvent {
   const factory ProductFormEvent.imageSelected(
       ImageProperties imageProperties) = _ImageSelected;
   const factory ProductFormEvent.imagesRecived(
-      KtList<ImageItemPrimitive> imageProperties) = _ImagesRecived;
+      KtList<ImageProperties> imageProperties) = _ImagesRecived;
   const factory ProductFormEvent.portraitSelected(
       ImageProperties imageProperties) = _PortraitSelected;
   const factory ProductFormEvent.changeImagePosition(

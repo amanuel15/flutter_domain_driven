@@ -32,13 +32,11 @@ class CatagoryWatcherBloc
   ) async* {
     yield* event.map(
       watchCatagoriesStarted: (e) async* {
-        print('startd');
         yield const CatagoryWatcherState.inProgress();
         _catagoryRepository.watchAllCatagories().then((catagories) =>
             add(CatagoryWatcherEvent.catagoryRecived(catagories)));
       },
       watchSubCatagories: (e) async* {
-        print('watch sub ${e.path}');
         yield const CatagoryWatcherState.inProgress();
         _catagoryRepository.watchAllCatagories(path: e.path).then(
             (catagories) =>

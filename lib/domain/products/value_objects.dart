@@ -178,6 +178,22 @@ class ListCatagories<T> extends ValueObject<KtList<T>> {
   }
 }
 
+class ListSubProducts<T> extends ValueObject<List<T>> {
+  @override
+  final Either<ValueFailure<List<T>>, List<T>> value;
+
+  factory ListSubProducts(List<T> input) {
+    assert(input != null);
+    return ListSubProducts._(validateSubproductList(input, 2));
+  }
+
+  const ListSubProducts._(this.value);
+
+  int get length {
+    return value.getOrElse(() => []).length;
+  }
+}
+
 class ProductImage extends ValueObject<ImageProperties> {
   factory ProductImage(
       {@required ImageProperties imageProperties, String imageType}) {

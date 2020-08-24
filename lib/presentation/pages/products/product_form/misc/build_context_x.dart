@@ -1,5 +1,6 @@
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/lables_item_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:provider/provider.dart';
@@ -16,4 +17,11 @@ extension FormCatagoryX on BuildContext {
       Provider.of<FormCatagories>(this, listen: false).value;
   set formCatagories(KtList<CatagoryItemPrimitive> value) =>
       Provider.of<FormCatagories>(this, listen: false).value = value;
+}
+
+extension FormLabelX on BuildContext {
+  List<String> get formLabels =>
+      Provider.of<FormLabels>(this, listen: false).value;
+  set formLabels(List<String> value) =>
+      Provider.of<FormLabels>(this, listen: false).value = value;
 }

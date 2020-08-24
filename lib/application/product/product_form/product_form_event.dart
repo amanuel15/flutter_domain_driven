@@ -19,7 +19,7 @@ abstract class ProductFormEvent with _$ProductFormEvent {
   const factory ProductFormEvent.catagoriesChanged(
       KtList<CatagoryItemPrimitive> catagories) = _CatagoriesChanged;
   const factory ProductFormEvent.saved() = _Saved;
-
+  const factory ProductFormEvent.imageUploadingOrNot() = _ImageUploadingOrNot;
   const factory ProductFormEvent.catagoriesDeleted() = _CatagoriesDeleted;
   const factory ProductFormEvent.catagoryAdded() = _CatagoryAdded;
   const factory ProductFormEvent.catagorySelected(String catagory) =
@@ -35,4 +35,8 @@ abstract class ProductFormEvent with _$ProductFormEvent {
       int newPosition, int lastPosition) = _ChangeImagePosition;
   const factory ProductFormEvent.imagesFetched(List<ImageProperties> images) =
       _ImagesFetched;
+  const factory ProductFormEvent.labelsSelected(List<String> labels) =
+      _LabelsSelected;
+  const factory ProductFormEvent.subProductEditingOrNot() =
+      _SubProductEditingOrNot;
 }

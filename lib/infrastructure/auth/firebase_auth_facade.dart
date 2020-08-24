@@ -64,7 +64,7 @@ class FirebaseAuthFacade implements IAuthFacade {
             password: passwordStr,
           )
           .then((_) => right(unit));
-    } on PlatformException catch (e) {
+    } catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' ||
           e.code == 'ERROR_USER_NOT_FOUND') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());

@@ -6,8 +6,10 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart'
 import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/lables_item_presentation.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_catagory_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_image_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_labels.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/catagory_popup_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
@@ -140,6 +142,9 @@ class ProductFormPageScaffold extends StatelessWidget {
               ChangeNotifierProvider(
                 create: (_) => FormImages(),
               ),
+              ChangeNotifierProvider(
+                create: (_) => FormLabels([]),
+              ),
             ],
             child: Container(
               decoration: BoxDecoration(
@@ -193,7 +198,7 @@ class ProductFormPageScaffold extends StatelessWidget {
                       child: FocusScope(
                         autofocus: true,
                         node: focusNode,
-                        child: const CustomScrollView(
+                        child: CustomScrollView(
                           slivers: <Widget>[
                             SliverToBoxAdapter(
                               child: NameField(),
@@ -217,6 +222,19 @@ class ProductFormPageScaffold extends StatelessWidget {
                             ),
                             SliverToBoxAdapter(
                               child: AddImageWidget(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
+                            ),
+                            SliverToBoxAdapter(
+                              child: LableWidget(),
+                            ),
+                            SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
                             ),
                           ],
                         ),

@@ -54,7 +54,9 @@ class ImagewatcherBloc extends Bloc<ImagewatcherEvent, ImagewatcherState> {
       imagesRecived: (e) async* {},
       imageUploaded: (e) async* {
         yield const ImagewatcherState.uploading();
-        yield _imageRepository.uploadImage(e.imageProperties).then((either) {
+        yield await _imageRepository
+            .uploadImage(e.imageProperties)
+            .then((either) {
           return ImagewatcherState.uploadedImageResult(
             imageUploadSuccessFailure: either,
             imageType: e.imageType,

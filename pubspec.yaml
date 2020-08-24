@@ -26,9 +26,9 @@ dependencies:
   auto_route: ^0.6.6
   get_it: ^4.0.4
   meta: ^1.1.8
-  firebase_core: ^0.4.3+3
-  firebase_auth: ^0.15.4
-  google_sign_in: ^4.1.1
+  firebase_core: ^0.4.5
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
   cloud_firestore: ^0.13.3
   injectable: ^1.0.2
   flushbar: ^1.10.4
@@ -52,6 +52,7 @@ dependencies:
   cached_network_image: ^2.2.0+1
   cloud_functions: ^0.5.0
   file_picker: ^1.13.3
+  flutter_tags: ^0.4.8+2
 
 dev_dependencies:
   flutter_test:
@@ -98,3 +99,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

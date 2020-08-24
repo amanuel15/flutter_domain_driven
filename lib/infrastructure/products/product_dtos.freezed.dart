@@ -21,6 +21,7 @@ mixin _$ProductDto {
   int get soldAmount;
   List<ImageUrlDto> get images;
   List<CatagoryNameDto> get catagories;
+  List<SubProductDto> get subProducts;
 
   ProductDto copyWith(
       {@JsonKey(ignore: true) String id,
@@ -30,7 +31,8 @@ mixin _$ProductDto {
       int totalAmount,
       int soldAmount,
       List<ImageUrlDto> images,
-      List<CatagoryNameDto> catagories});
+      List<CatagoryNameDto> catagories,
+      List<SubProductDto> subProducts});
 
   Map<String, dynamic> toJson();
 }
@@ -46,7 +48,8 @@ class _$ProductDtoTearOff {
       @required int totalAmount,
       @required int soldAmount,
       @required List<ImageUrlDto> images,
-      @required List<CatagoryNameDto> catagories}) {
+      @required List<CatagoryNameDto> catagories,
+      @required List<SubProductDto> subProducts}) {
     return _ProductDto(
       id: id,
       productName: productName,
@@ -56,6 +59,7 @@ class _$ProductDtoTearOff {
       soldAmount: soldAmount,
       images: images,
       catagories: catagories,
+      subProducts: subProducts,
     );
   }
 }
@@ -72,14 +76,16 @@ class _$_ProductDto implements _ProductDto {
       @required this.totalAmount,
       @required this.soldAmount,
       @required this.images,
-      @required this.catagories})
+      @required this.catagories,
+      @required this.subProducts})
       : assert(productName != null),
         assert(productDescription != null),
         assert(hypeDescription != null),
         assert(totalAmount != null),
         assert(soldAmount != null),
         assert(images != null),
-        assert(catagories != null);
+        assert(catagories != null),
+        assert(subProducts != null);
 
   factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductDtoFromJson(json);
@@ -101,10 +107,12 @@ class _$_ProductDto implements _ProductDto {
   final List<ImageUrlDto> images;
   @override
   final List<CatagoryNameDto> catagories;
+  @override
+  final List<SubProductDto> subProducts;
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
+    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories, subProducts: $subProducts)';
   }
 
   @override
@@ -132,7 +140,10 @@ class _$_ProductDto implements _ProductDto {
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.catagories, catagories) ||
                 const DeepCollectionEquality()
-                    .equals(other.catagories, catagories)));
+                    .equals(other.catagories, catagories)) &&
+            (identical(other.subProducts, subProducts) ||
+                const DeepCollectionEquality()
+                    .equals(other.subProducts, subProducts)));
   }
 
   @override
@@ -145,7 +156,8 @@ class _$_ProductDto implements _ProductDto {
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
       const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(catagories);
+      const DeepCollectionEquality().hash(catagories) ^
+      const DeepCollectionEquality().hash(subProducts);
 
   @override
   _$_ProductDto copyWith({
@@ -157,6 +169,7 @@ class _$_ProductDto implements _ProductDto {
     Object soldAmount = freezed,
     Object images = freezed,
     Object catagories = freezed,
+    Object subProducts = freezed,
   }) {
     return _$_ProductDto(
       id: id == freezed ? this.id : id as String,
@@ -175,6 +188,9 @@ class _$_ProductDto implements _ProductDto {
       catagories: catagories == freezed
           ? this.catagories
           : catagories as List<CatagoryNameDto>,
+      subProducts: subProducts == freezed
+          ? this.subProducts
+          : subProducts as List<SubProductDto>,
     );
   }
 
@@ -193,7 +209,8 @@ abstract class _ProductDto implements ProductDto {
       @required int totalAmount,
       @required int soldAmount,
       @required List<ImageUrlDto> images,
-      @required List<CatagoryNameDto> catagories}) = _$_ProductDto;
+      @required List<CatagoryNameDto> catagories,
+      @required List<SubProductDto> subProducts}) = _$_ProductDto;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
       _$_ProductDto.fromJson;
@@ -215,6 +232,8 @@ abstract class _ProductDto implements ProductDto {
   List<ImageUrlDto> get images;
   @override
   List<CatagoryNameDto> get catagories;
+  @override
+  List<SubProductDto> get subProducts;
 
   @override
   _ProductDto copyWith(
@@ -225,7 +244,138 @@ abstract class _ProductDto implements ProductDto {
       int totalAmount,
       int soldAmount,
       List<ImageUrlDto> images,
-      List<CatagoryNameDto> catagories});
+      List<CatagoryNameDto> catagories,
+      List<SubProductDto> subProducts});
+}
+
+SubProductDto _$SubProductDtoFromJson(Map<String, dynamic> json) {
+  return _SubProductDto.fromJson(json);
+}
+
+mixin _$SubProductDto {
+  String get name;
+  int get amount;
+  int get price;
+  String get imageUrl;
+
+  SubProductDto copyWith({String name, int amount, int price, String imageUrl});
+
+  Map<String, dynamic> toJson();
+}
+
+class _$SubProductDtoTearOff {
+  const _$SubProductDtoTearOff();
+
+  _SubProductDto call(
+      {@required String name,
+      @required int amount,
+      @required int price,
+      String imageUrl}) {
+    return _SubProductDto(
+      name: name,
+      amount: amount,
+      price: price,
+      imageUrl: imageUrl,
+    );
+  }
+}
+
+const $SubProductDto = _$SubProductDtoTearOff();
+
+@JsonSerializable()
+class _$_SubProductDto implements _SubProductDto {
+  const _$_SubProductDto(
+      {@required this.name,
+      @required this.amount,
+      @required this.price,
+      this.imageUrl})
+      : assert(name != null),
+        assert(amount != null),
+        assert(price != null);
+
+  factory _$_SubProductDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_SubProductDtoFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final int amount;
+  @override
+  final int price;
+  @override
+  final String imageUrl;
+
+  @override
+  String toString() {
+    return 'SubProductDto(name: $name, amount: $amount, price: $price, imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SubProductDto &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.amount, amount) ||
+                const DeepCollectionEquality().equals(other.amount, amount)) &&
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)) &&
+            (identical(other.imageUrl, imageUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageUrl, imageUrl)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(amount) ^
+      const DeepCollectionEquality().hash(price) ^
+      const DeepCollectionEquality().hash(imageUrl);
+
+  @override
+  _$_SubProductDto copyWith({
+    Object name = freezed,
+    Object amount = freezed,
+    Object price = freezed,
+    Object imageUrl = freezed,
+  }) {
+    return _$_SubProductDto(
+      name: name == freezed ? this.name : name as String,
+      amount: amount == freezed ? this.amount : amount as int,
+      price: price == freezed ? this.price : price as int,
+      imageUrl: imageUrl == freezed ? this.imageUrl : imageUrl as String,
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SubProductDtoToJson(this);
+  }
+}
+
+abstract class _SubProductDto implements SubProductDto {
+  const factory _SubProductDto(
+      {@required String name,
+      @required int amount,
+      @required int price,
+      String imageUrl}) = _$_SubProductDto;
+
+  factory _SubProductDto.fromJson(Map<String, dynamic> json) =
+      _$_SubProductDto.fromJson;
+
+  @override
+  String get name;
+  @override
+  int get amount;
+  @override
+  int get price;
+  @override
+  String get imageUrl;
+
+  @override
+  _SubProductDto copyWith(
+      {String name, int amount, int price, String imageUrl});
 }
 
 ImageUrlDto _$ImageUrlDtoFromJson(Map<String, dynamic> json) {

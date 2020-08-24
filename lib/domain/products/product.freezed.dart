@@ -16,6 +16,7 @@ mixin _$Product {
   SoldAmount get soldAmount;
   ListImage<ImageUrl> get images;
   ListCatagories<CatagoryName> get catagories;
+  ListSubProducts<SubProduct> get subProducts;
 
   Product copyWith(
       {UniqueId id,
@@ -25,7 +26,8 @@ mixin _$Product {
       TotalAmount totalAmount,
       SoldAmount soldAmount,
       ListImage<ImageUrl> images,
-      ListCatagories<CatagoryName> catagories});
+      ListCatagories<CatagoryName> catagories,
+      ListSubProducts<SubProduct> subProducts});
 }
 
 class _$ProductTearOff {
@@ -39,7 +41,8 @@ class _$ProductTearOff {
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
       @required ListImage<ImageUrl> images,
-      @required ListCatagories<CatagoryName> catagories}) {
+      @required ListCatagories<CatagoryName> catagories,
+      @required ListSubProducts<SubProduct> subProducts}) {
     return _Product(
       id: id,
       productName: productName,
@@ -49,6 +52,7 @@ class _$ProductTearOff {
       soldAmount: soldAmount,
       images: images,
       catagories: catagories,
+      subProducts: subProducts,
     );
   }
 }
@@ -64,7 +68,8 @@ class _$_Product implements _Product {
       @required this.totalAmount,
       @required this.soldAmount,
       @required this.images,
-      @required this.catagories})
+      @required this.catagories,
+      @required this.subProducts})
       : assert(id != null),
         assert(productName != null),
         assert(productDescription != null),
@@ -72,7 +77,8 @@ class _$_Product implements _Product {
         assert(totalAmount != null),
         assert(soldAmount != null),
         assert(images != null),
-        assert(catagories != null);
+        assert(catagories != null),
+        assert(subProducts != null);
 
   @override
   final UniqueId id;
@@ -90,10 +96,12 @@ class _$_Product implements _Product {
   final ListImage<ImageUrl> images;
   @override
   final ListCatagories<CatagoryName> catagories;
+  @override
+  final ListSubProducts<SubProduct> subProducts;
 
   @override
   String toString() {
-    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories)';
+    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories, subProducts: $subProducts)';
   }
 
   @override
@@ -121,7 +129,10 @@ class _$_Product implements _Product {
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.catagories, catagories) ||
                 const DeepCollectionEquality()
-                    .equals(other.catagories, catagories)));
+                    .equals(other.catagories, catagories)) &&
+            (identical(other.subProducts, subProducts) ||
+                const DeepCollectionEquality()
+                    .equals(other.subProducts, subProducts)));
   }
 
   @override
@@ -134,7 +145,8 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
       const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(catagories);
+      const DeepCollectionEquality().hash(catagories) ^
+      const DeepCollectionEquality().hash(subProducts);
 
   @override
   _$_Product copyWith({
@@ -146,6 +158,7 @@ class _$_Product implements _Product {
     Object soldAmount = freezed,
     Object images = freezed,
     Object catagories = freezed,
+    Object subProducts = freezed,
   }) {
     return _$_Product(
       id: id == freezed ? this.id : id as UniqueId,
@@ -167,6 +180,9 @@ class _$_Product implements _Product {
       catagories: catagories == freezed
           ? this.catagories
           : catagories as ListCatagories<CatagoryName>,
+      subProducts: subProducts == freezed
+          ? this.subProducts
+          : subProducts as ListSubProducts<SubProduct>,
     );
   }
 }
@@ -180,7 +196,8 @@ abstract class _Product implements Product {
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
       @required ListImage<ImageUrl> images,
-      @required ListCatagories<CatagoryName> catagories}) = _$_Product;
+      @required ListCatagories<CatagoryName> catagories,
+      @required ListSubProducts<SubProduct> subProducts}) = _$_Product;
 
   @override
   UniqueId get id;
@@ -198,6 +215,8 @@ abstract class _Product implements Product {
   ListImage<ImageUrl> get images;
   @override
   ListCatagories<CatagoryName> get catagories;
+  @override
+  ListSubProducts<SubProduct> get subProducts;
 
   @override
   _Product copyWith(
@@ -208,5 +227,6 @@ abstract class _Product implements Product {
       TotalAmount totalAmount,
       SoldAmount soldAmount,
       ListImage<ImageUrl> images,
-      ListCatagories<CatagoryName> catagories});
+      ListCatagories<CatagoryName> catagories,
+      ListSubProducts<SubProduct> subProducts});
 }

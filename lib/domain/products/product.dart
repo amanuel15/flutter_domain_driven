@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/failures.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_item.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,6 +22,7 @@ abstract class Product with _$Product {
     // TODO: consider making this list image making a list of ImageUrl instead of Images
     @required ListImage<ImageUrl> images,
     @required ListCatagories<CatagoryName> catagories,
+    @required ListSubProducts<SubProduct> subProducts,
   }) = _Product;
 
   factory Product.empty() => Product(
@@ -32,6 +34,7 @@ abstract class Product with _$Product {
         soldAmount: SoldAmount(0),
         images: ListImage(emptyList()),
         catagories: ListCatagories(emptyList()),
+        subProducts: ListSubProducts(const []),
       );
 }
 
@@ -54,6 +57,16 @@ extension ProductX on Product {
             .map((catagoryName) => catagoryName.failureOrUnit)
             .getOrElse(0, (_) => null)
             .fold((f) => left(f), (r) => right(unit)))
+        .andThen(subProducts.failureOrUnit)
+        .andThen(
+          subProducts
+              .getOrCrash()
+              .map((subProduct) => subProduct.failureOption)
+              .toImmutableList()
+              .filter((o) => o.isSome())
+              .getOrElse(0, (_) => none())
+              .fold(() => right(unit), (f) => left(f)),
+        )
         .fold((f) => some(f), (_) => none());
   }
 }

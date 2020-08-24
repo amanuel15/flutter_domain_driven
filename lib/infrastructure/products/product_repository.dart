@@ -189,7 +189,7 @@ class ProductRepository implements IProductRepository {
         .getDownloadURL()
         .then((url) => {downloadUrl = url.toString()});
 
-    print("upload has completed");
+    print("upload has completed with url!!!: $downloadUrl");
     if (uploadTask.isSuccessful) {
       return right(ImageProperties(
           image: imageProperties.image,

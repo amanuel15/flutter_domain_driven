@@ -5,6 +5,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dar
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
@@ -23,6 +24,7 @@ abstract class ProductDto with _$ProductDto {
     @required int soldAmount,
     @required List<ImageUrlDto> images,
     @required List<CatagoryNameDto> catagories,
+    @required List<SubProductDto> subProducts,
   }) = _ProductDto;
 
   factory ProductDto.fromDomain(Product product) {
@@ -42,12 +44,12 @@ abstract class ProductDto with _$ProductDto {
           .mapIndexed(
               (index, catagoryName) => CatagoryNameDto.fromDomain(catagoryName))
           .asList(),
-      // catagories: product.catagories
-      //     .getOrCrash()
-      //     .mapIndexed(
-      //       (index, catagoryItem) => CatagoryItemDto.fromDomain(catagoryItem),
-      //     )
-      //     .asList(),
+      subProducts: product.subProducts
+          .getOrCrash()
+          .map(
+            (subProduct) => SubProductDto.fromDomain(subProduct),
+          )
+          .toList(),
     );
   }
 
@@ -75,6 +77,42 @@ extension ProductDtoX on ProductDto {
       //     catagories.map((dto) => dto.toDomain()).toImmutableList()),
       catagories: ListCatagories(
           catagories.map((dto) => dto.toDomain()).toImmutableList()),
+      subProducts: ListSubProducts(
+        subProducts.map((dto) => dto.toDomain()).toList(),
+      ),
+    );
+  }
+}
+
+@freezed
+abstract class SubProductDto with _$SubProductDto {
+  const factory SubProductDto({
+    @required String name,
+    @required int amount,
+    @required int price,
+    String imageUrl,
+  }) = _SubProductDto;
+
+  factory SubProductDto.fromDomain(SubProduct subProduct) {
+    return SubProductDto(
+      name: subProduct.name.getOrCrash(),
+      amount: subProduct.amount.getOrCrash(),
+      price: subProduct.amount.getOrCrash(),
+      imageUrl: subProduct.imageUrl,
+    );
+  }
+
+  factory SubProductDto.fromJson(Map<String, dynamic> json) =>
+      _$SubProductDtoFromJson(json);
+}
+
+extension SubProductDtoX on SubProductDto {
+  SubProduct toDomain() {
+    return SubProduct(
+      name: ProductName(name),
+      amount: TotalAmount(amount),
+      price: SoldAmount(price),
+      imageUrl: imageUrl,
     );
   }
 }

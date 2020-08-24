@@ -7,6 +7,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/i_product_rep
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product_failure.dart';
+import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
@@ -174,6 +175,24 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
         print('recived ${e.imageProperties.size}');
         yield state.copyWith(
           selectedImages: e.imageProperties.asList(),
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      imageUploadingOrNot: (e) async* {
+        yield state.copyWith(
+          uploadingImage: !state.uploadingImage,
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      labelsSelected: (e) async* {
+        yield state.copyWith(
+          labels: e.labels,
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      subProductEditingOrNot: (e) async* {
+        yield state.copyWith(
+          subCatagoryEditing: !state.subCatagoryEditing,
           saveFailureOrSuccessOption: none(),
         );
       },

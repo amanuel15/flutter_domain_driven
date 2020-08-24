@@ -29,6 +29,16 @@ Flushbar uploadingImageProgressIndicator = FlushbarHelper.createLoading(
   ),
 );
 
+Flushbar submittingImageProgressIndicator = FlushbarHelper.createLoading(
+  title: "Processing Image",
+  duration: const Duration(seconds: 30),
+  message: "Please Wait",
+  linearProgressIndicator: const LinearProgressIndicator(
+    backgroundColor: Colors.cyanAccent,
+    valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+  ),
+);
+
 void changeImagePosition(
     BuildContext context, int newPosition, int lastPosition) {
   List<ImageItemPrimitive> a = context.formImages.asList();
@@ -90,9 +100,45 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                           ProductFormEvent.imagesRecived(
                               success.imageProperties),
                         );
+                    //context.formImages = success.imageProperties.map((v) => v.toPrimitive());
                   },
                   deleteSuccess: (value) {
                     deleteImage(context, value.imageProperties.toPrimitive());
+                  },
+                  uploading: (_) {
+                    uploadingImageProgressIndicator.show(context);
+                    context
+                        .bloc<ProductFormBloc>()
+                        .add(const ProductFormEvent.imageUploadingOrNot());
+                  },
+                  validatedImage: (validatedImage) {
+                    if (!submittingImageProgressIndicator.isDismissed()) {
+                      submittingImageProgressIndicator.dismiss();
+                    }
+                    validatedImage.productImage.value.fold(
+                      (failure) => {
+                        FlushbarHelper.createError(
+                          duration: const Duration(seconds: 4),
+                          message: failure.maybeWhen(
+                            invalidImageParameter:
+                                (image, isSmall, isLarge, correctAspectRatio) {
+                              if (isSmall) {
+                                return "Image is Too Small";
+                              } else if (isLarge) {
+                                return "Image is Too Large";
+                              } else {
+                                return "Incorrect Aspect Ratio";
+                              }
+                            },
+                            orElse: () => "Unknown Error\n Try Again",
+                          ),
+                          title: "Oops Something Went Wrong",
+                        ).show(context)
+                      },
+                      (success) => context.bloc<ImagewatcherBloc>().add(
+                          ImagewatcherEvent.imageUploaded(
+                              success, validatedImage.imageType)),
+                    );
                   },
                   uploadedImageResult: (imageUploadSuccessFailure) {
                     if (!uploadingImageProgressIndicator.isDismissed()) {
@@ -101,6 +147,9 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                     // if (uploadingImage) {
                     //   uploadingImage = false;
                     // }
+                    context
+                        .bloc<ProductFormBloc>()
+                        .add(const ProductFormEvent.imageUploadingOrNot());
                     imageUploadSuccessFailure.imageUploadSuccessFailure.fold(
                       (failure) => {
                         FlushbarHelper.createError(
@@ -124,6 +173,8 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                         ).show(context),
                         if (imageUploadSuccessFailure.imageType == "LandScape")
                           {
+                            context.formImages +=
+                                [success.toPrimitive()].toImmutableList(),
                             context.bloc<ProductFormBloc>().add(
                                   ProductFormEvent.imageSelected(success),
                                 ),

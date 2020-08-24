@@ -57,6 +57,18 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateListLength<T>(
   // }
 }
 
+Either<ValueFailure<List<T>>, List<T>> validateSubproductList<T>(
+    List<T> input, int length) {
+  // if (input.size == length) {
+  return right(input);
+  // } else {
+  //   return left(ValueFailure.wrongCatagoryDepth(
+  //     failedValue: input,
+  //     length: length,
+  //   ));
+  // }
+}
+
 Either<ValueFailure<int>, int> validateAmount(int input) {
   if (input.isNaN) {
     return left(ValueFailure.empty(failedValue: input));

@@ -7,14 +7,17 @@ import 'package:finished_notes_firebase_ddd_course/injection.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/lables_item_presentation.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/sub_product_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_catagory_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_image_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/add_labels.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/catagory_popup_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/create_subproduct.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/image_popup_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/name_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/show_subproducts.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/total_amount_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -143,7 +146,10 @@ class ProductFormPageScaffold extends StatelessWidget {
                 create: (_) => FormImages(),
               ),
               ChangeNotifierProvider(
-                create: (_) => FormLabels([]),
+                create: (_) => FormLabels(),
+              ),
+              ChangeNotifierProvider(
+                create: (_) => FormSubProducts(),
               ),
             ],
             child: Container(
@@ -200,30 +206,30 @@ class ProductFormPageScaffold extends StatelessWidget {
                         node: focusNode,
                         child: CustomScrollView(
                           slivers: <Widget>[
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: NameField(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: DescriptionField(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: HypeDescriptionField(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: AmountField(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: AddCatagoryWidget(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: SizedBox(
                                 height: 20,
                               ),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: AddImageWidget(),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
                               child: SizedBox(
                                 height: 20,
                               ),
@@ -231,7 +237,23 @@ class ProductFormPageScaffold extends StatelessWidget {
                             SliverToBoxAdapter(
                               child: LableWidget(),
                             ),
+                            const SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
+                            ),
+                            const SliverToBoxAdapter(
+                              child: ShowSubProducts(),
+                            ),
+                            const SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
+                            ),
                             SliverToBoxAdapter(
+                              child: addSubProduct(context),
+                            ),
+                            const SliverToBoxAdapter(
                               child: SizedBox(
                                 height: 20,
                               ),
@@ -243,6 +265,7 @@ class ProductFormPageScaffold extends StatelessWidget {
                   ),
                   selectCategoriesPopUp(context, state),
                   selectImagePopup(context, state),
+                  const CreateSubproduct(),
                 ],
               ),
             ),
@@ -251,6 +274,28 @@ class ProductFormPageScaffold extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget addSubProduct(BuildContext context) {
+  return Material(
+    elevation: 15,
+    type: MaterialType.card,
+    color: const Color(0xFFF10F43),
+    child: InkWell(
+      onTap: () {
+        context
+            .bloc<ProductFormBloc>()
+            .add(const ProductFormEvent.subProductEditingOrNot());
+      },
+      child: SizedBox(
+          width: 0.92.wp.toDouble(),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 0.05.hp.toDouble(),
+          )),
+    ),
+  );
 }
 
 class SavingInProgressOverlay extends StatelessWidget {

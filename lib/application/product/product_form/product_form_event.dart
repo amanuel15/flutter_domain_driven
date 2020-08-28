@@ -39,4 +39,10 @@ abstract class ProductFormEvent with _$ProductFormEvent {
       _LabelsSelected;
   const factory ProductFormEvent.subProductEditingOrNot() =
       _SubProductEditingOrNot;
+  const factory ProductFormEvent.subProductSelected(
+      SubProductPrimitive subProductPrimitive) = _SubProductSelected;
+  const factory ProductFormEvent.subProductImage(
+      ImageProperties imageProperties) = _SubProductImage;
+  const factory ProductFormEvent.subProductChanged(
+      List<SubProductPrimitive> subProducts) = _SubProductChanged;
 }

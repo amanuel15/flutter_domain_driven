@@ -23,7 +23,7 @@ class _$ImagePropertiesTearOff {
   _ImageProperties call(
       {@required File image,
       Image rawImage,
-      @required String downloadUrl,
+      String downloadUrl,
       @required String path}) {
     return _ImageProperties(
       image: image,
@@ -40,10 +40,9 @@ class _$_ImageProperties implements _ImageProperties {
   const _$_ImageProperties(
       {@required this.image,
       this.rawImage,
-      @required this.downloadUrl,
+      this.downloadUrl,
       @required this.path})
       : assert(image != null),
-        assert(downloadUrl != null),
         assert(path != null);
 
   @override
@@ -105,7 +104,7 @@ abstract class _ImageProperties implements ImageProperties {
   const factory _ImageProperties(
       {@required File image,
       Image rawImage,
-      @required String downloadUrl,
+      String downloadUrl,
       @required String path}) = _$_ImageProperties;
 
   @override

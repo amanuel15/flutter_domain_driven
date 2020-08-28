@@ -32,6 +32,10 @@ mixin _$ProductFormEvent {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   });
 
   @optionalTypeArgs
@@ -57,6 +61,9 @@ mixin _$ProductFormEvent {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   });
 
@@ -83,6 +90,9 @@ mixin _$ProductFormEvent {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   });
 
   @optionalTypeArgs
@@ -108,6 +118,9 @@ mixin _$ProductFormEvent {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   });
 }
@@ -230,6 +243,25 @@ class _$ProductFormEventTearOff {
   _SubProductEditingOrNot subProductEditingOrNot() {
     return const _SubProductEditingOrNot();
   }
+
+  _SubProductSelected subProductSelected(
+      SubProductPrimitive subProductPrimitive) {
+    return _SubProductSelected(
+      subProductPrimitive,
+    );
+  }
+
+  _SubProductImage subProductImage(ImageProperties imageProperties) {
+    return _SubProductImage(
+      imageProperties,
+    );
+  }
+
+  _SubProductChanged subProductChanged(List<SubProductPrimitive> subProducts) {
+    return _SubProductChanged(
+      subProducts,
+    );
+  }
 }
 
 const $ProductFormEvent = _$ProductFormEventTearOff();
@@ -296,6 +328,10 @@ class _$_Initialized implements _Initialized {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -318,6 +354,9 @@ class _$_Initialized implements _Initialized {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return initialized(initialProductOption);
   }
 
@@ -345,6 +384,9 @@ class _$_Initialized implements _Initialized {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -378,6 +420,9 @@ class _$_Initialized implements _Initialized {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -400,6 +445,9 @@ class _$_Initialized implements _Initialized {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return initialized(this);
   }
 
@@ -427,6 +475,9 @@ class _$_Initialized implements _Initialized {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -503,6 +554,10 @@ class _$_NameChanged implements _NameChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -525,6 +580,9 @@ class _$_NameChanged implements _NameChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return nameChanged(nameStr);
   }
 
@@ -552,6 +610,9 @@ class _$_NameChanged implements _NameChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -585,6 +646,9 @@ class _$_NameChanged implements _NameChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -607,6 +671,9 @@ class _$_NameChanged implements _NameChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return nameChanged(this);
   }
 
@@ -634,6 +701,9 @@ class _$_NameChanged implements _NameChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -709,6 +779,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -731,6 +805,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return descriptionChanged(descStr);
   }
 
@@ -758,6 +835,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -791,6 +871,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -813,6 +896,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return descriptionChanged(this);
   }
 
@@ -840,6 +926,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -917,6 +1006,10 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -939,6 +1032,9 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return hypeDescriptionChanged(hypeDescStr);
   }
 
@@ -966,6 +1062,9 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -999,6 +1098,9 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1021,6 +1123,9 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return hypeDescriptionChanged(this);
   }
 
@@ -1048,6 +1153,9 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1125,6 +1233,10 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1147,6 +1259,9 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return totalAmountChanged(totalNum);
   }
 
@@ -1174,6 +1289,9 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1207,6 +1325,9 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1229,6 +1350,9 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return totalAmountChanged(this);
   }
 
@@ -1256,6 +1380,9 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1331,6 +1458,10 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1353,6 +1484,9 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return soldAmountChanged(soldNum);
   }
 
@@ -1380,6 +1514,9 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1413,6 +1550,9 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1435,6 +1575,9 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return soldAmountChanged(this);
   }
 
@@ -1462,6 +1605,9 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1537,6 +1683,10 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1559,6 +1709,9 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesChanged(images);
   }
 
@@ -1586,6 +1739,9 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1619,6 +1775,9 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1641,6 +1800,9 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesChanged(this);
   }
 
@@ -1668,6 +1830,9 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1747,6 +1912,10 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1769,6 +1938,9 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoriesChanged(catagories);
   }
 
@@ -1796,6 +1968,9 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1829,6 +2004,9 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1851,6 +2029,9 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoriesChanged(this);
   }
 
@@ -1878,6 +2059,9 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1938,6 +2122,10 @@ class _$_Saved implements _Saved {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -1960,6 +2148,9 @@ class _$_Saved implements _Saved {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return saved();
   }
 
@@ -1987,6 +2178,9 @@ class _$_Saved implements _Saved {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2020,6 +2214,9 @@ class _$_Saved implements _Saved {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2042,6 +2239,9 @@ class _$_Saved implements _Saved {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return saved(this);
   }
 
@@ -2069,6 +2269,9 @@ class _$_Saved implements _Saved {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2124,6 +2327,10 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2146,6 +2353,9 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageUploadingOrNot();
   }
 
@@ -2173,6 +2383,9 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2206,6 +2419,9 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2228,6 +2444,9 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageUploadingOrNot(this);
   }
 
@@ -2255,6 +2474,9 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2310,6 +2532,10 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2332,6 +2558,9 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoriesDeleted();
   }
 
@@ -2359,6 +2588,9 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2392,6 +2624,9 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2414,6 +2649,9 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoriesDeleted(this);
   }
 
@@ -2441,6 +2679,9 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2496,6 +2737,10 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2518,6 +2763,9 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoryAdded();
   }
 
@@ -2545,6 +2793,9 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2578,6 +2829,9 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2600,6 +2854,9 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagoryAdded(this);
   }
 
@@ -2627,6 +2884,9 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2699,6 +2959,10 @@ class _$_CatagorySelected implements _CatagorySelected {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2721,6 +2985,9 @@ class _$_CatagorySelected implements _CatagorySelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagorySelected(catagory);
   }
 
@@ -2748,6 +3015,9 @@ class _$_CatagorySelected implements _CatagorySelected {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2781,6 +3051,9 @@ class _$_CatagorySelected implements _CatagorySelected {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2803,6 +3076,9 @@ class _$_CatagorySelected implements _CatagorySelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return catagorySelected(this);
   }
 
@@ -2830,6 +3106,9 @@ class _$_CatagorySelected implements _CatagorySelected {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2889,6 +3168,10 @@ class _$_ImageAdded implements _ImageAdded {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2911,6 +3194,9 @@ class _$_ImageAdded implements _ImageAdded {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageAdded();
   }
 
@@ -2938,6 +3224,9 @@ class _$_ImageAdded implements _ImageAdded {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2971,6 +3260,9 @@ class _$_ImageAdded implements _ImageAdded {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -2993,6 +3285,9 @@ class _$_ImageAdded implements _ImageAdded {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageAdded(this);
   }
 
@@ -3020,6 +3315,9 @@ class _$_ImageAdded implements _ImageAdded {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3096,6 +3394,10 @@ class _$_ImageSelected implements _ImageSelected {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3118,6 +3420,9 @@ class _$_ImageSelected implements _ImageSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageSelected(imageProperties);
   }
 
@@ -3145,6 +3450,9 @@ class _$_ImageSelected implements _ImageSelected {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3178,6 +3486,9 @@ class _$_ImageSelected implements _ImageSelected {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3200,6 +3511,9 @@ class _$_ImageSelected implements _ImageSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imageSelected(this);
   }
 
@@ -3227,6 +3541,9 @@ class _$_ImageSelected implements _ImageSelected {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3308,6 +3625,10 @@ class _$_ImagesRecived implements _ImagesRecived {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3330,6 +3651,9 @@ class _$_ImagesRecived implements _ImagesRecived {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesRecived(imageProperties);
   }
 
@@ -3357,6 +3681,9 @@ class _$_ImagesRecived implements _ImagesRecived {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3390,6 +3717,9 @@ class _$_ImagesRecived implements _ImagesRecived {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3412,6 +3742,9 @@ class _$_ImagesRecived implements _ImagesRecived {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesRecived(this);
   }
 
@@ -3439,6 +3772,9 @@ class _$_ImagesRecived implements _ImagesRecived {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3520,6 +3856,10 @@ class _$_PortraitSelected implements _PortraitSelected {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3542,6 +3882,9 @@ class _$_PortraitSelected implements _PortraitSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return portraitSelected(imageProperties);
   }
 
@@ -3569,6 +3912,9 @@ class _$_PortraitSelected implements _PortraitSelected {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3602,6 +3948,9 @@ class _$_PortraitSelected implements _PortraitSelected {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3624,6 +3973,9 @@ class _$_PortraitSelected implements _PortraitSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return portraitSelected(this);
   }
 
@@ -3651,6 +4003,9 @@ class _$_PortraitSelected implements _PortraitSelected {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3739,6 +4094,10 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3761,6 +4120,9 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return changeImagePosition(newPosition, lastPosition);
   }
 
@@ -3788,6 +4150,9 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3821,6 +4186,9 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3843,6 +4211,9 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return changeImagePosition(this);
   }
 
@@ -3870,6 +4241,9 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -3947,6 +4321,10 @@ class _$_ImagesFetched implements _ImagesFetched {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -3969,6 +4347,9 @@ class _$_ImagesFetched implements _ImagesFetched {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesFetched(images);
   }
 
@@ -3996,6 +4377,9 @@ class _$_ImagesFetched implements _ImagesFetched {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4029,6 +4413,9 @@ class _$_ImagesFetched implements _ImagesFetched {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -4051,6 +4438,9 @@ class _$_ImagesFetched implements _ImagesFetched {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return imagesFetched(this);
   }
 
@@ -4078,6 +4468,9 @@ class _$_ImagesFetched implements _ImagesFetched {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4153,6 +4546,10 @@ class _$_LabelsSelected implements _LabelsSelected {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -4175,6 +4572,9 @@ class _$_LabelsSelected implements _LabelsSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return labelsSelected(labels);
   }
 
@@ -4202,6 +4602,9 @@ class _$_LabelsSelected implements _LabelsSelected {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4235,6 +4638,9 @@ class _$_LabelsSelected implements _LabelsSelected {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -4257,6 +4663,9 @@ class _$_LabelsSelected implements _LabelsSelected {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return labelsSelected(this);
   }
 
@@ -4284,6 +4693,9 @@ class _$_LabelsSelected implements _LabelsSelected {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4343,6 +4755,10 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     @required Result imagesFetched(List<ImageProperties> images),
     @required Result labelsSelected(List<String> labels),
     @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -4365,6 +4781,9 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return subProductEditingOrNot();
   }
 
@@ -4392,6 +4811,9 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     Result imagesFetched(List<ImageProperties> images),
     Result labelsSelected(List<String> labels),
     Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4425,6 +4847,9 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     @required Result imagesFetched(_ImagesFetched value),
     @required Result labelsSelected(_LabelsSelected value),
     @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -4447,6 +4872,9 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     assert(imagesFetched != null);
     assert(labelsSelected != null);
     assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
     return subProductEditingOrNot(this);
   }
 
@@ -4474,6 +4902,9 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     Result imagesFetched(_ImagesFetched value),
     Result labelsSelected(_LabelsSelected value),
     Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -4486,6 +4917,697 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
 
 abstract class _SubProductEditingOrNot implements ProductFormEvent {
   const factory _SubProductEditingOrNot() = _$_SubProductEditingOrNot;
+}
+
+class _$_SubProductSelected implements _SubProductSelected {
+  const _$_SubProductSelected(this.subProductPrimitive)
+      : assert(subProductPrimitive != null);
+
+  @override
+  final SubProductPrimitive subProductPrimitive;
+
+  @override
+  String toString() {
+    return 'ProductFormEvent.subProductSelected(subProductPrimitive: $subProductPrimitive)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SubProductSelected &&
+            (identical(other.subProductPrimitive, subProductPrimitive) ||
+                const DeepCollectionEquality()
+                    .equals(other.subProductPrimitive, subProductPrimitive)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(subProductPrimitive);
+
+  @override
+  _$_SubProductSelected copyWith({
+    Object subProductPrimitive = freezed,
+  }) {
+    return _$_SubProductSelected(
+      subProductPrimitive == freezed
+          ? this.subProductPrimitive
+          : subProductPrimitive as SubProductPrimitive,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Product> initialProductOption),
+    @required Result nameChanged(String nameStr),
+    @required Result descriptionChanged(String descStr),
+    @required Result hypeDescriptionChanged(String hypeDescStr),
+    @required Result totalAmountChanged(int totalNum),
+    @required Result soldAmountChanged(int soldNum),
+    @required Result imagesChanged(KtList<ImageItemPrimitive> images),
+    @required
+        Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    @required Result saved(),
+    @required Result imageUploadingOrNot(),
+    @required Result catagoriesDeleted(),
+    @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
+    @required Result imageAdded(),
+    @required Result imageSelected(ImageProperties imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
+    @required Result portraitSelected(ImageProperties imageProperties),
+    @required Result changeImagePosition(int newPosition, int lastPosition),
+    @required Result imagesFetched(List<ImageProperties> images),
+    @required Result labelsSelected(List<String> labels),
+    @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductSelected(subProductPrimitive);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Product> initialProductOption),
+    Result nameChanged(String nameStr),
+    Result descriptionChanged(String descStr),
+    Result hypeDescriptionChanged(String hypeDescStr),
+    Result totalAmountChanged(int totalNum),
+    Result soldAmountChanged(int soldNum),
+    Result imagesChanged(KtList<ImageItemPrimitive> images),
+    Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    Result saved(),
+    Result imageUploadingOrNot(),
+    Result catagoriesDeleted(),
+    Result catagoryAdded(),
+    Result catagorySelected(String catagory),
+    Result imageAdded(),
+    Result imageSelected(ImageProperties imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
+    Result portraitSelected(ImageProperties imageProperties),
+    Result changeImagePosition(int newPosition, int lastPosition),
+    Result imagesFetched(List<ImageProperties> images),
+    Result labelsSelected(List<String> labels),
+    Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductSelected != null) {
+      return subProductSelected(subProductPrimitive);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    @required Result totalAmountChanged(_TotalAmountChanged value),
+    @required Result soldAmountChanged(_SoldAmountChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result catagoriesChanged(_CatagoriesChanged value),
+    @required Result saved(_Saved value),
+    @required Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    @required Result catagoriesDeleted(_CatagoriesDeleted value),
+    @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
+    @required Result imageAdded(_ImageAdded value),
+    @required Result imageSelected(_ImageSelected value),
+    @required Result imagesRecived(_ImagesRecived value),
+    @required Result portraitSelected(_PortraitSelected value),
+    @required Result changeImagePosition(_ChangeImagePosition value),
+    @required Result imagesFetched(_ImagesFetched value),
+    @required Result labelsSelected(_LabelsSelected value),
+    @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    Result totalAmountChanged(_TotalAmountChanged value),
+    Result soldAmountChanged(_SoldAmountChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result catagoriesChanged(_CatagoriesChanged value),
+    Result saved(_Saved value),
+    Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    Result catagoriesDeleted(_CatagoriesDeleted value),
+    Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
+    Result imageAdded(_ImageAdded value),
+    Result imageSelected(_ImageSelected value),
+    Result imagesRecived(_ImagesRecived value),
+    Result portraitSelected(_PortraitSelected value),
+    Result changeImagePosition(_ChangeImagePosition value),
+    Result imagesFetched(_ImagesFetched value),
+    Result labelsSelected(_LabelsSelected value),
+    Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductSelected != null) {
+      return subProductSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubProductSelected implements ProductFormEvent {
+  const factory _SubProductSelected(SubProductPrimitive subProductPrimitive) =
+      _$_SubProductSelected;
+
+  SubProductPrimitive get subProductPrimitive;
+
+  _SubProductSelected copyWith({SubProductPrimitive subProductPrimitive});
+}
+
+class _$_SubProductImage implements _SubProductImage {
+  const _$_SubProductImage(this.imageProperties)
+      : assert(imageProperties != null);
+
+  @override
+  final ImageProperties imageProperties;
+
+  @override
+  String toString() {
+    return 'ProductFormEvent.subProductImage(imageProperties: $imageProperties)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SubProductImage &&
+            (identical(other.imageProperties, imageProperties) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageProperties, imageProperties)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(imageProperties);
+
+  @override
+  _$_SubProductImage copyWith({
+    Object imageProperties = freezed,
+  }) {
+    return _$_SubProductImage(
+      imageProperties == freezed
+          ? this.imageProperties
+          : imageProperties as ImageProperties,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Product> initialProductOption),
+    @required Result nameChanged(String nameStr),
+    @required Result descriptionChanged(String descStr),
+    @required Result hypeDescriptionChanged(String hypeDescStr),
+    @required Result totalAmountChanged(int totalNum),
+    @required Result soldAmountChanged(int soldNum),
+    @required Result imagesChanged(KtList<ImageItemPrimitive> images),
+    @required
+        Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    @required Result saved(),
+    @required Result imageUploadingOrNot(),
+    @required Result catagoriesDeleted(),
+    @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
+    @required Result imageAdded(),
+    @required Result imageSelected(ImageProperties imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
+    @required Result portraitSelected(ImageProperties imageProperties),
+    @required Result changeImagePosition(int newPosition, int lastPosition),
+    @required Result imagesFetched(List<ImageProperties> images),
+    @required Result labelsSelected(List<String> labels),
+    @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductImage(imageProperties);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Product> initialProductOption),
+    Result nameChanged(String nameStr),
+    Result descriptionChanged(String descStr),
+    Result hypeDescriptionChanged(String hypeDescStr),
+    Result totalAmountChanged(int totalNum),
+    Result soldAmountChanged(int soldNum),
+    Result imagesChanged(KtList<ImageItemPrimitive> images),
+    Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    Result saved(),
+    Result imageUploadingOrNot(),
+    Result catagoriesDeleted(),
+    Result catagoryAdded(),
+    Result catagorySelected(String catagory),
+    Result imageAdded(),
+    Result imageSelected(ImageProperties imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
+    Result portraitSelected(ImageProperties imageProperties),
+    Result changeImagePosition(int newPosition, int lastPosition),
+    Result imagesFetched(List<ImageProperties> images),
+    Result labelsSelected(List<String> labels),
+    Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductImage != null) {
+      return subProductImage(imageProperties);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    @required Result totalAmountChanged(_TotalAmountChanged value),
+    @required Result soldAmountChanged(_SoldAmountChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result catagoriesChanged(_CatagoriesChanged value),
+    @required Result saved(_Saved value),
+    @required Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    @required Result catagoriesDeleted(_CatagoriesDeleted value),
+    @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
+    @required Result imageAdded(_ImageAdded value),
+    @required Result imageSelected(_ImageSelected value),
+    @required Result imagesRecived(_ImagesRecived value),
+    @required Result portraitSelected(_PortraitSelected value),
+    @required Result changeImagePosition(_ChangeImagePosition value),
+    @required Result imagesFetched(_ImagesFetched value),
+    @required Result labelsSelected(_LabelsSelected value),
+    @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    Result totalAmountChanged(_TotalAmountChanged value),
+    Result soldAmountChanged(_SoldAmountChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result catagoriesChanged(_CatagoriesChanged value),
+    Result saved(_Saved value),
+    Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    Result catagoriesDeleted(_CatagoriesDeleted value),
+    Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
+    Result imageAdded(_ImageAdded value),
+    Result imageSelected(_ImageSelected value),
+    Result imagesRecived(_ImagesRecived value),
+    Result portraitSelected(_PortraitSelected value),
+    Result changeImagePosition(_ChangeImagePosition value),
+    Result imagesFetched(_ImagesFetched value),
+    Result labelsSelected(_LabelsSelected value),
+    Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductImage != null) {
+      return subProductImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubProductImage implements ProductFormEvent {
+  const factory _SubProductImage(ImageProperties imageProperties) =
+      _$_SubProductImage;
+
+  ImageProperties get imageProperties;
+
+  _SubProductImage copyWith({ImageProperties imageProperties});
+}
+
+class _$_SubProductChanged implements _SubProductChanged {
+  const _$_SubProductChanged(this.subProducts) : assert(subProducts != null);
+
+  @override
+  final List<SubProductPrimitive> subProducts;
+
+  @override
+  String toString() {
+    return 'ProductFormEvent.subProductChanged(subProducts: $subProducts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SubProductChanged &&
+            (identical(other.subProducts, subProducts) ||
+                const DeepCollectionEquality()
+                    .equals(other.subProducts, subProducts)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(subProducts);
+
+  @override
+  _$_SubProductChanged copyWith({
+    Object subProducts = freezed,
+  }) {
+    return _$_SubProductChanged(
+      subProducts == freezed
+          ? this.subProducts
+          : subProducts as List<SubProductPrimitive>,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Product> initialProductOption),
+    @required Result nameChanged(String nameStr),
+    @required Result descriptionChanged(String descStr),
+    @required Result hypeDescriptionChanged(String hypeDescStr),
+    @required Result totalAmountChanged(int totalNum),
+    @required Result soldAmountChanged(int soldNum),
+    @required Result imagesChanged(KtList<ImageItemPrimitive> images),
+    @required
+        Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    @required Result saved(),
+    @required Result imageUploadingOrNot(),
+    @required Result catagoriesDeleted(),
+    @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
+    @required Result imageAdded(),
+    @required Result imageSelected(ImageProperties imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
+    @required Result portraitSelected(ImageProperties imageProperties),
+    @required Result changeImagePosition(int newPosition, int lastPosition),
+    @required Result imagesFetched(List<ImageProperties> images),
+    @required Result labelsSelected(List<String> labels),
+    @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductChanged(subProducts);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Product> initialProductOption),
+    Result nameChanged(String nameStr),
+    Result descriptionChanged(String descStr),
+    Result hypeDescriptionChanged(String hypeDescStr),
+    Result totalAmountChanged(int totalNum),
+    Result soldAmountChanged(int soldNum),
+    Result imagesChanged(KtList<ImageItemPrimitive> images),
+    Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    Result saved(),
+    Result imageUploadingOrNot(),
+    Result catagoriesDeleted(),
+    Result catagoryAdded(),
+    Result catagorySelected(String catagory),
+    Result imageAdded(),
+    Result imageSelected(ImageProperties imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
+    Result portraitSelected(ImageProperties imageProperties),
+    Result changeImagePosition(int newPosition, int lastPosition),
+    Result imagesFetched(List<ImageProperties> images),
+    Result labelsSelected(List<String> labels),
+    Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductChanged != null) {
+      return subProductChanged(subProducts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    @required Result totalAmountChanged(_TotalAmountChanged value),
+    @required Result soldAmountChanged(_SoldAmountChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result catagoriesChanged(_CatagoriesChanged value),
+    @required Result saved(_Saved value),
+    @required Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    @required Result catagoriesDeleted(_CatagoriesDeleted value),
+    @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
+    @required Result imageAdded(_ImageAdded value),
+    @required Result imageSelected(_ImageSelected value),
+    @required Result imagesRecived(_ImagesRecived value),
+    @required Result portraitSelected(_PortraitSelected value),
+    @required Result changeImagePosition(_ChangeImagePosition value),
+    @required Result imagesFetched(_ImagesFetched value),
+    @required Result labelsSelected(_LabelsSelected value),
+    @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return subProductChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    Result totalAmountChanged(_TotalAmountChanged value),
+    Result soldAmountChanged(_SoldAmountChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result catagoriesChanged(_CatagoriesChanged value),
+    Result saved(_Saved value),
+    Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    Result catagoriesDeleted(_CatagoriesDeleted value),
+    Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
+    Result imageAdded(_ImageAdded value),
+    Result imageSelected(_ImageSelected value),
+    Result imagesRecived(_ImagesRecived value),
+    Result portraitSelected(_PortraitSelected value),
+    Result changeImagePosition(_ChangeImagePosition value),
+    Result imagesFetched(_ImagesFetched value),
+    Result labelsSelected(_LabelsSelected value),
+    Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (subProductChanged != null) {
+      return subProductChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubProductChanged implements ProductFormEvent {
+  const factory _SubProductChanged(List<SubProductPrimitive> subProducts) =
+      _$_SubProductChanged;
+
+  List<SubProductPrimitive> get subProducts;
+
+  _SubProductChanged copyWith({List<SubProductPrimitive> subProducts});
 }
 
 mixin _$ProductFormState {
@@ -4504,6 +5626,7 @@ mixin _$ProductFormState {
   List<ImageProperties> get fetchedImages;
   ImageProperties get portraitImage;
   List<String> get labels;
+  SubProductPrimitive get subProductPrimitive;
   Option<Either<CatagoryFailure, Unit>> get saveFailureOrCatagoryOption;
   Option<Either<ProductFailure, Unit>> get saveFailureOrSuccessOption;
 
@@ -4523,6 +5646,7 @@ mixin _$ProductFormState {
       List<ImageProperties> fetchedImages,
       ImageProperties portraitImage,
       List<String> labels,
+      SubProductPrimitive subProductPrimitive,
       Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption});
 }
@@ -4562,6 +5686,8 @@ class _$ProductFormStateTearOff {
       @required
           List<String> labels,
       @required
+          SubProductPrimitive subProductPrimitive,
+      @required
           Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       @required
           Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption}) {
@@ -4581,6 +5707,7 @@ class _$ProductFormStateTearOff {
       fetchedImages: fetchedImages,
       portraitImage: portraitImage,
       labels: labels,
+      subProductPrimitive: subProductPrimitive,
       saveFailureOrCatagoryOption: saveFailureOrCatagoryOption,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption,
     );
@@ -4606,6 +5733,7 @@ class _$_ProductFormState implements _ProductFormState {
       @required this.fetchedImages,
       @required this.portraitImage,
       @required this.labels,
+      @required this.subProductPrimitive,
       @required this.saveFailureOrCatagoryOption,
       @required this.saveFailureOrSuccessOption})
       : assert(product != null),
@@ -4623,6 +5751,7 @@ class _$_ProductFormState implements _ProductFormState {
         assert(fetchedImages != null),
         assert(portraitImage != null),
         assert(labels != null),
+        assert(subProductPrimitive != null),
         assert(saveFailureOrCatagoryOption != null),
         assert(saveFailureOrSuccessOption != null);
 
@@ -4657,13 +5786,15 @@ class _$_ProductFormState implements _ProductFormState {
   @override
   final List<String> labels;
   @override
+  final SubProductPrimitive subProductPrimitive;
+  @override
   final Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption;
   @override
   final Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'ProductFormState(product: $product, showErrorMessage: $showErrorMessage, isEditing: $isEditing, isSaving: $isSaving, catagoryEditing: $catagoryEditing, catagorySaving: $catagorySaving, imageEditing: $imageEditing, imageSaving: $imageSaving, subCatagoryEditing: $subCatagoryEditing, uploadingImage: $uploadingImage, choosenCatagories: $choosenCatagories, selectedImages: $selectedImages, fetchedImages: $fetchedImages, portraitImage: $portraitImage, labels: $labels, saveFailureOrCatagoryOption: $saveFailureOrCatagoryOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'ProductFormState(product: $product, showErrorMessage: $showErrorMessage, isEditing: $isEditing, isSaving: $isSaving, catagoryEditing: $catagoryEditing, catagorySaving: $catagorySaving, imageEditing: $imageEditing, imageSaving: $imageSaving, subCatagoryEditing: $subCatagoryEditing, uploadingImage: $uploadingImage, choosenCatagories: $choosenCatagories, selectedImages: $selectedImages, fetchedImages: $fetchedImages, portraitImage: $portraitImage, labels: $labels, subProductPrimitive: $subProductPrimitive, saveFailureOrCatagoryOption: $saveFailureOrCatagoryOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -4714,6 +5845,9 @@ class _$_ProductFormState implements _ProductFormState {
                     .equals(other.portraitImage, portraitImage)) &&
             (identical(other.labels, labels) ||
                 const DeepCollectionEquality().equals(other.labels, labels)) &&
+            (identical(other.subProductPrimitive, subProductPrimitive) ||
+                const DeepCollectionEquality()
+                    .equals(other.subProductPrimitive, subProductPrimitive)) &&
             (identical(other.saveFailureOrCatagoryOption,
                     saveFailureOrCatagoryOption) ||
                 const DeepCollectionEquality().equals(
@@ -4744,6 +5878,7 @@ class _$_ProductFormState implements _ProductFormState {
       const DeepCollectionEquality().hash(fetchedImages) ^
       const DeepCollectionEquality().hash(portraitImage) ^
       const DeepCollectionEquality().hash(labels) ^
+      const DeepCollectionEquality().hash(subProductPrimitive) ^
       const DeepCollectionEquality().hash(saveFailureOrCatagoryOption) ^
       const DeepCollectionEquality().hash(saveFailureOrSuccessOption);
 
@@ -4764,6 +5899,7 @@ class _$_ProductFormState implements _ProductFormState {
     Object fetchedImages = freezed,
     Object portraitImage = freezed,
     Object labels = freezed,
+    Object subProductPrimitive = freezed,
     Object saveFailureOrCatagoryOption = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
@@ -4803,6 +5939,9 @@ class _$_ProductFormState implements _ProductFormState {
           ? this.portraitImage
           : portraitImage as ImageProperties,
       labels: labels == freezed ? this.labels : labels as List<String>,
+      subProductPrimitive: subProductPrimitive == freezed
+          ? this.subProductPrimitive
+          : subProductPrimitive as SubProductPrimitive,
       saveFailureOrCatagoryOption: saveFailureOrCatagoryOption == freezed
           ? this.saveFailureOrCatagoryOption
           : saveFailureOrCatagoryOption
@@ -4847,6 +5986,8 @@ abstract class _ProductFormState implements ProductFormState {
       @required
           List<String> labels,
       @required
+          SubProductPrimitive subProductPrimitive,
+      @required
           Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       @required
           Option<Either<ProductFailure, Unit>>
@@ -4883,6 +6024,8 @@ abstract class _ProductFormState implements ProductFormState {
   @override
   List<String> get labels;
   @override
+  SubProductPrimitive get subProductPrimitive;
+  @override
   Option<Either<CatagoryFailure, Unit>> get saveFailureOrCatagoryOption;
   @override
   Option<Either<ProductFailure, Unit>> get saveFailureOrSuccessOption;
@@ -4904,6 +6047,7 @@ abstract class _ProductFormState implements ProductFormState {
       List<ImageProperties> fetchedImages,
       ImageProperties portraitImage,
       List<String> labels,
+      SubProductPrimitive subProductPrimitive,
       Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
       Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption});
 }

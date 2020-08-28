@@ -11,6 +11,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.d
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/sub_product_presentation_classes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
@@ -193,6 +194,30 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       subProductEditingOrNot: (e) async* {
         yield state.copyWith(
           subCatagoryEditing: !state.subCatagoryEditing,
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      subProductChanged: (e) async* {
+        yield state.copyWith(
+          product: state.product.copyWith(
+            subProducts: ListSubProducts(e.subProducts
+                .map((primitive) => primitive.toDomain())
+                .toList()),
+          ),
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      subProductSelected: (e) async* {
+        yield state.copyWith(
+          subProductPrimitive: e.subProductPrimitive,
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      subProductImage: (e) async* {
+        yield state.copyWith(
+          subProductPrimitive: state.subProductPrimitive.copyWith(
+            imageUrl: e.imageProperties.downloadUrl,
+          ),
           saveFailureOrSuccessOption: none(),
         );
       },

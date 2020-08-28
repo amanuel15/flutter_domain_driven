@@ -256,9 +256,15 @@ mixin _$SubProductDto {
   String get name;
   int get amount;
   int get price;
+  List<Map<dynamic, dynamic>> get labels;
   String get imageUrl;
 
-  SubProductDto copyWith({String name, int amount, int price, String imageUrl});
+  SubProductDto copyWith(
+      {String name,
+      int amount,
+      int price,
+      List<Map<dynamic, dynamic>> labels,
+      String imageUrl});
 
   Map<String, dynamic> toJson();
 }
@@ -270,11 +276,13 @@ class _$SubProductDtoTearOff {
       {@required String name,
       @required int amount,
       @required int price,
+      @required List<Map<dynamic, dynamic>> labels,
       String imageUrl}) {
     return _SubProductDto(
       name: name,
       amount: amount,
       price: price,
+      labels: labels,
       imageUrl: imageUrl,
     );
   }
@@ -288,10 +296,12 @@ class _$_SubProductDto implements _SubProductDto {
       {@required this.name,
       @required this.amount,
       @required this.price,
+      @required this.labels,
       this.imageUrl})
       : assert(name != null),
         assert(amount != null),
-        assert(price != null);
+        assert(price != null),
+        assert(labels != null);
 
   factory _$_SubProductDto.fromJson(Map<String, dynamic> json) =>
       _$_$_SubProductDtoFromJson(json);
@@ -303,11 +313,13 @@ class _$_SubProductDto implements _SubProductDto {
   @override
   final int price;
   @override
+  final List<Map<dynamic, dynamic>> labels;
+  @override
   final String imageUrl;
 
   @override
   String toString() {
-    return 'SubProductDto(name: $name, amount: $amount, price: $price, imageUrl: $imageUrl)';
+    return 'SubProductDto(name: $name, amount: $amount, price: $price, labels: $labels, imageUrl: $imageUrl)';
   }
 
   @override
@@ -320,6 +332,8 @@ class _$_SubProductDto implements _SubProductDto {
                 const DeepCollectionEquality().equals(other.amount, amount)) &&
             (identical(other.price, price) ||
                 const DeepCollectionEquality().equals(other.price, price)) &&
+            (identical(other.labels, labels) ||
+                const DeepCollectionEquality().equals(other.labels, labels)) &&
             (identical(other.imageUrl, imageUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrl, imageUrl)));
@@ -331,6 +345,7 @@ class _$_SubProductDto implements _SubProductDto {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(amount) ^
       const DeepCollectionEquality().hash(price) ^
+      const DeepCollectionEquality().hash(labels) ^
       const DeepCollectionEquality().hash(imageUrl);
 
   @override
@@ -338,12 +353,16 @@ class _$_SubProductDto implements _SubProductDto {
     Object name = freezed,
     Object amount = freezed,
     Object price = freezed,
+    Object labels = freezed,
     Object imageUrl = freezed,
   }) {
     return _$_SubProductDto(
       name: name == freezed ? this.name : name as String,
       amount: amount == freezed ? this.amount : amount as int,
       price: price == freezed ? this.price : price as int,
+      labels: labels == freezed
+          ? this.labels
+          : labels as List<Map<dynamic, dynamic>>,
       imageUrl: imageUrl == freezed ? this.imageUrl : imageUrl as String,
     );
   }
@@ -359,6 +378,7 @@ abstract class _SubProductDto implements SubProductDto {
       {@required String name,
       @required int amount,
       @required int price,
+      @required List<Map<dynamic, dynamic>> labels,
       String imageUrl}) = _$_SubProductDto;
 
   factory _SubProductDto.fromJson(Map<String, dynamic> json) =
@@ -371,11 +391,17 @@ abstract class _SubProductDto implements SubProductDto {
   @override
   int get price;
   @override
+  List<Map<dynamic, dynamic>> get labels;
+  @override
   String get imageUrl;
 
   @override
   _SubProductDto copyWith(
-      {String name, int amount, int price, String imageUrl});
+      {String name,
+      int amount,
+      int price,
+      List<Map<dynamic, dynamic>> labels,
+      String imageUrl});
 }
 
 ImageUrlDto _$ImageUrlDtoFromJson(Map<String, dynamic> json) {

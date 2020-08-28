@@ -13,6 +13,7 @@ abstract class SubProduct with _$SubProduct {
     @required ProductName name,
     @required TotalAmount amount,
     @required SoldAmount price,
+    @required List<Map> labels,
     String imageUrl,
     ImageProperties imageProperties,
   }) = _SubProduct;
@@ -21,6 +22,7 @@ abstract class SubProduct with _$SubProduct {
         name: ProductName(''),
         amount: TotalAmount(0),
         price: SoldAmount(0),
+        labels: <Map>[],
       );
 }
 

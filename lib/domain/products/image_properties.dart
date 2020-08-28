@@ -10,7 +10,7 @@ abstract class ImageProperties with _$ImageProperties {
   const factory ImageProperties(
       {@required File image,
       Image rawImage,
-      @required String downloadUrl,
+      String downloadUrl,
       @required String path}) = _ImageProperties;
 
   factory ImageProperties.empty() => ImageProperties(

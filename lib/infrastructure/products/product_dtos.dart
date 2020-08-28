@@ -90,6 +90,7 @@ abstract class SubProductDto with _$SubProductDto {
     @required String name,
     @required int amount,
     @required int price,
+    @required List<Map> labels,
     String imageUrl,
   }) = _SubProductDto;
 
@@ -98,6 +99,7 @@ abstract class SubProductDto with _$SubProductDto {
       name: subProduct.name.getOrCrash(),
       amount: subProduct.amount.getOrCrash(),
       price: subProduct.amount.getOrCrash(),
+      labels: subProduct.labels,
       imageUrl: subProduct.imageUrl,
     );
   }
@@ -112,6 +114,7 @@ extension SubProductDtoX on SubProductDto {
       name: ProductName(name),
       amount: TotalAmount(amount),
       price: SoldAmount(price),
+      labels: labels,
       imageUrl: imageUrl,
     );
   }

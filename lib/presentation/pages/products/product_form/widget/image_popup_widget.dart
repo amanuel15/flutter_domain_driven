@@ -211,7 +211,9 @@ Widget selectImagePopup(BuildContext context, ProductFormState stateF) {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                        //imagePageClose();
+                        context
+                            .bloc<ProductFormBloc>()
+                            .add(const ProductFormEvent.imageAdded());
                       },
                       child: Card(
                         elevation: 10,

@@ -14,15 +14,10 @@ _$_ProductDto _$_$_ProductDtoFromJson(Map<String, dynamic> json) {
     totalAmount: json['totalAmount'] as int,
     soldAmount: json['soldAmount'] as int,
     images: (json['images'] as List)
-        ?.map((e) =>
-            e == null ? null : ImageUrlDto.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null ? null : ImageUrlDto(name: e as String))
         ?.toList(),
     catagories: (json['catagories'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CatagoryNameDto.fromJson((e as Map<String, dynamic>)?.map(
-                (k, e) => MapEntry(k, e as String),
-              )))
+        ?.map((e) => e == null ? null : CatagoryNameDto(name: e as String))
         ?.toList(),
     subProducts: (json['subProducts'] as List)
         ?.map((e) => e == null
@@ -49,6 +44,9 @@ _$_SubProductDto _$_$_SubProductDtoFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     amount: json['amount'] as int,
     price: json['price'] as int,
+    labels: (json['labels'] as List)
+        ?.map((e) => e as Map<String, dynamic>)
+        ?.toList(),
     imageUrl: json['imageUrl'] as String,
   );
 }
@@ -58,6 +56,7 @@ Map<String, dynamic> _$_$_SubProductDtoToJson(_$_SubProductDto instance) =>
       'name': instance.name,
       'amount': instance.amount,
       'price': instance.price,
+      'labels': instance.labels,
       'imageUrl': instance.imageUrl,
     };
 

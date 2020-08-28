@@ -1,6 +1,7 @@
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/catagory_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/lables_item_presentation.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/sub_product_presentation_classes.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:provider/provider.dart';
@@ -24,4 +25,11 @@ extension FormLabelX on BuildContext {
       Provider.of<FormLabels>(this, listen: false).value;
   set formLabels(List<String> value) =>
       Provider.of<FormLabels>(this, listen: false).value = value;
+}
+
+extension FormSubProductX on BuildContext {
+  List<SubProductPrimitive> get formSubProducts =>
+      Provider.of<FormSubProducts>(this, listen: false).value;
+  set formSubProducts(List<SubProductPrimitive> value) =>
+      Provider.of<FormSubProducts>(this, listen: false).value = value;
 }

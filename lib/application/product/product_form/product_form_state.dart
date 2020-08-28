@@ -18,6 +18,7 @@ abstract class ProductFormState with _$ProductFormState {
     @required List<ImageProperties> fetchedImages,
     @required ImageProperties portraitImage,
     @required List<String> labels,
+    @required SubProductPrimitive subProductPrimitive,
     @required Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
     @required Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption,
   }) = _ProductFormState;
@@ -37,6 +38,7 @@ abstract class ProductFormState with _$ProductFormState {
         selectedImages: [],
         fetchedImages: [],
         labels: [],
+        subProductPrimitive: SubProductPrimitive.empty(),
         portraitImage: ImageProperties.empty(),
         saveFailureOrCatagoryOption: none(),
         saveFailureOrSuccessOption: none(),

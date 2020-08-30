@@ -263,8 +263,8 @@ class ProductFormPageScaffold extends StatelessWidget {
                       ),
                     ),
                   ),
-                  selectCategoriesPopUp(context, state),
-                  selectImagePopup(context, state),
+                  const SelectCategoriesPopUp(),
+                  const SelectImagePopup(),
                   const CreateSubproduct(),
                 ],
               ),
@@ -286,6 +286,8 @@ Widget addSubProduct(BuildContext context) {
         context
             .bloc<ProductFormBloc>()
             .add(const ProductFormEvent.subProductEditingOrNot());
+        context.bloc<ProductFormBloc>().add(
+            ProductFormEvent.subProductSelected(SubProductPrimitive.empty()));
       },
       child: SizedBox(
           width: 0.92.wp.toDouble(),

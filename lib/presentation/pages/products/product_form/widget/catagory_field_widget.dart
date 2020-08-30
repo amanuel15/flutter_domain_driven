@@ -15,34 +15,32 @@ class CatagoryField extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<ProductFormBloc, ProductFormState>(
-          condition: (p, c) => p.isEditing != c.isEditing,
-          listener: (context, state) {
-            context.formCatagories = state.product.catagories.value.fold(
-              (_) => mutableListOf<CatagoryItemPrimitive>(),
-              (catagoryList) => catagoryList
-                  .map((_) => CatagoryItemPrimitive.fromDomain(_))
-                  .toMutableList(),
+    return BlocConsumer<ProductFormBloc, ProductFormState>(
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
+      listener: (context, state) {
+        context.formCatagories = state.product.catagories.value.fold(
+          (_) => mutableListOf<CatagoryItemPrimitive>(),
+          (catagoryList) => catagoryList
+              .map((_) => CatagoryItemPrimitive.fromDomain(_))
+              .toMutableList(),
+        );
+      },
+      builder: (context, state) {
+        return Consumer<FormCatagories>(
+          builder: (context, formCatagories, child) {
+            return Dialog(
+              child: Container(
+                height: 350.0,
+                width: 200.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Column(),
+              ),
             );
           },
-        ),
-      ],
-      child: Consumer<FormCatagories>(
-        builder: (context, formCatagories, child) {
-          return Dialog(
-            child: Container(
-              height: 350.0,
-              width: 200.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Column(),
-            ),
-          );
-        },
-      ),
+        );
+      },
     );
   }
 }

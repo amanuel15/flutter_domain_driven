@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finished_notes_firebase_ddd_course/application/product/product_form/product_form_bloc.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_properties.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/lables_item_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -26,12 +27,19 @@ class CreateSubproduct extends HookWidget {
     final subProductNameController = useTextEditingController();
     final subProductPriceController = useTextEditingController();
     final subProductAmountController = useTextEditingController();
+    final labelFieldController = useTextEditingController();
+    List<TextEditingController> labelControllers = [
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController()
+    ];
     String currentSubProductNameErrorMessage;
     String currentSubProductAmountErrorMessage;
     String currentSubProductPriceErrorMessage;
 
     return BlocConsumer<ProductFormBloc, ProductFormState>(
-      listenWhen: (p, c) => p.isEditing != c.isEditing,
+      listenWhen: (p, c) => p.subCatagoryEditing != c.subCatagoryEditing,
       listener: (context, state) {
         subProductNameController.text = state.subProductPrimitive.name;
         subProductPriceController.text =
@@ -45,9 +53,10 @@ class CreateSubproduct extends HookWidget {
           subProductList[0].labels[0].forEach((key, value) {
             a += [key.toString()];
           });
-          print('list: ${a}!!');
           return a;
         });
+        // labelControllers = List.generate(
+        //     context.formLabels.length, (i) => TextEditingController());
       },
       builder: (context, state) {
         return Consumer<FormLabels>(
@@ -153,269 +162,292 @@ class CreateSubproduct extends HookWidget {
                           ),
                           child: Form(
                             autovalidate: true,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(
-                                  height: ScreenUtil()
-                                      .setHeight(screenHeight * 0.03)
-                                      .toDouble(),
-                                  child: AutoSizeText(
-                                    "Create a SubProduct",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.deepPurpleAccent,
-                                      fontSize: 15.nsp.toDouble(),
+                            child: ConstrainedBox(
+                              constraints:
+                                  BoxConstraints(maxHeight: 0.7.hp.toDouble()),
+                              child: ListView(
+                                shrinkWrap: true,
+                                //mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: ScreenUtil()
+                                        .setHeight(screenHeight * 0.03)
+                                        .toDouble(),
+                                    child: AutoSizeText(
+                                      "Create a SubProduct",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.deepPurpleAccent,
+                                        fontSize: 15.nsp.toDouble(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  // height: ScreenUtil()
-                                  //     .setHeight(screenHeight * 0.1)
-                                  //     .toDouble(),
-                                  child: TextFormField(
-                                    controller: subProductNameController,
-                                    onChanged: (value) {
-                                      //onSubProductChange();
-                                    },
-                                    maxLength: 20,
-                                    maxLengthEnforced: true,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil()
-                                          .setSp(20, allowFontScalingSelf: true)
-                                          .toDouble(),
-                                    ),
-                                    decoration: InputDecoration(
-                                      focusColor: Colors.yellow,
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                            ScreenUtil()
-                                                .setWidth(10)
-                                                .toDouble(),
-                                          ),
-                                        ),
-                                        borderSide: const BorderSide(
-                                          color: Colors.deepPurpleAccent,
-                                        ),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                            ScreenUtil().setWidth(5).toDouble(),
-                                          ),
-                                        ),
-                                        borderSide: const BorderSide(
-                                          style: BorderStyle.solid,
-                                          color: Colors.blueGrey,
-                                        ),
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.edit,
-                                        color: Colors.deepPurpleAccent,
-                                      ),
-                                      labelStyle: TextStyle(
-                                        color: Colors.deepPurpleAccent,
-                                        fontWeight: FontWeight.normal,
+                                  SizedBox(
+                                    // height: ScreenUtil()
+                                    //     .setHeight(screenHeight * 0.1)
+                                    //     .toDouble(),
+                                    child: TextFormField(
+                                      controller: subProductNameController,
+                                      onChanged: (value) {
+                                        //onSubProductChange();
+                                      },
+                                      maxLength: 20,
+                                      maxLengthEnforced: true,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
                                         fontSize: ScreenUtil()
-                                            .setSp(14,
+                                            .setSp(20,
                                                 allowFontScalingSelf: true)
                                             .toDouble(),
                                       ),
-                                      labelText: 'SubProduct Name',
+                                      decoration: InputDecoration(
+                                        focusColor: Colors.yellow,
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(
+                                              ScreenUtil()
+                                                  .setWidth(10)
+                                                  .toDouble(),
+                                            ),
+                                          ),
+                                          borderSide: const BorderSide(
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(
+                                              ScreenUtil()
+                                                  .setWidth(5)
+                                                  .toDouble(),
+                                            ),
+                                          ),
+                                          borderSide: const BorderSide(
+                                            style: BorderStyle.solid,
+                                            color: Colors.blueGrey,
+                                          ),
+                                        ),
+                                        prefixIcon: const Icon(
+                                          Icons.edit,
+                                          color: Colors.deepPurpleAccent,
+                                        ),
+                                        labelStyle: TextStyle(
+                                          color: Colors.deepPurpleAccent,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: ScreenUtil()
+                                              .setSp(14,
+                                                  allowFontScalingSelf: true)
+                                              .toDouble(),
+                                        ),
+                                        labelText: 'SubProduct Name',
+                                      ),
+                                      autocorrect: false,
+                                      validator: (_) =>
+                                          currentSubProductNameErrorMessage,
                                     ),
-                                    autocorrect: false,
-                                    validator: (_) =>
-                                        currentSubProductNameErrorMessage,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: .02.hp.toDouble(),
-                                ),
-                                SizedBox(
-                                  // height: ScreenUtil()
-                                  //     .setHeight(screenHeight * 0.1)
-                                  //     .toDouble(),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      SizedBox(
-                                        width: ScreenUtil()
-                                            .setWidth(screenWidth * 0.35)
-                                            .toDouble(),
-                                        child: TextFormField(
-                                          controller: subProductPriceController,
-                                          onChanged: (value) {
-                                            //onSubProductChange();
-                                          },
-                                          maxLength: 10,
-                                          maxLengthEnforced: true,
-                                          keyboardType: const TextInputType
-                                                  .numberWithOptions(
-                                              signed: true, decimal: true),
-                                          style: TextStyle(
+                                  SizedBox(
+                                    height: .02.hp.toDouble(),
+                                  ),
+                                  SizedBox(
+                                    // height: ScreenUtil()
+                                    //     .setHeight(screenHeight * 0.1)
+                                    //     .toDouble(),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: ScreenUtil()
+                                              .setWidth(screenWidth * 0.35)
+                                              .toDouble(),
+                                          child: TextFormField(
+                                            controller:
+                                                subProductPriceController,
+                                            onChanged: (value) {
+                                              //onSubProductChange();
+                                            },
+                                            maxLength: 10,
+                                            maxLengthEnforced: true,
+                                            keyboardType: const TextInputType
+                                                    .numberWithOptions(
+                                                signed: true, decimal: true),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: ScreenUtil()
+                                                    .setSp(20,
+                                                        allowFontScalingSelf:
+                                                            true)
+                                                    .toDouble()),
+                                            decoration: InputDecoration(
+                                              focusColor: Colors.yellow,
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(
+                                                    ScreenUtil()
+                                                        .setWidth(10)
+                                                        .toDouble(),
+                                                  ),
+                                                ),
+                                                borderSide: const BorderSide(
+                                                  color:
+                                                      Colors.deepPurpleAccent,
+                                                ),
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(
+                                                    ScreenUtil()
+                                                        .setWidth(5)
+                                                        .toDouble(),
+                                                  ),
+                                                ),
+                                                borderSide: const BorderSide(
+                                                  style: BorderStyle.solid,
+                                                  color: Colors.blueGrey,
+                                                ),
+                                              ),
+                                              prefixIcon: const Icon(
+                                                Icons.attach_money,
+                                                color: Colors.deepPurpleAccent,
+                                              ),
+                                              labelStyle: TextStyle(
+                                                color: Colors.deepPurpleAccent,
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: ScreenUtil()
+                                                    .setSp(14)
+                                                    .toDouble(),
+                                              ),
+                                              labelText: 'SubProduct Price',
+                                            ),
+                                            autocorrect: false,
+                                            obscureText: false,
+                                            validator: (_) =>
+                                                currentSubProductPriceErrorMessage,
+                                          ),
+                                        ),
+                                        // SizedBox(
+                                        //   width: ScreenUtil()
+                                        //       .setWidth(screenWidth * 0.08)
+                                        //       .toDouble(),
+                                        // ),
+                                        SizedBox(
+                                          width: ScreenUtil()
+                                              .setWidth(screenWidth * 0.35)
+                                              .toDouble(),
+                                          child: TextFormField(
+                                            controller:
+                                                subProductAmountController,
+                                            onChanged: (value) {
+                                              //onSubProductChange();
+                                            },
+                                            maxLength: 10,
+                                            maxLengthEnforced: true,
+                                            keyboardType: const TextInputType
+                                                    .numberWithOptions(
+                                                signed: true),
+                                            style: TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                               fontSize: ScreenUtil()
                                                   .setSp(20,
                                                       allowFontScalingSelf:
                                                           true)
-                                                  .toDouble()),
-                                          decoration: InputDecoration(
-                                            focusColor: Colors.yellow,
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(
-                                                  ScreenUtil()
-                                                      .setWidth(10)
-                                                      .toDouble(),
-                                                ),
-                                              ),
-                                              borderSide: const BorderSide(
-                                                color: Colors.deepPurpleAccent,
-                                              ),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(
-                                                  ScreenUtil()
-                                                      .setWidth(5)
-                                                      .toDouble(),
-                                                ),
-                                              ),
-                                              borderSide: const BorderSide(
-                                                style: BorderStyle.solid,
-                                                color: Colors.blueGrey,
-                                              ),
-                                            ),
-                                            prefixIcon: const Icon(
-                                              Icons.attach_money,
-                                              color: Colors.deepPurpleAccent,
-                                            ),
-                                            labelStyle: TextStyle(
-                                              color: Colors.deepPurpleAccent,
-                                              fontWeight: FontWeight.normal,
-                                              fontSize: ScreenUtil()
-                                                  .setSp(14)
                                                   .toDouble(),
                                             ),
-                                            labelText: 'SubProduct Price',
+                                            decoration: InputDecoration(
+                                              focusColor: Colors.yellow,
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(
+                                                    ScreenUtil()
+                                                        .setWidth(10)
+                                                        .toDouble(),
+                                                  ),
+                                                ),
+                                                borderSide: const BorderSide(
+                                                  color:
+                                                      Colors.deepPurpleAccent,
+                                                ),
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(
+                                                    ScreenUtil()
+                                                        .setWidth(5)
+                                                        .toDouble(),
+                                                  ),
+                                                ),
+                                                borderSide: const BorderSide(
+                                                  color: Colors.blueGrey,
+                                                ),
+                                              ),
+                                              prefixIcon: const Icon(
+                                                Icons.add_shopping_cart,
+                                                color: Colors.deepPurpleAccent,
+                                              ),
+                                              labelStyle: TextStyle(
+                                                color: Colors.deepPurpleAccent,
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: ScreenUtil()
+                                                    .setSp(14)
+                                                    .toDouble(),
+                                              ),
+                                              labelText: 'Amount',
+                                            ),
+                                            autocorrect: false,
+                                            validator: (_) =>
+                                                currentSubProductAmountErrorMessage,
                                           ),
-                                          autocorrect: false,
-                                          obscureText: false,
-                                          validator: (_) =>
-                                              currentSubProductPriceErrorMessage,
                                         ),
-                                      ),
-                                      // SizedBox(
-                                      //   width: ScreenUtil()
-                                      //       .setWidth(screenWidth * 0.08)
-                                      //       .toDouble(),
-                                      // ),
-                                      SizedBox(
-                                        width: ScreenUtil()
-                                            .setWidth(screenWidth * 0.35)
-                                            .toDouble(),
-                                        child: TextFormField(
-                                          controller:
-                                              subProductAmountController,
-                                          onChanged: (value) {
-                                            //onSubProductChange();
-                                          },
-                                          maxLength: 10,
-                                          maxLengthEnforced: true,
-                                          keyboardType: const TextInputType
-                                              .numberWithOptions(signed: true),
+                                      ],
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: .02.hp.toDouble(),
+                                  // ),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                      ScreenUtil().setWidth(15).toDouble(),
+                                      ScreenUtil().setWidth(5).toDouble(),
+                                      ScreenUtil().setWidth(15).toDouble(),
+                                      ScreenUtil().setWidth(10).toDouble(),
+                                    ),
+                                    color: Colors.grey.withOpacity(0.2),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text(
+                                          'Labels',
                                           style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: ScreenUtil()
-                                                .setSp(20,
-                                                    allowFontScalingSelf: true)
-                                                .toDouble(),
+                                            color: Colors.deepPurpleAccent,
                                           ),
-                                          decoration: InputDecoration(
-                                            focusColor: Colors.yellow,
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(
-                                                  ScreenUtil()
-                                                      .setWidth(10)
-                                                      .toDouble(),
-                                                ),
-                                              ),
-                                              borderSide: const BorderSide(
-                                                color: Colors.deepPurpleAccent,
-                                              ),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(
-                                                  ScreenUtil()
-                                                      .setWidth(5)
-                                                      .toDouble(),
-                                                ),
-                                              ),
-                                              borderSide: const BorderSide(
-                                                color: Colors.blueGrey,
-                                              ),
-                                            ),
-                                            prefixIcon: const Icon(
-                                              Icons.add_shopping_cart,
-                                              color: Colors.deepPurpleAccent,
-                                            ),
-                                            labelStyle: TextStyle(
-                                              color: Colors.deepPurpleAccent,
-                                              fontWeight: FontWeight.normal,
-                                              fontSize: ScreenUtil()
-                                                  .setSp(14)
-                                                  .toDouble(),
-                                            ),
-                                            labelText: 'Amount',
-                                          ),
-                                          autocorrect: false,
-                                          validator: (_) =>
-                                              currentSubProductAmountErrorMessage,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                // SizedBox(
-                                //   height: .02.hp.toDouble(),
-                                // ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                    ScreenUtil().setWidth(15).toDouble(),
-                                    ScreenUtil().setWidth(5).toDouble(),
-                                    ScreenUtil().setWidth(15).toDouble(),
-                                    ScreenUtil().setWidth(10).toDouble(),
-                                  ),
-                                  color: Colors.grey.withOpacity(0.2),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(
-                                        'Labels',
-                                        style: TextStyle(
-                                          color: Colors.deepPurpleAccent,
+                                        SizedBox(
+                                          height: ScreenUtil()
+                                              .setHeight(10)
+                                              .toDouble(),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: ScreenUtil()
-                                            .setHeight(10)
-                                            .toDouble(),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: context.formLabels
-                                            .map(
-                                              (label) => TextFormField(
-                                                //controller: labelFieldController,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: context.formLabels.map(
+                                            (label) {
+                                              int index = context.formLabels
+                                                  .indexOf(label);
+                                              state.subProductPrimitive.labels
+                                                      .isNotEmpty
+                                                  ? labelControllers[index]
+                                                          .text =
+                                                      state.subProductPrimitive
+                                                          .labels[0][label]
+                                                          .toString()
+                                                  : '';
+                                              return TextFormField(
+                                                controller:
+                                                    labelControllers[index],
                                                 onChanged: (value) {
                                                   //onSubProductChange();
                                                 },
@@ -485,83 +517,100 @@ class CreateSubproduct extends HookWidget {
                                                 autocorrect: false,
                                                 // validator: (_) =>
                                                 //     currentSubProductNameErrorMessage,
-                                              ),
-                                            )
-                                            .toList(),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: ScreenUtil()
-                                      .setHeight(screenHeight * 0.03)
-                                      .toDouble(),
-                                  child: Text(
-                                    // state.selectedImages.isNotEmpty
-                                    //     ? state.subProductPrimitive.imageUrl
-                                    //             .isEmpty
-                                    //         ? 'TAP IMAGE TO SELECT'
-                                    //         : "TAP TRASH ICON TO DESELECT" :
-                                    "SELECT IMAGES FROM THE IMAGES TAB",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.deepPurpleAccent,
-                                      fontSize: ScreenUtil()
-                                          .setSp(15, allowFontScalingSelf: true)
-                                          .toDouble(),
+                                              );
+                                            },
+                                          ).toList(),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                                !state.selectedImages.contains(
-                                  ImageProperties.empty().copyWith(
-                                    downloadUrl:
-                                        state.subProductPrimitive.imageUrl,
+                                  SizedBox(
+                                    height: ScreenUtil()
+                                        .setHeight(screenHeight * 0.03)
+                                        .toDouble(),
+                                    child: Text(
+                                      !context.formImages.isEmpty()
+                                          ? !context.formImages.contains(
+                                              ImageItemPrimitive(
+                                                name: state.subProductPrimitive
+                                                            .imageUrl !=
+                                                        null
+                                                    ? state.subProductPrimitive
+                                                        .imageUrl
+                                                    : '',
+                                              ),
+                                            )
+                                              ? 'TAP IMAGE TO SELECT'
+                                              : "TAP TRASH ICON TO DESELECT"
+                                          : "SELECT IMAGES FROM THE IMAGES TAB",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.deepPurpleAccent,
+                                        fontSize: ScreenUtil()
+                                            .setSp(15,
+                                                allowFontScalingSelf: true)
+                                            .toDouble(),
+                                      ),
+                                    ),
                                   ),
-                                )
-                                    ? CarouselSlider(
-                                        options: CarouselOptions(
-                                          aspectRatio: 16 / 9,
-                                          height: 0.25.hp.toDouble(),
-                                          autoPlay: false,
-                                          enlargeCenterPage: true,
-                                        ),
-                                        items: state.selectedImages
-                                            .map(
-                                              (item) => Ink(
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    context
-                                                        .bloc<ProductFormBloc>()
-                                                        .add(ProductFormEvent
-                                                            .subProductImage(
-                                                                item));
-                                                    //addImageToSubProduct(item);
-                                                  },
-                                                  child: Stack(
-                                                    overflow: Overflow.clip,
-                                                    children: <Widget>[
-                                                      CachedNetworkImage(
-                                                        imageUrl:
-                                                            item.downloadUrl,
-                                                        width: ScreenUtil()
-                                                                .setHeight(
-                                                                    screenHeight /
-                                                                        4)
-                                                                .toDouble() *
-                                                            (16 / 9),
-                                                        fit: BoxFit.fitHeight,
-                                                      ),
-                                                      Align(
+                                  !context.formImages.contains(
+                                    ImageItemPrimitive(
+                                      name: state.subProductPrimitive
+                                                  .imageUrl !=
+                                              null
+                                          ? state.subProductPrimitive.imageUrl
+                                          : '',
+                                    ),
+                                  )
+                                      ? CarouselSlider(
+                                          options: CarouselOptions(
+                                            aspectRatio: 16 / 9,
+                                            height: 0.25.hp.toDouble(),
+                                            autoPlay: false,
+                                            enlargeCenterPage: true,
+                                          ),
+                                          items: context.formImages
+                                              .asList() //state.selectedImages
+                                              .map(
+                                                (item) => Ink(
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      context
+                                                          .bloc<
+                                                              ProductFormBloc>()
+                                                          .add(
+                                                            ProductFormEvent
+                                                                .subProductImage(
+                                                              item.toImageProperties(),
+                                                            ),
+                                                          );
+                                                      //addImageToSubProduct(item);
+                                                    },
+                                                    child: Stack(
+                                                      overflow: Overflow.clip,
+                                                      children: <Widget>[
+                                                        CachedNetworkImage(
+                                                          imageUrl: item.name,
+                                                          width: ScreenUtil()
+                                                                  .setHeight(
+                                                                      screenHeight /
+                                                                          4)
+                                                                  .toDouble() *
+                                                              (16 / 9),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                        Align(
                                                           alignment: Alignment
                                                               .topCenter,
                                                           child: Padding(
                                                             padding: EdgeInsets
                                                                 .fromLTRB(
-                                                                    0,
-                                                                    10.w.toDouble(),
-                                                                    0,
-                                                                    0),
+                                                              0,
+                                                              10.w.toDouble(),
+                                                              0,
+                                                              0,
+                                                            ),
                                                             child: Icon(
                                                               Icons.check,
                                                               color:
@@ -572,80 +621,91 @@ class CreateSubproduct extends HookWidget {
                                                                           25)
                                                                   .toDouble(),
                                                             ),
-                                                          )),
-                                                    ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                              .toList(),
+                                        )
+                                      : Stack(
+                                          overflow: Overflow.clip,
+                                          children: <Widget>[
+                                            CachedNetworkImage(
+                                              imageUrl: state
+                                                  .subProductPrimitive.imageUrl,
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                            Align(
+                                              alignment: Alignment.topRight,
+                                              child: Ink(
+                                                padding: EdgeInsets.fromLTRB(0,
+                                                    0, 0.04.wp.toDouble(), 0),
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    context
+                                                        .bloc<ProductFormBloc>()
+                                                        .add(
+                                                          ProductFormEvent
+                                                              .subProductImage(
+                                                            ImageProperties
+                                                                .empty(),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.white,
+                                                    size: ScreenUtil()
+                                                        .setHeight(
+                                                            screenHeight / 30)
+                                                        .toDouble(),
                                                   ),
                                                 ),
                                               ),
-                                            )
-                                            .toList(),
-                                      )
-                                    : Stack(
-                                        overflow: Overflow.clip,
-                                        children: <Widget>[
-                                          CachedNetworkImage(
-                                            imageUrl: state
-                                                .subProductPrimitive.imageUrl,
-                                            fit: BoxFit.fitHeight,
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Ink(
-                                              padding: EdgeInsets.fromLTRB(
-                                                  0, 0, 0.04.wp.toDouble(), 0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  //clearSelectedSubProductImage();
-                                                },
-                                                child: Icon(
-                                                  Icons.delete,
-                                                  color: Colors.white,
-                                                  size: ScreenUtil()
-                                                      .setHeight(
-                                                          screenHeight / 30)
-                                                      .toDouble(),
-                                                ),
-                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                SizedBox(
-                                  height: .02.hp.toDouble(),
-                                ),
-                                SizedBox(
-                                  height: 0.07.hp.toDouble(),
-                                  child: Material(
-                                    elevation: 10,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.vertical(
-                                            bottom: Radius.circular(ScreenUtil()
-                                                .setWidth(20)
-                                                .toDouble()))),
-                                    clipBehavior: Clip.hardEdge,
-                                    child: Ink(
-                                      width: 0.9.wp.toDouble(),
-                                      decoration: BoxDecoration(
-                                          color: Colors.deepPurpleAccent
-                                              .withOpacity(0.8),
-                                          border: Border.all(
-                                              color: Colors.transparent)),
-                                      child: InkWell(
-                                        onTap: () {
-                                          //submitSubProduct();
-                                        },
-                                        child: Center(
-                                          child: Icon(
-                                            Icons.check,
-                                            color: Colors.white,
-                                            size: 0.05.hp.toDouble(),
+                                          ],
+                                        ),
+                                  SizedBox(
+                                    height: .02.hp.toDouble(),
+                                  ),
+                                  SizedBox(
+                                    height: 0.07.hp.toDouble(),
+                                    child: Material(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.vertical(
+                                              bottom: Radius.circular(
+                                                  ScreenUtil()
+                                                      .setWidth(20)
+                                                      .toDouble()))),
+                                      clipBehavior: Clip.hardEdge,
+                                      child: Ink(
+                                        width: 0.9.wp.toDouble(),
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurpleAccent
+                                                .withOpacity(0.8),
+                                            border: Border.all(
+                                                color: Colors.transparent)),
+                                        child: InkWell(
+                                          onTap: () {
+                                            //submitSubProduct();
+                                          },
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 0.05.hp.toDouble(),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -658,71 +718,6 @@ class CreateSubproduct extends HookWidget {
           },
         );
       },
-    );
-  }
-
-  Widget labelsField(BuildContext context, ProductFormState state) {
-    final labelFieldController = useTextEditingController();
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: context.formLabels
-          .map(
-            (label) => TextFormField(
-              controller: labelFieldController,
-              onChanged: (value) {
-                //onSubProductChange();
-              },
-              maxLength: 20,
-              maxLengthEnforced: true,
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: ScreenUtil()
-                    .setSp(20, allowFontScalingSelf: true)
-                    .toDouble(),
-              ),
-              decoration: InputDecoration(
-                focusColor: Colors.yellow,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      ScreenUtil().setWidth(10).toDouble(),
-                    ),
-                  ),
-                  borderSide: const BorderSide(
-                    color: Colors.deepPurpleAccent,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      ScreenUtil().setWidth(5).toDouble(),
-                    ),
-                  ),
-                  borderSide: const BorderSide(
-                    style: BorderStyle.solid,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-                prefixIcon: const Icon(
-                  Icons.edit,
-                  color: Colors.deepPurpleAccent,
-                ),
-                labelStyle: TextStyle(
-                  color: Colors.deepPurpleAccent,
-                  fontWeight: FontWeight.normal,
-                  fontSize: ScreenUtil()
-                      .setSp(14, allowFontScalingSelf: true)
-                      .toDouble(),
-                ),
-                labelText: 'SubProduct Name',
-              ),
-              autocorrect: false,
-              // validator: (_) =>
-              //     currentSubProductNameErrorMessage,
-            ),
-          )
-          .toList(),
     );
   }
 }

@@ -24,6 +24,8 @@ abstract class ProductFormEvent with _$ProductFormEvent {
   const factory ProductFormEvent.catagoryAdded() = _CatagoryAdded;
   const factory ProductFormEvent.catagorySelected(String catagory) =
       _CatagorySelected;
+  const factory ProductFormEvent.clearSelectedCatagories() =
+      _ClearSelectedCatagories;
   const factory ProductFormEvent.imageAdded() = _ImageAdded;
   const factory ProductFormEvent.imageSelected(
       ImageProperties imageProperties) = _ImageSelected;

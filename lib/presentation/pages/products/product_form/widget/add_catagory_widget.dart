@@ -18,15 +18,10 @@ class AddCatagoryWidget extends HookWidget {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.width;
     final double screenWidth = MediaQuery.of(context).size.width;
-    // ScreenUtil.init(context,
-    //     width: screenWidth, height: screenHeight, allowFontScaling: true);
-    ProductFormState stateF;
 
     return BlocListener<ProductFormBloc, ProductFormState>(
-      //condition: (p, c) => p.isEditing != c.isEditing,
+      condition: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
-        stateF = state;
-        //if (state.catagoryEditing)
         context.formCatagories = state.product.catagories.value.fold(
           (_) => mutableListOf<CatagoryItemPrimitive>(),
           (catagoryList) => catagoryList
@@ -41,10 +36,14 @@ class AddCatagoryWidget extends HookWidget {
               clipBehavior: Clip.hardEdge,
               height: 0.29.hp.toDouble(),
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(25, 25, 25, 0.2),
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(ScreenUtil().setWidth(20).toDouble())),
-                  border: Border.all(color: Colors.grey)),
+                color: const Color.fromRGBO(25, 25, 25, 0.2),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    ScreenUtil().setWidth(20).toDouble(),
+                  ),
+                ),
+                border: Border.all(color: Colors.grey),
+              ),
               child: catagories.length == 3
                   ? Column(
                       children: [
@@ -143,9 +142,11 @@ class AddCatagoryWidget extends HookWidget {
                                 onPressed: () {
                                   //deleteSelectedCategory();
                                   context.bloc<ProductFormBloc>().add(
-                                      const ProductFormEvent
-                                          .catagoriesDeleted());
+                                        const ProductFormEvent
+                                            .catagoriesDeleted(),
+                                      );
                                   context.formCatagories = emptyList();
+                                  print('cats!! ${context.formCatagories}');
                                 },
                                 color: Colors.deepPurpleAccent.withOpacity(0.8),
                                 elevation: 4,

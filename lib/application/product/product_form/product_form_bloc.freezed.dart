@@ -24,6 +24,7 @@ mixin _$ProductFormEvent {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -53,6 +54,7 @@ mixin _$ProductFormEvent {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -82,6 +84,7 @@ mixin _$ProductFormEvent {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -110,6 +113,7 @@ mixin _$ProductFormEvent {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -197,6 +201,10 @@ class _$ProductFormEventTearOff {
     return _CatagorySelected(
       catagory,
     );
+  }
+
+  _ClearSelectedCatagories clearSelectedCatagories() {
+    return const _ClearSelectedCatagories();
   }
 
   _ImageAdded imageAdded() {
@@ -320,6 +328,7 @@ class _$_Initialized implements _Initialized {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -346,6 +355,7 @@ class _$_Initialized implements _Initialized {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -376,6 +386,7 @@ class _$_Initialized implements _Initialized {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -412,6 +423,7 @@ class _$_Initialized implements _Initialized {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -437,6 +449,7 @@ class _$_Initialized implements _Initialized {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -467,6 +480,7 @@ class _$_Initialized implements _Initialized {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -546,6 +560,7 @@ class _$_NameChanged implements _NameChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -572,6 +587,7 @@ class _$_NameChanged implements _NameChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -602,6 +618,7 @@ class _$_NameChanged implements _NameChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -638,6 +655,7 @@ class _$_NameChanged implements _NameChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -663,6 +681,7 @@ class _$_NameChanged implements _NameChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -693,6 +712,7 @@ class _$_NameChanged implements _NameChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -771,6 +791,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -797,6 +818,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -827,6 +849,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -863,6 +886,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -888,6 +912,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -918,6 +943,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -998,6 +1024,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1024,6 +1051,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1054,6 +1082,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1090,6 +1119,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -1115,6 +1145,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1145,6 +1176,7 @@ class _$_HypeDescriptionChanged implements _HypeDescriptionChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -1225,6 +1257,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1251,6 +1284,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1281,6 +1315,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1317,6 +1352,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -1342,6 +1378,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1372,6 +1409,7 @@ class _$_TotalAmountChanged implements _TotalAmountChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -1450,6 +1488,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1476,6 +1515,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1506,6 +1546,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1542,6 +1583,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -1567,6 +1609,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1597,6 +1640,7 @@ class _$_SoldAmountChanged implements _SoldAmountChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -1675,6 +1719,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1701,6 +1746,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1731,6 +1777,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1767,6 +1814,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -1792,6 +1840,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1822,6 +1871,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -1904,6 +1954,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1930,6 +1981,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -1960,6 +2012,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -1996,6 +2049,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -2021,6 +2075,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2051,6 +2106,7 @@ class _$_CatagoriesChanged implements _CatagoriesChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -2114,6 +2170,7 @@ class _$_Saved implements _Saved {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2140,6 +2197,7 @@ class _$_Saved implements _Saved {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2170,6 +2228,7 @@ class _$_Saved implements _Saved {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2206,6 +2265,7 @@ class _$_Saved implements _Saved {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -2231,6 +2291,7 @@ class _$_Saved implements _Saved {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2261,6 +2322,7 @@ class _$_Saved implements _Saved {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -2319,6 +2381,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2345,6 +2408,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2375,6 +2439,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2411,6 +2476,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -2436,6 +2502,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2466,6 +2533,7 @@ class _$_ImageUploadingOrNot implements _ImageUploadingOrNot {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -2524,6 +2592,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2550,6 +2619,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2580,6 +2650,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2616,6 +2687,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -2641,6 +2713,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2671,6 +2744,7 @@ class _$_CatagoriesDeleted implements _CatagoriesDeleted {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -2729,6 +2803,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2755,6 +2830,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2785,6 +2861,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2821,6 +2898,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -2846,6 +2924,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -2876,6 +2955,7 @@ class _$_CatagoryAdded implements _CatagoryAdded {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -2951,6 +3031,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -2977,6 +3058,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3007,6 +3089,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3043,6 +3126,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -3068,6 +3152,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3098,6 +3183,7 @@ class _$_CatagorySelected implements _CatagorySelected {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -3125,6 +3211,217 @@ abstract class _CatagorySelected implements ProductFormEvent {
   String get catagory;
 
   _CatagorySelected copyWith({String catagory});
+}
+
+class _$_ClearSelectedCatagories implements _ClearSelectedCatagories {
+  const _$_ClearSelectedCatagories();
+
+  @override
+  String toString() {
+    return 'ProductFormEvent.clearSelectedCatagories()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ClearSelectedCatagories);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Product> initialProductOption),
+    @required Result nameChanged(String nameStr),
+    @required Result descriptionChanged(String descStr),
+    @required Result hypeDescriptionChanged(String hypeDescStr),
+    @required Result totalAmountChanged(int totalNum),
+    @required Result soldAmountChanged(int soldNum),
+    @required Result imagesChanged(KtList<ImageItemPrimitive> images),
+    @required
+        Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    @required Result saved(),
+    @required Result imageUploadingOrNot(),
+    @required Result catagoriesDeleted(),
+    @required Result catagoryAdded(),
+    @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
+    @required Result imageAdded(),
+    @required Result imageSelected(ImageProperties imageProperties),
+    @required Result imagesRecived(KtList<ImageProperties> imageProperties),
+    @required Result portraitSelected(ImageProperties imageProperties),
+    @required Result changeImagePosition(int newPosition, int lastPosition),
+    @required Result imagesFetched(List<ImageProperties> images),
+    @required Result labelsSelected(List<String> labels),
+    @required Result subProductEditingOrNot(),
+    @required
+        Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    @required Result subProductImage(ImageProperties imageProperties),
+    @required Result subProductChanged(List<SubProductPrimitive> subProducts),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return clearSelectedCatagories();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Product> initialProductOption),
+    Result nameChanged(String nameStr),
+    Result descriptionChanged(String descStr),
+    Result hypeDescriptionChanged(String hypeDescStr),
+    Result totalAmountChanged(int totalNum),
+    Result soldAmountChanged(int soldNum),
+    Result imagesChanged(KtList<ImageItemPrimitive> images),
+    Result catagoriesChanged(KtList<CatagoryItemPrimitive> catagories),
+    Result saved(),
+    Result imageUploadingOrNot(),
+    Result catagoriesDeleted(),
+    Result catagoryAdded(),
+    Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
+    Result imageAdded(),
+    Result imageSelected(ImageProperties imageProperties),
+    Result imagesRecived(KtList<ImageProperties> imageProperties),
+    Result portraitSelected(ImageProperties imageProperties),
+    Result changeImagePosition(int newPosition, int lastPosition),
+    Result imagesFetched(List<ImageProperties> images),
+    Result labelsSelected(List<String> labels),
+    Result subProductEditingOrNot(),
+    Result subProductSelected(SubProductPrimitive subProductPrimitive),
+    Result subProductImage(ImageProperties imageProperties),
+    Result subProductChanged(List<SubProductPrimitive> subProducts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearSelectedCatagories != null) {
+      return clearSelectedCatagories();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    @required Result totalAmountChanged(_TotalAmountChanged value),
+    @required Result soldAmountChanged(_SoldAmountChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result catagoriesChanged(_CatagoriesChanged value),
+    @required Result saved(_Saved value),
+    @required Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    @required Result catagoriesDeleted(_CatagoriesDeleted value),
+    @required Result catagoryAdded(_CatagoryAdded value),
+    @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
+    @required Result imageAdded(_ImageAdded value),
+    @required Result imageSelected(_ImageSelected value),
+    @required Result imagesRecived(_ImagesRecived value),
+    @required Result portraitSelected(_PortraitSelected value),
+    @required Result changeImagePosition(_ChangeImagePosition value),
+    @required Result imagesFetched(_ImagesFetched value),
+    @required Result labelsSelected(_LabelsSelected value),
+    @required Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    @required Result subProductSelected(_SubProductSelected value),
+    @required Result subProductImage(_SubProductImage value),
+    @required Result subProductChanged(_SubProductChanged value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(hypeDescriptionChanged != null);
+    assert(totalAmountChanged != null);
+    assert(soldAmountChanged != null);
+    assert(imagesChanged != null);
+    assert(catagoriesChanged != null);
+    assert(saved != null);
+    assert(imageUploadingOrNot != null);
+    assert(catagoriesDeleted != null);
+    assert(catagoryAdded != null);
+    assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
+    assert(imageAdded != null);
+    assert(imageSelected != null);
+    assert(imagesRecived != null);
+    assert(portraitSelected != null);
+    assert(changeImagePosition != null);
+    assert(imagesFetched != null);
+    assert(labelsSelected != null);
+    assert(subProductEditingOrNot != null);
+    assert(subProductSelected != null);
+    assert(subProductImage != null);
+    assert(subProductChanged != null);
+    return clearSelectedCatagories(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result hypeDescriptionChanged(_HypeDescriptionChanged value),
+    Result totalAmountChanged(_TotalAmountChanged value),
+    Result soldAmountChanged(_SoldAmountChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result catagoriesChanged(_CatagoriesChanged value),
+    Result saved(_Saved value),
+    Result imageUploadingOrNot(_ImageUploadingOrNot value),
+    Result catagoriesDeleted(_CatagoriesDeleted value),
+    Result catagoryAdded(_CatagoryAdded value),
+    Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
+    Result imageAdded(_ImageAdded value),
+    Result imageSelected(_ImageSelected value),
+    Result imagesRecived(_ImagesRecived value),
+    Result portraitSelected(_PortraitSelected value),
+    Result changeImagePosition(_ChangeImagePosition value),
+    Result imagesFetched(_ImagesFetched value),
+    Result labelsSelected(_LabelsSelected value),
+    Result subProductEditingOrNot(_SubProductEditingOrNot value),
+    Result subProductSelected(_SubProductSelected value),
+    Result subProductImage(_SubProductImage value),
+    Result subProductChanged(_SubProductChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearSelectedCatagories != null) {
+      return clearSelectedCatagories(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSelectedCatagories implements ProductFormEvent {
+  const factory _ClearSelectedCatagories() = _$_ClearSelectedCatagories;
 }
 
 class _$_ImageAdded implements _ImageAdded {
@@ -3160,6 +3457,7 @@ class _$_ImageAdded implements _ImageAdded {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3186,6 +3484,7 @@ class _$_ImageAdded implements _ImageAdded {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3216,6 +3515,7 @@ class _$_ImageAdded implements _ImageAdded {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3252,6 +3552,7 @@ class _$_ImageAdded implements _ImageAdded {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -3277,6 +3578,7 @@ class _$_ImageAdded implements _ImageAdded {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3307,6 +3609,7 @@ class _$_ImageAdded implements _ImageAdded {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -3386,6 +3689,7 @@ class _$_ImageSelected implements _ImageSelected {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3412,6 +3716,7 @@ class _$_ImageSelected implements _ImageSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3442,6 +3747,7 @@ class _$_ImageSelected implements _ImageSelected {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3478,6 +3784,7 @@ class _$_ImageSelected implements _ImageSelected {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -3503,6 +3810,7 @@ class _$_ImageSelected implements _ImageSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3533,6 +3841,7 @@ class _$_ImageSelected implements _ImageSelected {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -3617,6 +3926,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3643,6 +3953,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3673,6 +3984,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3709,6 +4021,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -3734,6 +4047,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3764,6 +4078,7 @@ class _$_ImagesRecived implements _ImagesRecived {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -3848,6 +4163,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3874,6 +4190,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3904,6 +4221,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -3940,6 +4258,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -3965,6 +4284,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -3995,6 +4315,7 @@ class _$_PortraitSelected implements _PortraitSelected {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -4086,6 +4407,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4112,6 +4434,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4142,6 +4465,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4178,6 +4502,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -4203,6 +4528,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4233,6 +4559,7 @@ class _$_ChangeImagePosition implements _ChangeImagePosition {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -4313,6 +4640,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4339,6 +4667,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4369,6 +4698,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4405,6 +4735,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -4430,6 +4761,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4460,6 +4792,7 @@ class _$_ImagesFetched implements _ImagesFetched {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -4538,6 +4871,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4564,6 +4898,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4594,6 +4929,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4630,6 +4966,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -4655,6 +4992,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4685,6 +5023,7 @@ class _$_LabelsSelected implements _LabelsSelected {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -4747,6 +5086,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4773,6 +5113,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4803,6 +5144,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4839,6 +5181,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -4864,6 +5207,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -4894,6 +5238,7 @@ class _$_SubProductEditingOrNot implements _SubProductEditingOrNot {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -4973,6 +5318,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -4999,6 +5345,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5029,6 +5376,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -5065,6 +5413,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -5090,6 +5439,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5120,6 +5470,7 @@ class _$_SubProductSelected implements _SubProductSelected {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -5204,6 +5555,7 @@ class _$_SubProductImage implements _SubProductImage {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -5230,6 +5582,7 @@ class _$_SubProductImage implements _SubProductImage {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5260,6 +5613,7 @@ class _$_SubProductImage implements _SubProductImage {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -5296,6 +5650,7 @@ class _$_SubProductImage implements _SubProductImage {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -5321,6 +5676,7 @@ class _$_SubProductImage implements _SubProductImage {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5351,6 +5707,7 @@ class _$_SubProductImage implements _SubProductImage {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),
@@ -5433,6 +5790,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     @required Result catagoriesDeleted(),
     @required Result catagoryAdded(),
     @required Result catagorySelected(String catagory),
+    @required Result clearSelectedCatagories(),
     @required Result imageAdded(),
     @required Result imageSelected(ImageProperties imageProperties),
     @required Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -5459,6 +5817,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5489,6 +5848,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     Result catagoriesDeleted(),
     Result catagoryAdded(),
     Result catagorySelected(String catagory),
+    Result clearSelectedCatagories(),
     Result imageAdded(),
     Result imageSelected(ImageProperties imageProperties),
     Result imagesRecived(KtList<ImageProperties> imageProperties),
@@ -5525,6 +5885,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     @required Result catagoriesDeleted(_CatagoriesDeleted value),
     @required Result catagoryAdded(_CatagoryAdded value),
     @required Result catagorySelected(_CatagorySelected value),
+    @required Result clearSelectedCatagories(_ClearSelectedCatagories value),
     @required Result imageAdded(_ImageAdded value),
     @required Result imageSelected(_ImageSelected value),
     @required Result imagesRecived(_ImagesRecived value),
@@ -5550,6 +5911,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     assert(catagoriesDeleted != null);
     assert(catagoryAdded != null);
     assert(catagorySelected != null);
+    assert(clearSelectedCatagories != null);
     assert(imageAdded != null);
     assert(imageSelected != null);
     assert(imagesRecived != null);
@@ -5580,6 +5942,7 @@ class _$_SubProductChanged implements _SubProductChanged {
     Result catagoriesDeleted(_CatagoriesDeleted value),
     Result catagoryAdded(_CatagoryAdded value),
     Result catagorySelected(_CatagorySelected value),
+    Result clearSelectedCatagories(_ClearSelectedCatagories value),
     Result imageAdded(_ImageAdded value),
     Result imageSelected(_ImageSelected value),
     Result imagesRecived(_ImagesRecived value),

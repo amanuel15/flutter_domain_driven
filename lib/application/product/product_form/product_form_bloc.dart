@@ -137,6 +137,11 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
           saveFailureOrSuccessOption: none(),
         );
       },
+      clearSelectedCatagories: (e) async* {
+        yield state.copyWith(
+          choosenCatagories: [],
+        );
+      },
       imageAdded: (e) async* {
         print('add cahanging!!!');
         yield state.copyWith(

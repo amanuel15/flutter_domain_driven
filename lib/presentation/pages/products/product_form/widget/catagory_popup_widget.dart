@@ -6,108 +6,121 @@ import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/p
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/products_overview/widgets/critical_failure_display_pwidget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/build_context_x.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
-  final double screenHeight = MediaQuery.of(context).size.height;
-  final double screenWidth = MediaQuery.of(context).size.width;
-  final Shader textLinearGradient = const LinearGradient(
-    colors: <Color>[
-      Color.fromARGB(200, 189, 21, 249),
-      Color.fromARGB(200, 255, 55, 0),
-    ],
-  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
-  return AnimatedPositioned(
-      height: 0.9.hp.toDouble(),
-      left: ScreenUtil().setWidth(screenWidth * 0.03).toDouble(),
-      width: ScreenUtil().setWidth(screenWidth * 0.94).toDouble(),
-      top: stateF.catagoryEditing ? screenHeight - 0.9.hp : screenHeight,
-      duration: const Duration(milliseconds: 500),
-      child: AbsorbPointer(
-        absorbing: !stateF.catagoryEditing,
-        child: Material(
-            clipBehavior: Clip.hardEdge,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                    top:
-                        Radius.circular(ScreenUtil().setWidth(20).toDouble()))),
-            shadowColor: Colors.black,
-            elevation: 10,
-            child: Container(
+class SelectCategoriesPopUp extends HookWidget {
+  const SelectCategoriesPopUp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final Shader textLinearGradient = const LinearGradient(
+      colors: <Color>[
+        Color.fromARGB(200, 189, 21, 249),
+        Color.fromARGB(200, 255, 55, 0),
+      ],
+    ).createShader(
+      const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+    );
+
+    return BlocBuilder<ProductFormBloc, ProductFormState>(
+      //condition: (p, c) => p.catagoryEditing != c.catagoryEditing,
+      builder: (context, stateF) {
+        return AnimatedPositioned(
+          height: 0.9.hp.toDouble(),
+          left: ScreenUtil().setWidth(screenWidth * 0.03).toDouble(),
+          width: ScreenUtil().setWidth(screenWidth * 0.94).toDouble(),
+          top: stateF.catagoryEditing ? screenHeight - 0.9.hp : screenHeight,
+          duration: const Duration(milliseconds: 500),
+          child: AbsorbPointer(
+            absorbing: !stateF.catagoryEditing,
+            child: Material(
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(
+                          ScreenUtil().setWidth(20).toDouble()))),
+              shadowColor: Colors.black,
+              elevation: 10,
+              child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        stops: [
-                      0,
-                      0.25,
-                      0.50,
-                      0.75
-                    ],
-                        colors: const [
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: const [0, 0.25, 0.50, 0.75],
+                    colors: const [
                       Color(0xFFCEF1E9),
                       Color(0xFFDFD1AA),
                       Color(0xFFADB9EC),
                       Color(0xFFECB6E1)
-                    ])),
+                    ],
+                  ),
+                ),
                 child: Column(
                   children: <Widget>[
                     Card(
-                        elevation: 10,
-                        color: Colors.deepPurpleAccent,
-                        shadowColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
+                      elevation: 10,
+                      color: Colors.deepPurpleAccent,
+                      shadowColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
                           top: Radius.circular(
-                              ScreenUtil().setWidth(20).toDouble()),
-                        )),
-                        child: SizedBox(
-                          height: 0.06.hp.toDouble(),
-                          child: Row(
-                            children: <Widget>[
-                              SizedBox(
-                                width: ScreenUtil()
-                                    .setWidth(screenWidth / 50)
-                                    .toDouble(),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  context.bloc<ProductFormBloc>().add(
-                                      const ProductFormEvent.catagoryAdded());
-                                  //undoCategory();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                  size: 0.04.hp.toDouble(),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 0.7.wp.toDouble(),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  //cancelCategorySelection();
-                                },
-                                child: Icon(
-                                  Icons.clear,
-                                  color: Colors.white,
-                                  size: 0.04.hp.toDouble(),
-                                ),
-                              )
-                            ],
+                            ScreenUtil().setWidth(20).toDouble(),
                           ),
-                        )),
+                        ),
+                      ),
+                      child: SizedBox(
+                        height: 0.06.hp.toDouble(),
+                        child: Row(
+                          children: <Widget>[
+                            SizedBox(
+                              width: ScreenUtil()
+                                  .setWidth(screenWidth / 50)
+                                  .toDouble(),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                context.bloc<ProductFormBloc>().add(
+                                      const ProductFormEvent.catagoryAdded(),
+                                    );
+                                //undoCategory();
+                              },
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                                size: 0.04.hp.toDouble(),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 0.7.wp.toDouble(),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                //cancelCategorySelection();
+                              },
+                              child: Icon(
+                                Icons.clear,
+                                color: Colors.white,
+                                size: 0.04.hp.toDouble(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     ConstrainedBox(
                       constraints: BoxConstraints(maxHeight: 0.7.hp.toDouble()),
                       child: BlocProvider<CatagoryWatcherBloc>(
                         create: (context) {
                           return getIt<CatagoryWatcherBloc>()
-                            ..add(const CatagoryWatcherEvent
-                                .watchCatagoriesStarted());
+                            ..add(
+                              const CatagoryWatcherEvent
+                                  .watchCatagoriesStarted(),
+                            );
                         },
                         child: BlocBuilder<CatagoryWatcherBloc,
                             CatagoryWatcherState>(
@@ -190,14 +203,15 @@ Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
                                                     ),
                                                     child: InkWell(
                                                       onTap: () {
-                                                        List<String> newPath =
+                                                        final List<String>
+                                                            newPath =
                                                             stateF.choosenCatagories +
                                                                 [
                                                                   catagory
                                                                       .getOrCrash()
                                                                 ];
                                                         print(
-                                                            'ui ${newPath} , the thing${catagory.getOrCrash()}');
+                                                            'ui ${newPath} , the thing ${stateF.choosenCatagories}');
                                                         if (newPath.length <
                                                             3) {
                                                           context
@@ -218,9 +232,7 @@ Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
                                                               .bloc<
                                                                   ProductFormBloc>()
                                                               .add(ProductFormEvent
-                                                                  .catagorySelected(
-                                                                      catagory
-                                                                          .getOrCrash()));
+                                                                  .clearSelectedCatagories());
                                                           context
                                                               .bloc<
                                                                   ProductFormBloc>()
@@ -239,6 +251,13 @@ Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
                                                                   .catagoriesChanged(
                                                                       context
                                                                           .formCatagories));
+                                                          context
+                                                              .bloc<
+                                                                  CatagoryWatcherBloc>()
+                                                              .add(
+                                                                const CatagoryWatcherEvent
+                                                                    .watchCatagoriesStarted(),
+                                                              );
                                                         }
                                                       },
                                                       child: SizedBox(
@@ -301,6 +320,12 @@ Widget selectCategoriesPopUp(BuildContext context, ProductFormState stateF) {
                       ),
                     ),
                   ],
-                ))),
-      ));
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

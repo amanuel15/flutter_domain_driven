@@ -13,6 +13,7 @@ class ShowSubProducts extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductFormBloc, ProductFormState>(
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         context.formSubProducts = state.product.subProducts.value.fold(
           (_) => <SubProductPrimitive>[],
@@ -27,34 +28,38 @@ class ShowSubProducts extends HookWidget {
           children: context.formSubProducts
               .map(
                 (subProduct) => Card(
-                  elevation: 5,
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  //elevation: 5,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    //mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Flexible(
+                      Expanded(
                         flex: 3,
-                        child: InkWell(
-                          onTap: () {
-                            context.bloc<ProductFormBloc>().add(
-                                ProductFormEvent.subProductSelected(
-                                    subProduct));
-                            context.bloc<ProductFormBloc>().add(
-                                const ProductFormEvent
-                                    .subProductEditingOrNot());
-                          },
-                          child: Text(
-                            subProduct.name,
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          child: InkWell(
+                            onTap: () {
+                              context.bloc<ProductFormBloc>().add(
+                                    ProductFormEvent.subProductSelected(
+                                        subProduct),
+                                  );
+                              context.bloc<ProductFormBloc>().add(
+                                    const ProductFormEvent
+                                        .subProductEditingOrNot(),
+                                  );
+                            },
+                            child: Text(
+                              subProduct.name,
+                            ),
                           ),
                         ),
                       ),
-                      Flexible(
-                        child: FlatButton.icon(
-                          icon: Icon(Icons.cancel),
-                          label: const Text('delete'),
-                          onPressed: () {
-                            //TODO: remove the subproduct
-                          },
-                        ),
+                      IconButton(
+                        icon: Icon(Icons.cancel),
+                        onPressed: () {},
                       ),
                     ],
                   ),

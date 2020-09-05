@@ -226,6 +226,28 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
           saveFailureOrSuccessOption: none(),
         );
       },
+      watchLabels: (e) async* {
+        List<String> labels =
+            await _productRepository.watchlabels().then((labels) => labels);
+        yield state.copyWith(
+          labels: labels,
+        );
+      },
+      setSelectedLabels: (e) async* {
+        yield state.copyWith(
+          selectedLabels: e.labels,
+        );
+      },
+      setPathForDoc: (e) async* {
+        yield state.copyWith(
+          pathForDocument: e.path,
+        );
+      },
+      labelsChanged: (e) async* {
+        yield state.copyWith(
+          labelsChanged: !state.labelsChanged,
+        );
+      },
     );
   }
 }

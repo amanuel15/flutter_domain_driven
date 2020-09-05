@@ -168,15 +168,19 @@ class ProductRepository implements IProductRepository {
   @override
   Future<Either<ImageFailure, ImageProperties>> uploadImage(
       ImageProperties imageProperties) async {
-    if (documentPathForImages == null || !imagesPathToVendor) {
+    documentPathForImages = imageProperties.path;
+    if (documentPathForImages == null ||
+        !imagesPathToVendor ||
+        documentPathForImages == '') {
       await createDocumentPathForImages();
       if (documentPathForImages == null || !imagesPathToVendor) {
         print("error is here $documentPathForImages  $imagesPathToVendor");
         return left(const ImageFailure.uploadFailed());
       }
+      imageProperties =
+          imageProperties.copyWith(path: "$documentPathForImages}");
     }
 
-    imageProperties = imageProperties.copyWith(path: "$documentPathForImages}");
     final StorageReference storageReference = _firebaseStorage.ref().child(
         'products/${imageProperties.path}/${imageProperties.image.absolute.path.split('/').last}');
     await _firebaseStorage.setMaxUploadRetryTimeMillis(3000);
@@ -238,18 +242,18 @@ class ProductRepository implements IProductRepository {
       ImageProperties imageProperties) async {
     final StorageReference storageReference = _firebaseStorage.ref().child(
         'products/${imageProperties.path}/${imageProperties.image.absolute.path.split('/').last}');
-//    print("delteing ${storageReference.path}");
+    // print("delteing ${storageReference.path}");
 
-//    try {
-//      final downloadUrl = await storageReference.getDownloadURL();
-//
-//      print(" working download URL ${downloadUrl.toString()}");
-//    } catch (e) {
-//      if (e.message.toString() == 'Object does not exist at location.') {
-//        print('Object does not exist at location');
-//        return left(const ImageFailure.imageDoesNotExist());
-//      }
-//    }
+    // try {
+    //   final downloadUrl = await storageReference.getDownloadURL();
+
+    //   print(" working download URL ${downloadUrl.toString()}");
+    // } catch (e) {
+    //   if (e.message.toString() == 'Object does not exist at location.') {
+    //     print('Object does not exist at location');
+    //     return left(const ImageFailure.imageDoesNotExist());
+    //   }
+    // }
     try {
       await storageReference.delete();
       return right<ImageFailure, ImageProperties>(imageProperties);
@@ -260,5 +264,15 @@ class ProductRepository implements IProductRepository {
         return left(const ImageFailure.deleteFailed());
       }
     }
+  }
+
+  @override
+  Future<List<String>> watchlabels() {
+    return _firestore.collection('labels').document('labels').get().then(
+      (snapshot) {
+        var a = snapshot.data['list'] as List;
+        return a.map((label) => label.toString()).toList();
+      },
+    );
   }
 }

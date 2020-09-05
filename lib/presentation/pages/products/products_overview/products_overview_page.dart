@@ -60,6 +60,10 @@ class ProductsOverviewPage extends HookWidget implements AutoRouteWrapper {
         body: ProductsOverviewBody(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            ExtendedNavigator.of(context).push(
+              Routes.productFormPage,
+              arguments: ProductFormPageArguments(editedProduct: null),
+            );
             // Router.navigator.pushNamed(
             //   Router.productFormPage,
             //   arguments: ProductFormPageArguments(editedProduct: null),

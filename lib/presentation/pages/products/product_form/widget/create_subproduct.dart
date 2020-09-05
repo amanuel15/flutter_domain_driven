@@ -32,14 +32,18 @@ class CreateSubproduct extends HookWidget {
       TextEditingController(),
       TextEditingController(),
       TextEditingController(),
-      TextEditingController()
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
     ];
     String currentSubProductNameErrorMessage;
     String currentSubProductAmountErrorMessage;
     String currentSubProductPriceErrorMessage;
 
     return BlocConsumer<ProductFormBloc, ProductFormState>(
-      listenWhen: (p, c) => p.subCatagoryEditing != c.subCatagoryEditing,
+      listenWhen: (p, c) =>
+          p.subCatagoryEditing != c.subCatagoryEditing ||
+          p.subProductPrimitive != c.subProductPrimitive,
       listener: (context, state) {
         subProductNameController.text = state.subProductPrimitive.name;
         subProductPriceController.text =
@@ -47,17 +51,20 @@ class CreateSubproduct extends HookWidget {
         subProductAmountController.text =
             state.subProductPrimitive.amount.toString();
         // makes a list of all the labels in the product from a map
-        context.formLabels = state.product.subProducts.value
-            .fold((_) => <String>[], (subProductList) {
-          List<String> a = [];
-          subProductList[0].labels[0].forEach((key, value) {
-            a += [key.toString()];
-          });
-          return a;
-        });
+        // context.formLabels = state.product.subProducts.value
+        //     .fold((_) => <String>[], (subProductList) {
+        //   List<String> a = [];
+        //   subProductList[0].labels[0].forEach((key, value) {
+        //     a += [key.toString()];
+        //   });
+        //   return a;
+        // });
         // labelControllers = List.generate(
         //     context.formLabels.length, (i) => TextEditingController());
       },
+      buildWhen: (p, c) =>
+          p.subCatagoryEditing != c.subCatagoryEditing ||
+          p.subProductPrimitive != c.subProductPrimitive,
       builder: (context, state) {
         return Consumer<FormLabels>(
           builder: (context, formLabels, child) {
@@ -412,9 +419,9 @@ class CreateSubproduct extends HookWidget {
                                   // ),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(
-                                      ScreenUtil().setWidth(15).toDouble(),
                                       ScreenUtil().setWidth(5).toDouble(),
-                                      ScreenUtil().setWidth(15).toDouble(),
+                                      ScreenUtil().setWidth(5).toDouble(),
+                                      ScreenUtil().setWidth(5).toDouble(),
                                       ScreenUtil().setWidth(10).toDouble(),
                                     ),
                                     color: Colors.grey.withOpacity(0.2),
@@ -431,8 +438,14 @@ class CreateSubproduct extends HookWidget {
                                               .setHeight(10)
                                               .toDouble(),
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
+                                        GridView.count(
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 10,
+                                          crossAxisSpacing: 10,
+                                          //padding: const EdgeInsets.all(20),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          childAspectRatio: 2,
                                           children: context.formLabels.map(
                                             (label) {
                                               int index = context.formLabels
@@ -444,7 +457,10 @@ class CreateSubproduct extends HookWidget {
                                                       state.subProductPrimitive
                                                           .labels[0][label]
                                                           .toString()
-                                                  : '';
+                                                  : labelControllers
+                                                      .forEach((e) {
+                                                      e.text = '';
+                                                    });
                                               return TextFormField(
                                                 controller:
                                                     labelControllers[index],
@@ -521,6 +537,103 @@ class CreateSubproduct extends HookWidget {
                                             },
                                           ).toList(),
                                         ),
+                                        // Column(
+                                        //   mainAxisSize: MainAxisSize.min,
+                                        //   children: context.formLabels.map(
+                                        //     (label) {
+                                        //       int index = context.formLabels
+                                        //           .indexOf(label);
+                                        //       state.subProductPrimitive.labels
+                                        //               .isNotEmpty
+                                        //           ? labelControllers[index]
+                                        //                   .text =
+                                        //               state.subProductPrimitive
+                                        //                   .labels[0][label]
+                                        //                   .toString()
+                                        //           : labelControllers = [
+                                        //               TextEditingController(),
+                                        //               TextEditingController(),
+                                        //               TextEditingController(),
+                                        //               TextEditingController(),
+                                        //               TextEditingController(),
+                                        //               TextEditingController(),
+                                        //             ];
+                                        //       return TextFormField(
+                                        //         controller:
+                                        //             labelControllers[index],
+                                        //         onChanged: (value) {
+                                        //           //onSubProductChange();
+                                        //         },
+                                        //         maxLength: 20,
+                                        //         maxLengthEnforced: true,
+                                        //         style: TextStyle(
+                                        //           color: Colors.black,
+                                        //           fontWeight: FontWeight.bold,
+                                        //           fontSize: ScreenUtil()
+                                        //               .setSp(20,
+                                        //                   allowFontScalingSelf:
+                                        //                       true)
+                                        //               .toDouble(),
+                                        //         ),
+                                        //         decoration: InputDecoration(
+                                        //           focusColor: Colors.yellow,
+                                        //           focusedBorder:
+                                        //               OutlineInputBorder(
+                                        //             borderRadius:
+                                        //                 BorderRadius.all(
+                                        //               Radius.circular(
+                                        //                 ScreenUtil()
+                                        //                     .setWidth(10)
+                                        //                     .toDouble(),
+                                        //               ),
+                                        //             ),
+                                        //             borderSide:
+                                        //                 const BorderSide(
+                                        //               color: Colors
+                                        //                   .deepPurpleAccent,
+                                        //             ),
+                                        //           ),
+                                        //           enabledBorder:
+                                        //               OutlineInputBorder(
+                                        //             borderRadius:
+                                        //                 BorderRadius.all(
+                                        //               Radius.circular(
+                                        //                 ScreenUtil()
+                                        //                     .setWidth(5)
+                                        //                     .toDouble(),
+                                        //               ),
+                                        //             ),
+                                        //             borderSide:
+                                        //                 const BorderSide(
+                                        //               style: BorderStyle.solid,
+                                        //               color: Colors.blueGrey,
+                                        //             ),
+                                        //           ),
+                                        //           prefixIcon: const Icon(
+                                        //             Icons.edit,
+                                        //             color:
+                                        //                 Colors.deepPurpleAccent,
+                                        //           ),
+                                        //           labelStyle: TextStyle(
+                                        //             color:
+                                        //                 Colors.deepPurpleAccent,
+                                        //             fontWeight:
+                                        //                 FontWeight.normal,
+                                        //             fontSize: ScreenUtil()
+                                        //                 .setSp(14,
+                                        //                     allowFontScalingSelf:
+                                        //                         true)
+                                        //                 .toDouble(),
+                                        //           ),
+                                        //           labelText: label,
+                                        //         ),
+                                        //         autocorrect: false,
+                                        //         // validator: (_) =>
+                                        //         //     currentSubProductNameErrorMessage,
+                                        //       );
+                                        //     },
+                                        //   ).toList(),
+                                        // ),
                                       ],
                                     ),
                                   ),

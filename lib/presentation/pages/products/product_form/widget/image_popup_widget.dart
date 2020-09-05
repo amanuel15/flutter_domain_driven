@@ -513,12 +513,14 @@ class SelectImagePopup extends HookWidget {
                                       child: InkWell(
                                         onTap: () async {
                                           await getFile(
-                                              context,
-                                              const CropAspectRatio(
-                                                  ratioX: 16.0, ratioY: 9.0),
-                                              1080,
-                                              1920,
-                                              "LandScape");
+                                            context,
+                                            const CropAspectRatio(
+                                                ratioX: 16.0, ratioY: 9.0),
+                                            1080,
+                                            1920,
+                                            "LandScape",
+                                            stateF.pathForDocument,
+                                          );
                                         },
                                         child: Center(
                                           child: Icon(
@@ -625,44 +627,50 @@ Future<int> _asyncInputDialog(BuildContext context, int listLength) async {
 }
 
 Future getFile(BuildContext context, CropAspectRatio cropAspectRatio,
-    int maxHeight, int maxWidth, String imageType) async {
+    int maxHeight, int maxWidth, String imageType, String imageDocPath) async {
   await FilePicker.getFile(type: FileType.image).then((file) async {
     print(file.absolute.path.split('/').last);
     await _cropImage(context, file, file.absolute.path.split('/').last,
-        cropAspectRatio, maxHeight, maxWidth, imageType);
+        cropAspectRatio, maxHeight, maxWidth, imageType, imageDocPath);
   }).catchError((onError) {});
 }
 
 Future<Null> _cropImage(
-    BuildContext context,
-    File imageFile,
-    String imagePath,
-    CropAspectRatio cropAspectRatio,
-    int maxHeight,
-    int maxWidth,
-    String imageType) async {
+  BuildContext context,
+  File imageFile,
+  String imagePath,
+  CropAspectRatio cropAspectRatio,
+  int maxHeight,
+  int maxWidth,
+  String imageType,
+  String imageDocPath,
+) async {
   final File croppedFile = await ImageCropper.cropImage(
-          sourcePath: imageFile.path,
-          maxHeight: maxHeight,
-          maxWidth: maxWidth,
-          aspectRatio: cropAspectRatio,
-          androidUiSettings: const AndroidUiSettings(
-              toolbarTitle: 'Cropper',
-              toolbarColor: Colors.deepOrange,
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: true),
-          iosUiSettings: const IOSUiSettings(
-              title: 'Cropper', aspectRatioLockEnabled: true))
-      .catchError((onError) {
+    sourcePath: imageFile.path,
+    maxHeight: maxHeight,
+    maxWidth: maxWidth,
+    aspectRatio: cropAspectRatio,
+    androidUiSettings: const AndroidUiSettings(
+      toolbarTitle: 'Cropper',
+      toolbarColor: Colors.deepOrange,
+      toolbarWidgetColor: Colors.white,
+      initAspectRatio: CropAspectRatioPreset.original,
+      lockAspectRatio: true,
+    ),
+    iosUiSettings: const IOSUiSettings(
+      title: 'Cropper',
+      aspectRatioLockEnabled: true,
+    ),
+  ).catchError((onError) {
     FlushbarHelper.createError(
-        duration: const Duration(seconds: 4),
-        message: onError.toString(),
-        title: "Oops Something Went Wrong");
+      duration: const Duration(seconds: 4),
+      message: onError.toString(),
+      title: "Oops Something Went Wrong",
+    );
     print(onError.toString());
   });
   if (croppedFile != null) {
     context.bloc<ImagewatcherBloc>().add(ImagewatcherEvent.addImage(
-        image: croppedFile, imagePath: imagePath, imageType: imageType));
+        image: croppedFile, imagePath: imageDocPath, imageType: imageType));
   }
 }

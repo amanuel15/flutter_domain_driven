@@ -47,4 +47,9 @@ abstract class ProductFormEvent with _$ProductFormEvent {
       ImageProperties imageProperties) = _SubProductImage;
   const factory ProductFormEvent.subProductChanged(
       List<SubProductPrimitive> subProducts) = _SubProductChanged;
+  const factory ProductFormEvent.watchLabels() = _WatchLabels;
+  const factory ProductFormEvent.setSelectedLabels(List<String> labels) =
+      _SetSelectedLabels;
+  const factory ProductFormEvent.setPathForDoc(String path) = _SetPathForDoc;
+  const factory ProductFormEvent.labelsChanged() = _LabelsChanged;
 }

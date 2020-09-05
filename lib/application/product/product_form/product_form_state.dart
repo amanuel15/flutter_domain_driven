@@ -13,14 +13,17 @@ abstract class ProductFormState with _$ProductFormState {
     @required bool imageSaving,
     @required bool subCatagoryEditing,
     @required bool uploadingImage,
+    @required bool labelsChanged,
     @required List<String> choosenCatagories,
     @required List<ImageProperties> selectedImages,
     @required List<ImageProperties> fetchedImages,
     @required ImageProperties portraitImage,
+    @required List<String> selectedLabels,
     @required List<String> labels,
     @required SubProductPrimitive subProductPrimitive,
     @required Option<Either<CatagoryFailure, Unit>> saveFailureOrCatagoryOption,
     @required Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption,
+    @required String pathForDocument,
   }) = _ProductFormState;
 
   factory ProductFormState.initial() => ProductFormState(
@@ -34,13 +37,16 @@ abstract class ProductFormState with _$ProductFormState {
         imageEditing: false,
         imageSaving: false,
         subCatagoryEditing: false,
+        labelsChanged: false,
         choosenCatagories: [],
         selectedImages: [],
         fetchedImages: [],
+        selectedLabels: [],
         labels: [],
         subProductPrimitive: SubProductPrimitive.empty(),
         portraitImage: ImageProperties.empty(),
         saveFailureOrCatagoryOption: none(),
         saveFailureOrSuccessOption: none(),
+        pathForDocument: '',
       );
 }

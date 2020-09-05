@@ -16,7 +16,9 @@ import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/p
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/hype_description_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/image_popup_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/labels_form_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/name_field_widget.dart';
+import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/portrait_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/show_subproducts.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/widget/total_amount_field_widget.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/routes/router.gr.dart';
@@ -207,6 +209,14 @@ class ProductFormPageScaffold extends StatelessWidget {
                         child: CustomScrollView(
                           slivers: <Widget>[
                             const SliverToBoxAdapter(
+                              child: PortraitImageWidget(),
+                            ),
+                            const SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
+                            ),
+                            const SliverToBoxAdapter(
                               child: NameField(),
                             ),
                             const SliverToBoxAdapter(
@@ -234,13 +244,24 @@ class ProductFormPageScaffold extends StatelessWidget {
                                 height: 20,
                               ),
                             ),
-                            SliverToBoxAdapter(
+                            const SliverToBoxAdapter(
+                              child: AddPortraitWidget(),
+                            ),
+                            const SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 20,
+                              ),
+                            ),
+                            const SliverToBoxAdapter(
                               child: LableWidget(),
                             ),
                             const SliverToBoxAdapter(
                               child: SizedBox(
                                 height: 20,
                               ),
+                            ),
+                            const SliverToBoxAdapter(
+                              child: LabelsFormWidget(),
                             ),
                             const SliverToBoxAdapter(
                               child: ShowSubProducts(),

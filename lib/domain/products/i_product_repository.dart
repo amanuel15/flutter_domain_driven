@@ -32,4 +32,5 @@ abstract class IProductRepository {
       ImageProperties imageProperties);
   Future<Either<ImageFailure, ImageProperties>> uploadImage(
       ImageProperties imageProperties);
+  Future<List<String>> watchlabels();
 }

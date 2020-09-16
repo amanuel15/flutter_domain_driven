@@ -188,7 +188,7 @@ class CarouselCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${product.totalAmount}',
+                        '⭐' * 4,
                         style: TextStyle(
                           color: Colors.grey,
                         ),

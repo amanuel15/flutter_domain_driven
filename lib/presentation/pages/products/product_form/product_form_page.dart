@@ -79,11 +79,6 @@ class ProductFormPage extends HookWidget {
         },
         buildWhen: (p, c) => p.isSaving != c.isSaving,
         builder: (context, state) {
-          final double screenHeight = MediaQuery.of(context).size.width;
-          final double screenWidth = MediaQuery.of(context).size.width;
-          ScreenUtil.init(context,
-              width: screenWidth, height: screenHeight, allowFontScaling: true);
-
           return const ProductFormPageScaffold();
           // Stack(
           //   children: <Widget>[

@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/core/value_objects.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/products/image_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/sub_product.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
@@ -22,6 +18,7 @@ abstract class ProductDto with _$ProductDto {
     @required String hypeDescription,
     @required int totalAmount,
     @required int soldAmount,
+    @required String portraitImage,
     @required List<ImageUrlDto> images,
     @required List<CatagoryNameDto> catagories,
     @required List<SubProductDto> subProducts,
@@ -35,6 +32,7 @@ abstract class ProductDto with _$ProductDto {
       hypeDescription: product.hypeDescription.getOrCrash(),
       totalAmount: product.totalAmount.getOrCrash(),
       soldAmount: product.soldAmount.getOrCrash(),
+      portraitImage: product.portraitImage.getOrCrash(),
       images: product.images
           .getOrCrash()
           .mapIndexed((index, imageUrl) => ImageUrlDto.fromDomain(imageUrl))
@@ -71,6 +69,7 @@ extension ProductDtoX on ProductDto {
       hypeDescription: ProductHypeDescription(hypeDescription),
       totalAmount: TotalAmount(totalAmount),
       soldAmount: SoldAmount(soldAmount),
+      portraitImage: ImageUrl(portraitImage),
       //images: ListImage(images.map((dto) => dto.toDomain()).toImmutableList()),
       images: ListImage(images.map((dto) => dto.toDomain()).toImmutableList()),
       // catagories: ListCatagories(

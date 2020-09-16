@@ -69,7 +69,7 @@ class Router extends RouterBase {
     },
     ProductsOverviewPage: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => ProductsOverviewPage().wrappedRoute(context),
+        builder: (context) => ProductsOverviewPage(),
         settings: data,
       );
     },

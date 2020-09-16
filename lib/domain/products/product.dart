@@ -19,8 +19,8 @@ abstract class Product with _$Product {
     @required ProductHypeDescription hypeDescription,
     @required TotalAmount totalAmount,
     @required SoldAmount soldAmount,
-    // TODO: consider making this list image making a list of ImageUrl instead of Images
     @required ListImage<ImageUrl> images,
+    @required ImageUrl portraitImage,
     @required ListCatagories<CatagoryName> catagories,
     @required ListSubProducts<SubProduct> subProducts,
   }) = _Product;
@@ -33,6 +33,7 @@ abstract class Product with _$Product {
         totalAmount: TotalAmount(0),
         soldAmount: SoldAmount(0),
         images: ListImage(emptyList()),
+        portraitImage: ImageUrl(''),
         catagories: ListCatagories(emptyList()),
         subProducts: ListSubProducts(const []),
       );
@@ -45,6 +46,7 @@ extension ProductX on Product {
         .andThen(hypeDescription.failureOrUnit)
         .andThen(totalAmount.failureOrUnit)
         .andThen(soldAmount.failureOrUnit)
+        .andThen(portraitImage.failureOrUnit)
         .andThen(images.failureOrUnit)
         .andThen(images
             .getOrCrash()

@@ -19,6 +19,7 @@ mixin _$ProductDto {
   String get hypeDescription;
   int get totalAmount;
   int get soldAmount;
+  String get portraitImage;
   List<ImageUrlDto> get images;
   List<CatagoryNameDto> get catagories;
   List<SubProductDto> get subProducts;
@@ -30,6 +31,7 @@ mixin _$ProductDto {
       String hypeDescription,
       int totalAmount,
       int soldAmount,
+      String portraitImage,
       List<ImageUrlDto> images,
       List<CatagoryNameDto> catagories,
       List<SubProductDto> subProducts});
@@ -47,6 +49,7 @@ class _$ProductDtoTearOff {
       @required String hypeDescription,
       @required int totalAmount,
       @required int soldAmount,
+      @required String portraitImage,
       @required List<ImageUrlDto> images,
       @required List<CatagoryNameDto> catagories,
       @required List<SubProductDto> subProducts}) {
@@ -57,6 +60,7 @@ class _$ProductDtoTearOff {
       hypeDescription: hypeDescription,
       totalAmount: totalAmount,
       soldAmount: soldAmount,
+      portraitImage: portraitImage,
       images: images,
       catagories: catagories,
       subProducts: subProducts,
@@ -75,6 +79,7 @@ class _$_ProductDto implements _ProductDto {
       @required this.hypeDescription,
       @required this.totalAmount,
       @required this.soldAmount,
+      @required this.portraitImage,
       @required this.images,
       @required this.catagories,
       @required this.subProducts})
@@ -83,6 +88,7 @@ class _$_ProductDto implements _ProductDto {
         assert(hypeDescription != null),
         assert(totalAmount != null),
         assert(soldAmount != null),
+        assert(portraitImage != null),
         assert(images != null),
         assert(catagories != null),
         assert(subProducts != null);
@@ -104,6 +110,8 @@ class _$_ProductDto implements _ProductDto {
   @override
   final int soldAmount;
   @override
+  final String portraitImage;
+  @override
   final List<ImageUrlDto> images;
   @override
   final List<CatagoryNameDto> catagories;
@@ -112,7 +120,7 @@ class _$_ProductDto implements _ProductDto {
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories, subProducts: $subProducts)';
+    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, portraitImage: $portraitImage, images: $images, catagories: $catagories, subProducts: $subProducts)';
   }
 
   @override
@@ -136,6 +144,9 @@ class _$_ProductDto implements _ProductDto {
             (identical(other.soldAmount, soldAmount) ||
                 const DeepCollectionEquality()
                     .equals(other.soldAmount, soldAmount)) &&
+            (identical(other.portraitImage, portraitImage) ||
+                const DeepCollectionEquality()
+                    .equals(other.portraitImage, portraitImage)) &&
             (identical(other.images, images) ||
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.catagories, catagories) ||
@@ -155,6 +166,7 @@ class _$_ProductDto implements _ProductDto {
       const DeepCollectionEquality().hash(hypeDescription) ^
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
+      const DeepCollectionEquality().hash(portraitImage) ^
       const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(catagories) ^
       const DeepCollectionEquality().hash(subProducts);
@@ -167,6 +179,7 @@ class _$_ProductDto implements _ProductDto {
     Object hypeDescription = freezed,
     Object totalAmount = freezed,
     Object soldAmount = freezed,
+    Object portraitImage = freezed,
     Object images = freezed,
     Object catagories = freezed,
     Object subProducts = freezed,
@@ -184,6 +197,9 @@ class _$_ProductDto implements _ProductDto {
       totalAmount:
           totalAmount == freezed ? this.totalAmount : totalAmount as int,
       soldAmount: soldAmount == freezed ? this.soldAmount : soldAmount as int,
+      portraitImage: portraitImage == freezed
+          ? this.portraitImage
+          : portraitImage as String,
       images: images == freezed ? this.images : images as List<ImageUrlDto>,
       catagories: catagories == freezed
           ? this.catagories
@@ -208,6 +224,7 @@ abstract class _ProductDto implements ProductDto {
       @required String hypeDescription,
       @required int totalAmount,
       @required int soldAmount,
+      @required String portraitImage,
       @required List<ImageUrlDto> images,
       @required List<CatagoryNameDto> catagories,
       @required List<SubProductDto> subProducts}) = _$_ProductDto;
@@ -229,6 +246,8 @@ abstract class _ProductDto implements ProductDto {
   @override
   int get soldAmount;
   @override
+  String get portraitImage;
+  @override
   List<ImageUrlDto> get images;
   @override
   List<CatagoryNameDto> get catagories;
@@ -243,6 +262,7 @@ abstract class _ProductDto implements ProductDto {
       String hypeDescription,
       int totalAmount,
       int soldAmount,
+      String portraitImage,
       List<ImageUrlDto> images,
       List<CatagoryNameDto> catagories,
       List<SubProductDto> subProducts});

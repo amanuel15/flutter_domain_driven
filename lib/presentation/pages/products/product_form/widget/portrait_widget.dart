@@ -19,7 +19,6 @@ class PortraitImageWidget extends HookWidget {
     return BlocConsumer<ProductFormBloc, ProductFormState>(
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
-        //TODO: make a portrait image field in firestore
         if (!state.product.images.getOrCrash().isEmpty()) {
           String url = state.product.images.getOrCrash()[0].getOrCrash();
           int a = url.indexOf('products') + 11;
@@ -110,9 +109,7 @@ class AddPortraitWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductFormBloc, ProductFormState>(
-      listener: (context, state) {
-        //TODO: make a portrait image field in firestore
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return state.portraitImage.downloadUrl == ''
             ? Material(

@@ -13,6 +13,7 @@ _$_ProductDto _$_$_ProductDtoFromJson(Map<String, dynamic> json) {
     hypeDescription: json['hypeDescription'] as String,
     totalAmount: json['totalAmount'] as int,
     soldAmount: json['soldAmount'] as int,
+    portraitImage: json['portraitImage'] as String,
     images: (json['images'] as List)
         ?.map((e) => e == null ? null : ImageUrlDto(name: e as String))
         ?.toList(),
@@ -34,6 +35,7 @@ Map<String, dynamic> _$_$_ProductDtoToJson(_$_ProductDto instance) =>
       'hypeDescription': instance.hypeDescription,
       'totalAmount': instance.totalAmount,
       'soldAmount': instance.soldAmount,
+      'portraitImage': instance.portraitImage,
       'images': instance.images?.map((e) => e?.toJson())?.toList(),
       'catagories': instance.catagories?.map((e) => e?.toJson())?.toList(),
       'subProducts': instance.subProducts?.map((e) => e?.toJson())?.toList(),

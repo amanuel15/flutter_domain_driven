@@ -15,6 +15,7 @@ mixin _$Product {
   TotalAmount get totalAmount;
   SoldAmount get soldAmount;
   ListImage<ImageUrl> get images;
+  ImageUrl get portraitImage;
   ListCatagories<CatagoryName> get catagories;
   ListSubProducts<SubProduct> get subProducts;
 
@@ -26,6 +27,7 @@ mixin _$Product {
       TotalAmount totalAmount,
       SoldAmount soldAmount,
       ListImage<ImageUrl> images,
+      ImageUrl portraitImage,
       ListCatagories<CatagoryName> catagories,
       ListSubProducts<SubProduct> subProducts});
 }
@@ -41,6 +43,7 @@ class _$ProductTearOff {
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
       @required ListImage<ImageUrl> images,
+      @required ImageUrl portraitImage,
       @required ListCatagories<CatagoryName> catagories,
       @required ListSubProducts<SubProduct> subProducts}) {
     return _Product(
@@ -51,6 +54,7 @@ class _$ProductTearOff {
       totalAmount: totalAmount,
       soldAmount: soldAmount,
       images: images,
+      portraitImage: portraitImage,
       catagories: catagories,
       subProducts: subProducts,
     );
@@ -68,6 +72,7 @@ class _$_Product implements _Product {
       @required this.totalAmount,
       @required this.soldAmount,
       @required this.images,
+      @required this.portraitImage,
       @required this.catagories,
       @required this.subProducts})
       : assert(id != null),
@@ -77,6 +82,7 @@ class _$_Product implements _Product {
         assert(totalAmount != null),
         assert(soldAmount != null),
         assert(images != null),
+        assert(portraitImage != null),
         assert(catagories != null),
         assert(subProducts != null);
 
@@ -95,13 +101,15 @@ class _$_Product implements _Product {
   @override
   final ListImage<ImageUrl> images;
   @override
+  final ImageUrl portraitImage;
+  @override
   final ListCatagories<CatagoryName> catagories;
   @override
   final ListSubProducts<SubProduct> subProducts;
 
   @override
   String toString() {
-    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, catagories: $catagories, subProducts: $subProducts)';
+    return 'Product(id: $id, productName: $productName, productDescription: $productDescription, hypeDescription: $hypeDescription, totalAmount: $totalAmount, soldAmount: $soldAmount, images: $images, portraitImage: $portraitImage, catagories: $catagories, subProducts: $subProducts)';
   }
 
   @override
@@ -127,6 +135,9 @@ class _$_Product implements _Product {
                     .equals(other.soldAmount, soldAmount)) &&
             (identical(other.images, images) ||
                 const DeepCollectionEquality().equals(other.images, images)) &&
+            (identical(other.portraitImage, portraitImage) ||
+                const DeepCollectionEquality()
+                    .equals(other.portraitImage, portraitImage)) &&
             (identical(other.catagories, catagories) ||
                 const DeepCollectionEquality()
                     .equals(other.catagories, catagories)) &&
@@ -145,6 +156,7 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(totalAmount) ^
       const DeepCollectionEquality().hash(soldAmount) ^
       const DeepCollectionEquality().hash(images) ^
+      const DeepCollectionEquality().hash(portraitImage) ^
       const DeepCollectionEquality().hash(catagories) ^
       const DeepCollectionEquality().hash(subProducts);
 
@@ -157,6 +169,7 @@ class _$_Product implements _Product {
     Object totalAmount = freezed,
     Object soldAmount = freezed,
     Object images = freezed,
+    Object portraitImage = freezed,
     Object catagories = freezed,
     Object subProducts = freezed,
   }) {
@@ -177,6 +190,9 @@ class _$_Product implements _Product {
       soldAmount:
           soldAmount == freezed ? this.soldAmount : soldAmount as SoldAmount,
       images: images == freezed ? this.images : images as ListImage<ImageUrl>,
+      portraitImage: portraitImage == freezed
+          ? this.portraitImage
+          : portraitImage as ImageUrl,
       catagories: catagories == freezed
           ? this.catagories
           : catagories as ListCatagories<CatagoryName>,
@@ -196,6 +212,7 @@ abstract class _Product implements Product {
       @required TotalAmount totalAmount,
       @required SoldAmount soldAmount,
       @required ListImage<ImageUrl> images,
+      @required ImageUrl portraitImage,
       @required ListCatagories<CatagoryName> catagories,
       @required ListSubProducts<SubProduct> subProducts}) = _$_Product;
 
@@ -214,6 +231,8 @@ abstract class _Product implements Product {
   @override
   ListImage<ImageUrl> get images;
   @override
+  ImageUrl get portraitImage;
+  @override
   ListCatagories<CatagoryName> get catagories;
   @override
   ListSubProducts<SubProduct> get subProducts;
@@ -227,6 +246,7 @@ abstract class _Product implements Product {
       TotalAmount totalAmount,
       SoldAmount soldAmount,
       ListImage<ImageUrl> images,
+      ImageUrl portraitImage,
       ListCatagories<CatagoryName> catagories,
       ListSubProducts<SubProduct> subProducts});
 }

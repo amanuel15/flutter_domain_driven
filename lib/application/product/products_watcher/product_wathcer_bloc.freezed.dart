@@ -15,6 +15,12 @@ mixin _$ProductWathcerEvent {
     @required
         Result productRecived(
             Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
   });
 
   @optionalTypeArgs
@@ -23,6 +29,10 @@ mixin _$ProductWathcerEvent {
     Result watchUncompletedStarted(),
     Result productRecived(
         Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
     @required Result orElse(),
   });
 
@@ -31,6 +41,8 @@ mixin _$ProductWathcerEvent {
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
     @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
   });
 
   @optionalTypeArgs
@@ -38,6 +50,8 @@ mixin _$ProductWathcerEvent {
     Result watchAllStarted(_WatchAllStarted value),
     Result watchUncompletedStarted(_WatchUncompletedStarted value),
     Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
     @required Result orElse(),
   });
 }
@@ -57,6 +71,24 @@ class _$ProductWathcerEventTearOff {
       Either<ProductFailure, KtList<Product>> failureOrProducts) {
     return _ProductRecived(
       failureOrProducts,
+    );
+  }
+
+  _WatchProducts watchProducts(
+      {List<List<String>> conditions, List<String> orderBys, int limit}) {
+    return _WatchProducts(
+      conditions: conditions,
+      orderBys: orderBys,
+      limit: limit,
+    );
+  }
+
+  _WatchProductsContinued watchProductsContinued(
+      {List<List<String>> conditions, List<String> orderBys, int limit}) {
+    return _WatchProductsContinued(
+      conditions: conditions,
+      orderBys: orderBys,
+      limit: limit,
     );
   }
 }
@@ -87,10 +119,18 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     @required
         Result productRecived(
             Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return watchAllStarted();
   }
 
@@ -101,6 +141,10 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     Result watchUncompletedStarted(),
     Result productRecived(
         Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -116,10 +160,14 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
     @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return watchAllStarted(this);
   }
 
@@ -129,6 +177,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     Result watchAllStarted(_WatchAllStarted value),
     Result watchUncompletedStarted(_WatchUncompletedStarted value),
     Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -167,10 +217,18 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
     @required
         Result productRecived(
             Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return watchUncompletedStarted();
   }
 
@@ -181,6 +239,10 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
     Result watchUncompletedStarted(),
     Result productRecived(
         Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -196,10 +258,14 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
     @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return watchUncompletedStarted(this);
   }
 
@@ -209,6 +275,8 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
     Result watchAllStarted(_WatchAllStarted value),
     Result watchUncompletedStarted(_WatchUncompletedStarted value),
     Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -268,10 +336,18 @@ class _$_ProductRecived implements _ProductRecived {
     @required
         Result productRecived(
             Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return productRecived(failureOrProducts);
   }
 
@@ -282,6 +358,10 @@ class _$_ProductRecived implements _ProductRecived {
     Result watchUncompletedStarted(),
     Result productRecived(
         Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -297,10 +377,14 @@ class _$_ProductRecived implements _ProductRecived {
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
     @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
   }) {
     assert(watchAllStarted != null);
     assert(watchUncompletedStarted != null);
     assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
     return productRecived(this);
   }
 
@@ -310,6 +394,8 @@ class _$_ProductRecived implements _ProductRecived {
     Result watchAllStarted(_WatchAllStarted value),
     Result watchUncompletedStarted(_WatchUncompletedStarted value),
     Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -329,6 +415,292 @@ abstract class _ProductRecived implements ProductWathcerEvent {
 
   _ProductRecived copyWith(
       {Either<ProductFailure, KtList<Product>> failureOrProducts});
+}
+
+class _$_WatchProducts implements _WatchProducts {
+  const _$_WatchProducts({this.conditions, this.orderBys, this.limit});
+
+  @override
+  final List<List<String>> conditions;
+  @override
+  final List<String> orderBys;
+  @override
+  final int limit;
+
+  @override
+  String toString() {
+    return 'ProductWathcerEvent.watchProducts(conditions: $conditions, orderBys: $orderBys, limit: $limit)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _WatchProducts &&
+            (identical(other.conditions, conditions) ||
+                const DeepCollectionEquality()
+                    .equals(other.conditions, conditions)) &&
+            (identical(other.orderBys, orderBys) ||
+                const DeepCollectionEquality()
+                    .equals(other.orderBys, orderBys)) &&
+            (identical(other.limit, limit) ||
+                const DeepCollectionEquality().equals(other.limit, limit)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(conditions) ^
+      const DeepCollectionEquality().hash(orderBys) ^
+      const DeepCollectionEquality().hash(limit);
+
+  @override
+  _$_WatchProducts copyWith({
+    Object conditions = freezed,
+    Object orderBys = freezed,
+    Object limit = freezed,
+  }) {
+    return _$_WatchProducts(
+      conditions: conditions == freezed
+          ? this.conditions
+          : conditions as List<List<String>>,
+      orderBys: orderBys == freezed ? this.orderBys : orderBys as List<String>,
+      limit: limit == freezed ? this.limit : limit as int,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchAllStarted(),
+    @required Result watchUncompletedStarted(),
+    @required
+        Result productRecived(
+            Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchUncompletedStarted != null);
+    assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
+    return watchProducts(conditions, orderBys, limit);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchAllStarted(),
+    Result watchUncompletedStarted(),
+    Result productRecived(
+        Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchProducts != null) {
+      return watchProducts(conditions, orderBys, limit);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
+    @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchUncompletedStarted != null);
+    assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
+    return watchProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchUncompletedStarted(_WatchUncompletedStarted value),
+    Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchProducts != null) {
+      return watchProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchProducts implements ProductWathcerEvent {
+  const factory _WatchProducts(
+      {List<List<String>> conditions,
+      List<String> orderBys,
+      int limit}) = _$_WatchProducts;
+
+  List<List<String>> get conditions;
+  List<String> get orderBys;
+  int get limit;
+
+  _WatchProducts copyWith(
+      {List<List<String>> conditions, List<String> orderBys, int limit});
+}
+
+class _$_WatchProductsContinued implements _WatchProductsContinued {
+  const _$_WatchProductsContinued({this.conditions, this.orderBys, this.limit});
+
+  @override
+  final List<List<String>> conditions;
+  @override
+  final List<String> orderBys;
+  @override
+  final int limit;
+
+  @override
+  String toString() {
+    return 'ProductWathcerEvent.watchProductsContinued(conditions: $conditions, orderBys: $orderBys, limit: $limit)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _WatchProductsContinued &&
+            (identical(other.conditions, conditions) ||
+                const DeepCollectionEquality()
+                    .equals(other.conditions, conditions)) &&
+            (identical(other.orderBys, orderBys) ||
+                const DeepCollectionEquality()
+                    .equals(other.orderBys, orderBys)) &&
+            (identical(other.limit, limit) ||
+                const DeepCollectionEquality().equals(other.limit, limit)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(conditions) ^
+      const DeepCollectionEquality().hash(orderBys) ^
+      const DeepCollectionEquality().hash(limit);
+
+  @override
+  _$_WatchProductsContinued copyWith({
+    Object conditions = freezed,
+    Object orderBys = freezed,
+    Object limit = freezed,
+  }) {
+    return _$_WatchProductsContinued(
+      conditions: conditions == freezed
+          ? this.conditions
+          : conditions as List<List<String>>,
+      orderBys: orderBys == freezed ? this.orderBys : orderBys as List<String>,
+      limit: limit == freezed ? this.limit : limit as int,
+    );
+  }
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchAllStarted(),
+    @required Result watchUncompletedStarted(),
+    @required
+        Result productRecived(
+            Either<ProductFailure, KtList<Product>> failureOrProducts),
+    @required
+        Result watchProducts(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+    @required
+        Result watchProductsContinued(
+            List<List<String>> conditions, List<String> orderBys, int limit),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchUncompletedStarted != null);
+    assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
+    return watchProductsContinued(conditions, orderBys, limit);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchAllStarted(),
+    Result watchUncompletedStarted(),
+    Result productRecived(
+        Either<ProductFailure, KtList<Product>> failureOrProducts),
+    Result watchProducts(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    Result watchProductsContinued(
+        List<List<String>> conditions, List<String> orderBys, int limit),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchProductsContinued != null) {
+      return watchProductsContinued(conditions, orderBys, limit);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchUncompletedStarted(_WatchUncompletedStarted value),
+    @required Result productRecived(_ProductRecived value),
+    @required Result watchProducts(_WatchProducts value),
+    @required Result watchProductsContinued(_WatchProductsContinued value),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchUncompletedStarted != null);
+    assert(productRecived != null);
+    assert(watchProducts != null);
+    assert(watchProductsContinued != null);
+    return watchProductsContinued(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchUncompletedStarted(_WatchUncompletedStarted value),
+    Result productRecived(_ProductRecived value),
+    Result watchProducts(_WatchProducts value),
+    Result watchProductsContinued(_WatchProductsContinued value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchProductsContinued != null) {
+      return watchProductsContinued(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchProductsContinued implements ProductWathcerEvent {
+  const factory _WatchProductsContinued(
+      {List<List<String>> conditions,
+      List<String> orderBys,
+      int limit}) = _$_WatchProductsContinued;
+
+  List<List<String>> get conditions;
+  List<String> get orderBys;
+  int get limit;
+
+  _WatchProductsContinued copyWith(
+      {List<List<String>> conditions, List<String> orderBys, int limit});
 }
 
 mixin _$ProductWathcerState {

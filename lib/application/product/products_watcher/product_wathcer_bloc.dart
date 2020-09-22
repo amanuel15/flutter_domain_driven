@@ -60,24 +60,28 @@ class ProductWathcerBloc
           },
         );
       },
-      // watchCatagoriesStarted: (e) async* {
-      //   yield const ProductWathcerState.catagoryInProgress();
-      //   _productRepository.watchAllCatagories().then((catagories) =>
-      //       add(ProductWathcerEvent.catagoryRecived(catagories)));
-      // },
-      // watchSubCatagories: (e) async* {
-      //   yield const ProductWathcerState.catagoryInProgress();
-      //   _productRepository.watchAllCatagories(path: e.path).then((catagories) =>
-      //       add(ProductWathcerEvent.catagoryRecived(catagories)));
-      // },
-      // catagoryRecived: (e) async* {
-      //   yield e.failureOrCatagory.fold(
-      //     (f) => ProductWathcerState.catagoryLoadFailure(f),
-      //     (catagoryList) {
-      //       return ProductWathcerState.catagoryLoadSucess(catagoryList);
-      //     },
-      //   );
-      // },
+      watchProducts: (e) async* {
+        yield const ProductWathcerState.loadInProgress();
+        _productRepository
+            .watchAll(
+              conditions: e.conditions,
+              orderBys: e.orderBys,
+              limit: e.limit,
+            )
+            .then((products) =>
+                add(ProductWathcerEvent.productRecived(products)));
+      },
+      watchProductsContinued: (e) async* {
+        yield const ProductWathcerState.loadInProgress();
+        _productRepository
+            .watchUncompleted(
+              conditions: e.conditions,
+              orderBys: e.orderBys,
+              limit: e.limit,
+            )
+            .then((products) =>
+                add(ProductWathcerEvent.productRecived(products)));
+      },
     );
   }
 }

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_failure.dart';
-import 'package:finished_notes_firebase_ddd_course/domain/products/catagory_item.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/i_product_repository.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_failure.dart';
 import 'package:finished_notes_firebase_ddd_course/domain/products/image_item.dart';
@@ -13,6 +12,7 @@ import 'package:finished_notes_firebase_ddd_course/domain/products/product.dart'
 import 'package:finished_notes_firebase_ddd_course/domain/products/value_objects.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/core/firestore_helpers.dart';
 import 'package:finished_notes_firebase_ddd_course/infrastructure/products/product_dtos.dart';
+import 'package:finished_notes_firebase_ddd_course/infrastructure/products/query_builder.dart';
 import 'package:finished_notes_firebase_ddd_course/presentation/pages/products/product_form/misc/image_item_presentation_classes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -54,15 +54,19 @@ class ProductRepository implements IProductRepository {
   }
 
   @override
-  Future<Either<ProductFailure, KtList<Product>>> watchAll() {
-    return _firestore
-        .collection('products')
-        .orderBy('TotalAmount')
-        .limit(12)
-        .getDocuments()
-        .then((snapshot) {
+  Future<Either<ProductFailure, KtList<Product>>> watchAll({
+    List<List<String>> conditions,
+    List<String> orderBys,
+    int limit = 7,
+  }) {
+    Query query = queryBuilder(
+      conditions: conditions,
+      orderBys: orderBys,
+      limit: limit,
+    );
+    print('query!!! ${query}');
+    return query.getDocuments().then((snapshot) {
       lastDoc = snapshot.documents.last;
-      // TODO: make sure firestore data is verifiable and check mapping
       return right<ProductFailure, KtList<Product>>(snapshot.documents
           .map((doc) => ProductDto.fromFirestore(doc).toDomain())
           .toImmutableList());
@@ -70,24 +74,57 @@ class ProductRepository implements IProductRepository {
       print('error');
       return left(const ProductFailure.unexpected());
     });
+    // return _firestore
+    //     .collection('products')
+    //     .orderBy('TotalAmount')
+    //     .limit(12)
+    //     .getDocuments()
+    //     .then((snapshot) {
+    //   lastDoc = snapshot.documents.last;
+    //   // TODO: make sure firestore data is verifiable and check mapping
+    //   return right<ProductFailure, KtList<Product>>(snapshot.documents
+    //       .map((doc) => ProductDto.fromFirestore(doc).toDomain())
+    //       .toImmutableList());
+    // }).catchError((e) {
+    //   print('error');
+    //   return left(const ProductFailure.unexpected());
+    // });
   }
 
   @override
-  Future<Either<ProductFailure, KtList<Product>>> watchUncompleted() {
-    return _firestore
-        .collection('products')
-        .orderBy('TotalAmount')
-        .startAfter([lastDoc.data['TotalAmount']])
-        .limit(10)
-        .getDocuments()
-        .then((snapshot) {
-          return right<ProductFailure, KtList<Product>>(snapshot.documents
-              .map((doc) => ProductDto.fromFirestore(doc).toDomain())
-              .toImmutableList());
-        })
-        .catchError((e) {
-          return left(const ProductFailure.unexpected());
-        });
+  Future<Either<ProductFailure, KtList<Product>>> watchUncompleted({
+    List<List<String>> conditions,
+    List<String> orderBys,
+    int limit = 7,
+  }) {
+    Query query = queryBuilder(
+      conditions: conditions,
+      orderBys: orderBys,
+      limit: limit,
+    );
+    return query.startAfterDocument(lastDoc).getDocuments().then((snapshot) {
+      lastDoc = snapshot.documents.last;
+      return right<ProductFailure, KtList<Product>>(snapshot.documents
+          .map((doc) => ProductDto.fromFirestore(doc).toDomain())
+          .toImmutableList());
+    }).catchError((e) {
+      print('error');
+      return left(const ProductFailure.unexpected());
+    });
+    // return _firestore
+    //     .collection('products')
+    //     .orderBy('TotalAmount')
+    //     .startAfter([lastDoc.data['TotalAmount']])
+    //     .limit(10)
+    //     .getDocuments()
+    //     .then((snapshot) {
+    //       return right<ProductFailure, KtList<Product>>(snapshot.documents
+    //           .map((doc) => ProductDto.fromFirestore(doc).toDomain())
+    //           .toImmutableList());
+    //     })
+    //     .catchError((e) {
+    //       return left(const ProductFailure.unexpected());
+    //     });
   }
 
   @override
@@ -270,7 +307,7 @@ class ProductRepository implements IProductRepository {
   Future<List<String>> watchlabels() {
     return _firestore.collection('labels').document('labels').get().then(
       (snapshot) {
-        var a = snapshot.data['list'] as List;
+        final a = snapshot.data['list'] as List;
         return a.map((label) => label.toString()).toList();
       },
     );

@@ -14,19 +14,27 @@ class ProductsOverviewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<List<String>> orders = [
+      ['TotalAmount'],
+      ['soldAmount'],
+      ['totalAmount'],
+      ['price', 'totalAmount'],
+    ];
     return Column(
-      children: a
+      children: orders
           .map(
-            (e) => BlocProvider<ProductWathcerBloc>(
+            (list) => BlocProvider<ProductWathcerBloc>(
               create: (context) {
                 return getIt<ProductWathcerBloc>()
-                  ..add(const ProductWathcerEvent.watchAllStarted());
+                  ..add(ProductWathcerEvent.watchProducts(
+                    orderBys: list,
+                  ));
               },
               child: BlocBuilder<ProductWathcerBloc, ProductWathcerState>(
                 builder: (context, state) {
                   return state.map(
                     initial: (_) => Container(
-                      child: Text('initial'),
+                      child: const Text('initial'),
                     ),
                     loadInProgress: (_) => const Center(
                       child: CircularProgressIndicator(),
@@ -37,9 +45,11 @@ class ProductsOverviewBody extends StatelessWidget {
                         onNotification: (notification) {
                           if (notification is ScrollEndNotification &&
                               _scrollController.position.extentAfter == 0) {
-                            context.bloc<ProductWathcerBloc>().add(
-                                const ProductWathcerEvent
-                                    .watchUncompletedStarted());
+                            context
+                                .bloc<ProductWathcerBloc>()
+                                .add(ProductWathcerEvent.watchProductsContinued(
+                                  orderBys: list,
+                                ));
                           }
                           return false;
                         },

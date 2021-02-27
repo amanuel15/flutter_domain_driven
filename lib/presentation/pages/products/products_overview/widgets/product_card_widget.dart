@@ -53,29 +53,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-
-class CatagoryDisplay extends StatelessWidget {
-  final CatagoryItem catagoryItem;
-
-  const CatagoryDisplay({Key key, this.catagoryItem}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      // children: <Widget>[
-      //   if (catagory.done)
-      //     Icon(
-      //       Icons.check_box,
-      //       color: Theme.of(context).accentColor,
-      //     ),
-      //   if (!catagory.done)
-      //     Icon(
-      //       Icons.check_box_outline_blank,
-      //       color: Theme.of(context).disabledColor,
-      //     ),
-      //   Text(catagory.name.getOrCrash()),
-      // ],
-    );
-  }
-}

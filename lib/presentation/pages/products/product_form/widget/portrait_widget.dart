@@ -120,7 +120,7 @@ class AddPortraitWidget extends HookWidget {
                   onTap: () async {
                     await getFile(
                       context,
-                      const CropAspectRatio(ratioX: 9.0, ratioY: 16.0),
+                      const CropAspectRatio(ratioX: 3.0, ratioY: 4.0),
                       1920,
                       1080,
                       "Portrait",

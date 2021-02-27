@@ -206,16 +206,17 @@ class ProductRepository implements IProductRepository {
   Future<Either<ImageFailure, ImageProperties>> uploadImage(
       ImageProperties imageProperties) async {
     documentPathForImages = imageProperties.path;
-    if (documentPathForImages == null ||
-        !imagesPathToVendor ||
-        documentPathForImages == '') {
-      await createDocumentPathForImages();
+    print(' path for image!!! ${documentPathForImages}');
+    if (documentPathForImages == '') {
       if (documentPathForImages == null || !imagesPathToVendor) {
-        print("error is here $documentPathForImages  $imagesPathToVendor");
-        return left(const ImageFailure.uploadFailed());
+        await createDocumentPathForImages();
+        if (documentPathForImages == null || !imagesPathToVendor) {
+          print("error is here $documentPathForImages  $imagesPathToVendor");
+          return left(const ImageFailure.uploadFailed());
+        }
+        imageProperties =
+            imageProperties.copyWith(path: "$documentPathForImages}");
       }
-      imageProperties =
-          imageProperties.copyWith(path: "$documentPathForImages}");
     }
 
     final StorageReference storageReference = _firebaseStorage.ref().child(
